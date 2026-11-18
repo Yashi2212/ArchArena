@@ -1,0 +1,27 @@
+{
+  "scope": "UI track backend/API freeze; source text normalized to LF",
+  "files": {
+    "backend/Dockerfile": "c18e6ebed4c435268ba0c8766c7244da71e96d1235bb8af8b399af8a13d8518d",
+    "backend/openapi.yaml": "e611d7aa738105e83de03185a460613ee717335f4a5ff9abc3fa097b73fa3385",
+    "backend/pom.xml": "14e616350a4a18461ef2bd8b89cd2b729c0262736bf6ee847226383dc383819a",
+    "backend/src/main/java/dev/archarena/api/AccessFilter.java": "a4a07a3fbd1febb0aae5229af91ac2e720274b1473760eb13b7a83e7eeb1745a",
+    "backend/src/main/java/dev/archarena/api/ArenaController.java": "5cf4184b3ae2fb298e42365dd4c4c1b20baafcb7f989b23e70b6a65d2f265ec4",
+    "backend/src/main/java/dev/archarena/api/Errors.java": "6a56c58ee10f3c553ce04ca0b5d6e54936f2b67d03929aa56fe11a714df2d7c0",
+    "backend/src/main/java/dev/archarena/ArchArenaApplication.java": "a6af10346f26d7f12fe1623edd1e72b5b1e55329737d4df3208d9fa232bd6eaa",
+    "backend/src/main/java/dev/archarena/engine/AnalyticEngine.java": "43c9a9ea20656bd5cea30698bb216061245519ee12dfdcb153fa3cfffbdaa794",
+    "backend/src/main/java/dev/archarena/engine/DiscreteEventEngine.java": "ee3ea35843a821924ea079ee0865177e4346efafc4a9849d7d98c8d3bb7869c4",
+    "backend/src/main/java/dev/archarena/engine/EngineBenchmark.java": "d7f6f591e18a27f761a557d910eb4deee2a936f3a2256c6ff143ec906c606111",
+    "backend/src/main/java/dev/archarena/engine/GraphValidator.java": "d10f516af69bc0a5bcbf12210c051ca97c787e2834f5bec73b69bb5676e36eed",
+    "backend/src/main/java/dev/archarena/engine/Model.java": "d1bf4b4ff5d39a9f73fbee0d2b5eb4783efcf11f55f402911ff62d37e68c5803",
+    "backend/src/main/java/dev/archarena/engine/SimulationEngine.java": "9e5983bba26b30b17b06b9b0d1235e0d1eef0dcdebfaa752e1c73b492e8fc1f7",
+    "backend/src/main/java/dev/archarena/learning/LessonCatalog.java": "a957286a9d3fce92649dc7cf1ac9c3a1ce8151ca42e35888a85341e3fe435b8e",
+    "backend/src/main/java/dev/archarena/persistence/JobRepository.java": "9b3d0c6a27558361215dd50d7130490d491131fec4c443fb748ed03701b68283",
+    "backend/src/main/java/dev/archarena/worker/SimulationWorker.java": "3652b92a6d64651761b890c3330ef48165a5e0f4759a4e65df9413ea723abbd5",
+    "backend/src/main/resources/application.yml": "2933ad89c3e5e12f9f409ff94f2572d9801f5492cef6f91f00ecaad483bdc32e",
+    "backend/src/main/resources/content/lessons.json": "662efd9bce07cd0fec4bf11197fd8591e043198b1b6c8b8ba4fb2c452302fece",
+    "backend/src/main/resources/db/migration/V1__core.sql": "9dbe6c54f02ac5f3c464c0d4666291378d8bf4d937fb33cc3387a3e4ef3d3785",
+    "backend/src/test/java/dev/archarena/api/AccessFilterTest.java": "d548022a9533702514697a13059537aeb567fad01bd376ced6485fbc546dc871",
+    "backend/src/test/java/dev/archarena/api/ApiTest.java": "f085d9c077b9dd05b5dc2e08cde8cb1cd8a481ada479271f2efbf49be238b480",
+    "backend/src/test/java/dev/archarena/engine/EngineTest.java": "d465d95d3ed3837e1e91268c62cab5f5921b51f7c17758d45d2912bb366336b4"
+  }
+}

@@ -1,0 +1,245 @@
+openapi: 3.0.3
+info:
+  title: ArchArena local demo API
+  version: 0.1.0
+  description: Owner-operated educational model. AI, SQS, SSE and Design Studio endpoints are not implemented.
+servers:
+  - url: http://127.0.0.1:8080/api
+paths:
+  /catalog:
+    get:
+      operationId: getCatalog
+      responses:
+        '200': {description: Five validated lessons and persisted completion IDs}
+  /preview:
+    post:
+      operationId: analyticPreview
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: {$ref: '#/components/schemas/Experiment'}
+      responses:
+        '200': {description: Steady-state analytic estimates with disclosed approximations}
+        '400': {$ref: '#/components/responses/Problem'}
+        '429': {$ref: '#/components/responses/Problem'}
+  /runs:
+    post:
+      operationId: submitRun
+      parameters:
+        - in: header
+          name: Idempotency-Key
+          required: true
+          schema: {type: string, pattern: '^[a-zA-Z0-9_-]{8,100}$'}
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: {$ref: '#/components/schemas/Experiment'}
+      responses:
+        '202':
+          description: Persisted job, or prior job for an identical idempotent retry
+          headers:
+            Location: {schema: {type: string}, description: Run status resource}
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/Run'}
+        '400': {$ref: '#/components/responses/Problem'}
+        '409': {$ref: '#/components/responses/Problem'}
+        '429': {$ref: '#/components/responses/Problem'}
+  /runs/{id}:
+    parameters:
+      - {$ref: '#/components/parameters/Id'}
+    get:
+      operationId: getRun
+      responses:
+        '200':
+          description: Owner-scoped job status and immutable input/result
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/Run'}
+        '404': {$ref: '#/components/responses/Problem'}
+  /runs/{id}/scorecard:
+    parameters:
+      - {$ref: '#/components/parameters/Id'}
+    get:
+      operationId: getScorecard
+      responses:
+        '200': {description: Nine dimensions; scalability is rules-based and other dimensions explicitly unassessed}
+        '400': {$ref: '#/components/responses/Problem'}
+        '404': {$ref: '#/components/responses/Problem'}
+  /runs/{id}/export:
+    parameters:
+      - {$ref: '#/components/parameters/Id'}
+    get:
+      operationId: exportRun
+      responses:
+        '200':
+          description: Markdown with immutable input, modeled metrics and assumptions
+          content:
+            text/markdown:
+              schema: {type: string}
+        '400': {$ref: '#/components/responses/Problem'}
+        '404': {$ref: '#/components/responses/Problem'}
+  /designs:
+    get:
+      operationId: listDesigns
+      responses:
+        '200': {description: Designs scoped to the configured owner}
+    post:
+      operationId: createDesign
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: {$ref: '#/components/schemas/SaveDesign'}
+      responses:
+        '200': {description: Saved design at version one}
+        '400': {$ref: '#/components/responses/Problem'}
+  /designs/{id}:
+    parameters:
+      - {$ref: '#/components/parameters/Id'}
+    put:
+      operationId: updateDesign
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: {$ref: '#/components/schemas/SaveDesign'}
+      responses:
+        '200': {description: Updated design and immutable version snapshot}
+        '409': {$ref: '#/components/responses/Problem'}
+    delete:
+      operationId: deleteDesign
+      responses:
+        '204': {description: Design and version history removed; run snapshots have separate retention}
+        '404': {$ref: '#/components/responses/Problem'}
+  /lessons/{lessonId}/checkpoint:
+    post:
+      operationId: verifyCheckpoint
+      parameters:
+        - in: path
+          name: lessonId
+          required: true
+          schema: {type: string, enum: [load-balancing, caching, replication, queues, rate-limiting]}
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+              required: [runId]
+              properties:
+                runId: {type: string, format: uuid}
+      responses:
+        '200': {description: Passed flag and server-owned completion IDs}
+        '400': {$ref: '#/components/responses/Problem'}
+  /practice/clarify:
+    post:
+      operationId: scriptedClarification
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+              required: [question]
+              properties:
+                question: {type: string, minLength: 1, maxLength: 1000}
+      responses:
+        '200': {description: Clearly labeled scripted problem facts; no live LLM}
+        '400': {$ref: '#/components/responses/Problem'}
+components:
+  parameters:
+    Id:
+      name: id
+      in: path
+      required: true
+      schema: {type: string, format: uuid}
+  responses:
+    Problem:
+      description: RFC 7807 problem response; API may also return 401, 403, 413 or 503
+      content:
+        application/problem+json:
+          schema:
+            type: object
+            required: [type, title, status, detail]
+            properties:
+              type: {type: string}
+              title: {type: string}
+              status: {type: integer}
+              detail: {type: string}
+              correlationId: {type: string}
+  schemas:
+    Experiment:
+      type: object
+      additionalProperties: false
+      required: [graph, arrivalRate, durationSeconds, seed, profile, failure]
+      properties:
+        graph: {$ref: '#/components/schemas/Graph'}
+        arrivalRate: {type: number, minimum: 0.1, maximum: 500}
+        durationSeconds: {type: number, minimum: 5, maximum: 120}
+        seed: {type: integer, minimum: 0, maximum: 9007199254740991}
+        profile: {type: string, enum: [steady, spike]}
+        failure: {type: string, enum: [none, service-kill, cache-flush]}
+    Graph:
+      type: object
+      additionalProperties: false
+      required: [nodes, edges]
+      properties:
+        nodes:
+          type: array
+          minItems: 2
+          maxItems: 30
+          items:
+            type: object
+            additionalProperties: false
+            required: [id, type, label]
+            properties:
+              id: {type: string, pattern: '^[a-zA-Z0-9_-]{1,48}$'}
+              type: {type: string, enum: [CLIENT, LOAD_BALANCER, SERVICE, CACHE, DATABASE, QUEUE, RATE_LIMITER]}
+              label: {type: string, maxLength: 80}
+              config:
+                type: object
+                additionalProperties: false
+                properties:
+                  replicas: {type: integer, minimum: 1, maximum: 16}
+                  concurrency: {type: integer, minimum: 1, maximum: 128}
+                  serviceMs: {type: number, minimum: 0.1, maximum: 1000}
+                  hitRatio: {type: number, minimum: 0, maximum: 0.99}
+                  readRatio: {type: number, minimum: 0, maximum: 1}
+                  rate: {type: number, minimum: 0.1, maximum: 1000}
+                  burst: {type: integer, minimum: 1, maximum: 1000}
+                  queueLimit: {type: integer, minimum: 0, maximum: 2000}
+        edges:
+          type: array
+          maxItems: 60
+          items:
+            type: object
+            additionalProperties: false
+            required: [id, source, target]
+            properties:
+              id: {type: string}
+              source: {type: string}
+              target: {type: string}
+    Run:
+      type: object
+      required: [id, status, request]
+      properties:
+        id: {type: string, format: uuid}
+        status: {type: string, enum: [QUEUED, RUNNING, DONE, FAILED, TIMED_OUT]}
+        attempt: {type: integer}
+        request: {$ref: '#/components/schemas/Experiment'}
+        result: {type: object, nullable: true, additionalProperties: true, description: Versioned Result record documented in Model.java; successful-request quantiles and separate error/rejection counts}
+        error: {type: string, nullable: true}
+        createdAt: {type: string}
+    SaveDesign:
+      type: object
+      additionalProperties: false
+      required: [title, graph]
+      properties:
+        title: {type: string, minLength: 1, maxLength: 120}
+        version: {type: integer, minimum: 1, description: Required when updating an existing design}
+        graph: {$ref: '#/components/schemas/Graph'}

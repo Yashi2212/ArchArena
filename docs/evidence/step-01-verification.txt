@@ -1,0 +1,67 @@
+ArchArena — UI Step 0/1 and draft knowledge verification
+Date: 2026-11-18, Asia/Calcutta
+Scope: audit, design proposal, source-note drafts, session documentation and content guards.
+No frontend application source, backend domain code or API contract changed in this step.
+
+PASS Existing Java suite rerun: 20 tests; 0 failures/errors/skips.
+  EngineTest 8; ApiTest 10; AccessFilterTest 2.
+  Command: scripts/maven.ps1 -MavenArgs @('test','-q')
+  Database: H2 in PostgreSQL compatibility mode, not real PostgreSQL.
+  Detailed output: java-tests-2026-11-18.txt.
+
+PASS Current frontend build:
+  Command: npm run build
+  Vite 6.2.7. Emitted JS: 921.21 kB, gzip 283.96 kB.
+  Large-chunk warning remains. No FPS/Lighthouse result implied.
+
+FAIL Frontend test discovery:
+  Command: npm test -- --list
+  Exit 1. No tests found: 0 tests in 0 files.
+  Vitest/component/axe/E2E/snapshot/performance checks are not implemented.
+
+FAIL Current dependency audit:
+  Command: npm audit --json
+  Exit 1. One high-severity affected package: vite; multiple advisories.
+  Captured suggestion: vite 6.4.6. Not installed in this docs-only step.
+  Machine-readable report remains private in .local/npm-audit-current.json.
+
+PASS Knowledge structure/provenance:
+  Command: python scripts/validate_knowledge.py --write-index
+  Five notes; 13 claim references; zero structural issues.
+  All notes remain unverified drafts. No legal/accuracy clearance implied.
+
+PASS Knowledge guard tests:
+  Command: python scripts/test_knowledge.py
+  Seven tests passed; fixtures do not change real note verification.
+
+EXPECTED REJECTION Publication gate:
+  Command: python scripts/validate_knowledge.py --publish
+  Exit 1. All five notes blocked for missing owner review/verification.
+  This is the intended result. No content was published/imported into the website.
+
+PASS Proposed palette only:
+  Command: python scripts/check_proposed_tokens.py
+  14 declared foreground/background pairs passed their 4.5:1 or 3:1 threshold.
+  Minimum checked text pair: failure/raised 5.17:1.
+  Boundary pair: line/raised 3.39:1.
+  Actual application contrast, all UI states and WCAG conformance remain unverified.
+
+PASS Backend freeze:
+  Command: python scripts/check_backend_freeze.py
+  22 files checked; zero changes since recorded UI-track freeze.
+  Manifest covers source/tests/resources plus POM, OpenAPI and Dockerfile; normalizes LF.
+
+PASS Session/doc references:
+  Command: python scripts/validate_docs.py
+  14 required entry docs, 35 local links, 13 claim-line references checked; zero issues.
+  Regenerate the claim index if note line numbers change.
+
+NOT RUN: new 1440/390 screenshots, four-width visual regression, axe, keyboard lesson,
+reduced-motion behavior, 300-node rendering, Lighthouse, PostgreSQL/Compose,
+Testcontainers, backup/restore, real CI, AWS billing or any public deployment.
+Earlier browser follow-up stopped because automatic approval review hit a usage limit;
+it was not an unsafe-action decision. No approval bypass was attempted.
+
+Copyright scope: targeted private reading, original short topic drafts, source/edition
+register, no source PDFs/diagrams/code/examples distributed. Owner originality/rights
+review remains necessary. Automated checks do not establish legal clearance.

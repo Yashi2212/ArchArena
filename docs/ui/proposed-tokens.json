@@ -1,0 +1,26 @@
+{
+  "status": "proposal-only-not-implemented",
+  "direction": "Signal Deck",
+  "colors": {
+    "bg": "#06080F", "panel": "#0D1220", "raised": "#151E30",
+    "text": "#E6ECFF", "muted": "#ABB8D1", "traffic": "#2DE2E6",
+    "healthy": "#3DF5A7", "strain": "#FFB020", "failure": "#FF4D6A",
+    "line": "#62718F", "focus": "#DCEB69", "onAccent": "#06080F"
+  },
+  "pairs": [
+    {"foreground":"text", "background":"bg", "minimum":4.5},
+    {"foreground":"text", "background":"panel", "minimum":4.5},
+    {"foreground":"text", "background":"raised", "minimum":4.5},
+    {"foreground":"muted", "background":"panel", "minimum":4.5},
+    {"foreground":"muted", "background":"raised", "minimum":4.5},
+    {"foreground":"traffic", "background":"panel", "minimum":4.5},
+    {"foreground":"healthy", "background":"panel", "minimum":4.5},
+    {"foreground":"strain", "background":"panel", "minimum":4.5},
+    {"foreground":"failure", "background":"panel", "minimum":4.5},
+    {"foreground":"failure", "background":"raised", "minimum":4.5},
+    {"foreground":"onAccent", "background":"traffic", "minimum":4.5},
+    {"foreground":"onAccent", "background":"healthy", "minimum":4.5},
+    {"foreground":"line", "background":"raised", "minimum":3},
+    {"foreground":"focus", "background":"panel", "minimum":3}
+  ]
+}

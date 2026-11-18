@@ -1,0 +1,92 @@
+{
+  "load-balancing": {
+    "file": "docs/knowledge/load-balancing.md",
+    "claims": [
+      {
+        "id": "LB-01",
+        "line": 15,
+        "sourceReference": "SDI1, PDF page 14."
+      },
+      {
+        "id": "LB-02",
+        "line": 19,
+        "sourceReference": "SDI1, PDF page 13."
+      }
+    ]
+  },
+  "caching": {
+    "file": "docs/knowledge/caching.md",
+    "claims": [
+      {
+        "id": "CA-01",
+        "line": 15,
+        "sourceReference": "SDI1, PDF page 20."
+      },
+      {
+        "id": "CA-02",
+        "line": 31,
+        "sourceReference": "SDI1, PDF page 21."
+      },
+      {
+        "id": "CA-03",
+        "line": 35,
+        "sourceReference": "SDI1, PDF page 21."
+      }
+    ]
+  },
+  "replication": {
+    "file": "docs/knowledge/replication.md",
+    "claims": [
+      {
+        "id": "RE-01",
+        "line": 15,
+        "sourceReference": "DDIA1, PDF page 217."
+      },
+      {
+        "id": "RE-02",
+        "line": 31,
+        "sourceReference": "DDIA1, PDF page 207."
+      },
+      {
+        "id": "RE-03",
+        "line": 35,
+        "sourceReference": "DDIA1, PDF page 218."
+      }
+    ]
+  },
+  "queues": {
+    "file": "docs/knowledge/queues.md",
+    "claims": [
+      {
+        "id": "QU-01",
+        "line": 15,
+        "sourceReference": "SDI1, PDF page 34; DDIA1, PDF page 581."
+      },
+      {
+        "id": "QU-02",
+        "line": 31,
+        "sourceReference": "DDIA1, PDF page 582."
+      },
+      {
+        "id": "QU-03",
+        "line": 35,
+        "sourceReference": "DDIA1, PDF page 582."
+      }
+    ]
+  },
+  "rate-limiting": {
+    "file": "docs/knowledge/rate-limiting.md",
+    "claims": [
+      {
+        "id": "RL-01",
+        "line": 15,
+        "sourceReference": "SDI1, PDF page 72."
+      },
+      {
+        "id": "RL-02",
+        "line": 31,
+        "sourceReference": "SDI1, PDF page 73."
+      }
+    ]
+  }
+}
