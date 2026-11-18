@@ -50,6 +50,8 @@ def main():
     check(len(ids) == 10 and len(set(ids)) == 10, "Ten distinct top-level product risks documented")
 
     for source in root.rglob("*.md"):
+        if any(part in {"node_modules", ".tools", ".local", ".git", "target", "dist"} for part in source.relative_to(root).parts):
+            continue
         text = source.read_text(encoding="utf-8")
         for target in re.findall(r"(?<!!)\[[^\]]+\]\(([^)]+)\)", text):
             if re.match(r"https?://|mailto:|#", target):

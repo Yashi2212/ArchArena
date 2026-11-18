@@ -47,3 +47,5 @@ Wait for A/B, then implement Step 2 only. Owner review of the knowledge pack sep
 ### Step checks and version control
 
 Seven knowledge-gate tests passed; five notes and 13 claim references validated; the publish command intentionally rejected all five drafts. All 14 proposed contrast pairs passed, with runtime accessibility still unverified. Documentation checks covered 14 entry files, 35 local links and 13 claim-line references. The freeze covered 22 backend/API files with no changes. Initialized local Git because no repository existed; source PDFs, private `.local` inventory, original user prompt/status `.txt` inputs and build/dependency artifacts are excluded. No remote push or CI execution is claimed.
+
+The historical Phase 0 link checker initially reported 37 failures after dependencies were installed because it scanned third-party/generated Markdown. Updated that documentation script to exclude node_modules, build outputs and private tool/state folders, matching the current doc checker's scope. This is a validator correction, not an application/backend change; rerun output is included in the evidence record.

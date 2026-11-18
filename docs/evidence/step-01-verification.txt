@@ -56,6 +56,12 @@ PASS Session/doc references:
   14 required entry docs, 35 local links, 13 claim-line references checked; zero issues.
   Regenerate the claim index if note line numbers change.
 
+PASS Historical Phase 0 checks rerun: 57 passed, zero failed.
+  Initial rerun scanned installed third-party Markdown and reported 37 dependency-link
+  failures. Corrected the documentation script to exclude dependencies/private/generated
+  folders. See phase0-current-validation.txt for the corrected actual output.
+  This correction did not change application source or backend/API files.
+
 NOT RUN: new 1440/390 screenshots, four-width visual regression, axe, keyboard lesson,
 reduced-motion behavior, 300-node rendering, Lighthouse, PostgreSQL/Compose,
 Testcontainers, backup/restore, real CI, AWS billing or any public deployment.
