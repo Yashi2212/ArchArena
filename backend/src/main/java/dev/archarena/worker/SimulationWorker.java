@@ -19,7 +19,7 @@ public class SimulationWorker {
             long start=System.nanoTime();
             try {var result=new DiscreteEventEngine().run(job.request());boolean committed=jobs.complete(job,result);LOG.info("run={} status=DONE committed={} durationMs={}",job.id(),committed,(System.nanoTime()-start)/1_000_000);}
             catch(DiscreteEventEngine.SimulationTimeoutException exception){jobs.fail(job,"TIMED_OUT",exception.getMessage());LOG.warn("run={} status=TIMED_OUT",job.id());}
-            catch(RuntimeException exception){jobs.fail(job,"FAILED",exception instanceof IllegalArgumentException?exception.getMessage():"Internal worker failure");LOG.error("run={} status=FAILED",job.id(),exception);}
+            catch(RuntimeException exception){jobs.fail(job,"FAILED",exception instanceof IllegalArgumentException?exception.getMessage():"Internal worker failure");LOG.error("run={} status=FAILED errorType={}",job.id(),exception.getClass().getSimpleName());}
         });
     }
     @Scheduled(fixedDelay=3_600_000,initialDelay=60_000) public void retention(){jobs.retain();}

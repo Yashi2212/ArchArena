@@ -29,8 +29,8 @@ export function reviewDesign(graph:Graph, worksheet:Worksheet, scenario:Scenario
   if(graph.nodes.some(n=>!reached.has(n.id)))problems.push('connect every component to the client path');
   if(cycle)problems.push('remove cycles from this bounded simulation graph');
   if(graph.nodes.some(n=>outgoing(n.id).length>1&&n.type!=='LOAD_BALANCER'))problems.push('only load balancers can branch in this model');
-  if(graph.nodes.some(n=>outgoing(n.id).length===0&&n.type!=='DATABASE'))problems.push('terminate each modeled path at a database');
-  if(graph.nodes.some(n=>n.type==='DATABASE'&&outgoing(n.id).length))problems.push('databases must be terminal in this model');
+  if(graph.nodes.some(n=>outgoing(n.id).length===0&&n.type!=='DATABASE'&&n.type!=='EXTERNAL_API'))problems.push('terminate each modeled path at a database or synthetic external API');
+  if(graph.nodes.some(n=>(n.type==='DATABASE'||n.type==='EXTERNAL_API')&&outgoing(n.id).length))problems.push('databases must be terminal; synthetic external APIs must also be terminal in this model');
   review.push({id:'topology',state:problems.length?'missing':'inspect',text:problems.length?`Model topology: ${problems.join('; ')}. These are simulator restrictions, not universal architecture rules.`:'Basic topology checks found no issue. Backend validation still applies; this does not validate the business design.'});
   review.push({id:'domain',state:'inspect',text:`Scenario deep dive: ${scenario.deepDive} Defend this invariant: ${scenario.invariant} Neither labels nor the generic queueing engine prove it.`});
   if(result&&result.requests>0) {

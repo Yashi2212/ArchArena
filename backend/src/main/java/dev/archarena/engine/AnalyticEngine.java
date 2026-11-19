@@ -4,26 +4,27 @@ import java.util.*;
 import static dev.archarena.engine.Model.*;
 
 public final class AnalyticEngine implements SimulationEngine {
-    public static final String VERSION = "1.0.0";
+    public static final String VERSION = "2.0.0";
     public static final List<String> ASSUMPTIONS = List.of(
         "Educational model, not a benchmark or prediction of deployed AWS performance.",
-        "Poisson arrivals; exponential independent service times; FIFO finite queues; no network RTT or TLS cost.",
+        "Poisson arrivals; exponential independent service times; FIFO finite queues; no real network or TLS. Event mode optionally adds fixed node network delay; analytic mode omits it.",
         "Cache hits complete at the cache. Misses continue downstream; hit ratio is an input, not a learned cache state.",
-        "Database replicas increase read capacity only; writes use the primary. Replication lag and consistency are not simulated.",
-        "Load balancers split routes uniformly; request paths are acyclic and end at a database.",
-        "Queue nodes model worker processing before downstream work. Retries, autoscaling, AZ outages and external APIs are not implemented.",
+        "Database writes use a separate primary pool; replicas add read capacity. Event mode models one synthetic shared-record replication lag, not a real database.",
+        "Load balancers split routes uniformly; acyclic paths end at a database or synthetic external API. No actual external network calls occur.",
+        "Queue nodes process work before downstream stages; event mode supports bounded retries, circuit breakers, dependency holding, delayed service scale-out and synthetic failures.",
         "Costs use illustrative per-node weights, not live AWS pricing or a billing estimate."
     );
     public static int servers(Node node, boolean read) {
         int replicas = (int)node.value("replicas", 1);
-        if (node.type() == NodeType.DATABASE && !read) replicas = 1;
+        if (node.type() == NodeType.DATABASE && (!read || node.value("requireFreshReads",0)==1)) replicas = 1;
         return replicas * (int)node.value("concurrency", node.type() == NodeType.SERVICE ? 4 : 1);
     }
     public static double serviceSeconds(Node node) {
         return node.value("serviceMs", switch (node.type()) {
             case CLIENT -> 0.1;
             case LOAD_BALANCER, RATE_LIMITER -> 0.5;
-            case CACHE -> 2;
+            case CACHE, CDN -> 2;
+            case EXTERNAL_API -> 100;
             case SERVICE -> 20;
             case DATABASE -> 15;
             case QUEUE -> 40;
@@ -33,10 +34,9 @@ public final class AnalyticEngine implements SimulationEngine {
         if (lambda <= 0) return 1 / mu;
         double a = lambda / mu, rho = a / c;
         if (rho >= 1) return Double.POSITIVE_INFINITY;
-        double term = 1, sum = 1;
-        for (int k = 1; k < c; k++) { term *= a / k; sum += term; }
-        double tail = term * a / c / (1 - rho);
-        double probabilityWait = tail / (sum + tail);
+        double erlangB=1;
+        for(int k=1;k<=c;k++) erlangB=a*erlangB/(k+a*erlangB);
+        double probabilityWait=erlangB/(1-rho+rho*erlangB);
         return 1 / mu + probabilityWait / (c * mu - lambda);
     }
     @Override public Result run(Request request) {
@@ -44,7 +44,7 @@ public final class AnalyticEngine implements SimulationEngine {
         Map<String, List<String>> outgoing = outgoing(request.graph());
         Map<String, Double> readRates = new HashMap<>(), writeRates = new HashMap<>();
         String entry = request.graph().nodes().stream().filter(n -> n.type() == NodeType.CLIENT).findFirst().orElseThrow().id();
-        double inputReadRatio = request.graph().nodes().stream().filter(n -> n.type()==NodeType.DATABASE).findFirst().orElseThrow().value("readRatio",0.9);
+        double inputReadRatio = request.graph().nodes().stream().filter(n -> n.type()==NodeType.DATABASE).findFirst().map(n->n.value("readRatio",0.9)).orElse(0.9);
         readRates.put(entry, request.arrivalRate()*inputReadRatio);
         writeRates.put(entry, request.arrivalRate()*(1-inputReadRatio));
         List<Node> ordered = topological(request.graph());
@@ -66,7 +66,7 @@ public final class AnalyticEngine implements SimulationEngine {
                 double readMean = mmcMeanSeconds(readLambda, 1/service, servers(node, true));
                 double writeMean = mmcMeanSeconds(writeLambda, 1/service, servers(node, false));
                 utilization = Math.max(readLambda * service / servers(node,true), writeLambda * service / servers(node,false));
-                mean = readFraction * readMean + (1-readFraction) * writeMean;
+                mean = (reads==0?0:readFraction*readMean)+(writes==0?0:(1-readFraction)*writeMean);
             } else mean = mmcMeanSeconds(lambda, 1/service, c);
             boolean saturated = !Double.isFinite(mean);
             unstable |= saturated;
@@ -74,7 +74,7 @@ public final class AnalyticEngine implements SimulationEngine {
             weightedMean += displayMean * lambda / request.arrivalRate();
             metrics.put(node.id(), new NodeMetric(node.id(), node.label(), lambda, utilization, displayMean, 0, 0, 0));
             if (utilization >= 0.8) findings.add(new Finding(utilization >= 1 ? "critical" : "warning", node.label() + (saturated ? " is saturated" : " is near capacity"), "Modeled utilization " + Math.round(utilization*100) + "%. More upstream service replicas do not remove this bottleneck.", "nodes."+node.id()+".utilization"));
-            if (node.type() == NodeType.CACHE) reads *= 1 - node.value("hitRatio", 0.8);
+            if ((node.type() == NodeType.CACHE || node.type()==NodeType.CDN)) reads *= 1 - node.value("hitRatio", 0.8);
             if (node.type() == NodeType.RATE_LIMITER) {
                 double fraction=Math.min(1,node.value("rate",80)/Math.max(0.0001,reads+writes));
                 reads*=fraction;writes*=fraction;
@@ -86,8 +86,8 @@ public final class AnalyticEngine implements SimulationEngine {
             }
         }
         if (findings.isEmpty()) findings.add(new Finding("info", "No analytic saturation", "This is a steady-state approximation. Run the seeded experiment to inspect finite queues and spikes.", "nodes"));
-        return new Result(VERSION,"1.0.0","analytic",request.seed(),0,0,0,0,request.arrivalRate(),weightedMean,weightedMean * 3,weightedMean * 4.6,metrics,List.of(),findings,
-            concat(ASSUMPTIONS, List.of("Analytic p95/p99 are rough mean multipliers, not measured quantiles; 2,000 ms is a saturation display sentinel, not a finite queueing solution.", "Analytic estimates use baseline steady traffic and ignore failure injection; use the event engine for spikes and failures.")),cost(request.graph()));
+        return new Result(VERSION,"2.0.0","analytic",request.seed(),0,0,0,0,request.arrivalRate(),weightedMean,weightedMean * 3,weightedMean * 4.6,metrics,List.of(),findings,
+            concat(ASSUMPTIONS, List.of("Analytic p95/p99 are rough mean multipliers, not measured quantiles; 2,000 ms is a saturation display sentinel, not a finite queueing solution.", "Analytic estimates use initial steady capacity and ignore retries, breakers, scaling, dependency holding, lag and failure injection; use event mode for those effects.")),cost(request.graph()));
     }
     public static Map<String,List<String>> outgoing(Graph graph) {
         Map<String,List<String>> result = new HashMap<>();
@@ -109,6 +109,6 @@ public final class AnalyticEngine implements SimulationEngine {
         }
         return result;
     }
-    public static double cost(Graph graph) { return graph.nodes().stream().mapToDouble(n -> switch(n.type()) {case CLIENT -> 0;case CACHE -> 0.015;case DATABASE -> 0.04*n.value("replicas",1);default -> 0.01*n.value("replicas",1);}).sum(); }
+    public static double cost(Graph graph) { return graph.nodes().stream().mapToDouble(n -> switch(n.type()) {case CLIENT -> 0;case CACHE, CDN -> 0.015*n.value("replicas",1);case DATABASE -> 0.04*n.value("replicas",1);default -> 0.01*n.value("replicas",1);}).sum(); }
     private static <T> List<T> concat(List<T> a,List<T> b) {List<T> out=new ArrayList<>(a);out.addAll(b);return List.copyOf(out);}
 }

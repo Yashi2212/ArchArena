@@ -1,0 +1,9 @@
+ArchArena v2 virtual engine benchmark, not deployed-system performance
+UTC: 2026-11-19T07:08:29.431487Z; Java: 21.0.13.0.2; VM: OpenJDK 64-Bit Server VM
+OS: Windows 11 amd64; processors: 8
+VM arguments: [-Xmx128m]
+Workload: 30 nodes, 29 edges, 20 req/s, 120 virtual seconds, steady, exponential 1ms stages, seeds 0-19, 5 warmup runs
+Runs: 20; logical arrivals: 47799; processed events: 3013777; peak pending events: 5037
+Execution p50 684.740 ms; p95 1079.448 ms; max 1186.589 ms
+Sum of heap-pool peak usage MiB: 58.580101013183594; max heap MiB: 128
+Pool peaks are not simultaneous RSS. Sequential JVM only; no HTTP/DB/startup/queue-wait/container or 300-node renderer measurement. Does not certify a full-stack SLO.

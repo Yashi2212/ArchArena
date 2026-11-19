@@ -65,6 +65,6 @@ test('both new design views remain accessible and fit the viewport',async({page}
     const result=await page.evaluate(async()=>{return await (window as unknown as {axe:{run:()=>Promise<{violations:unknown[]}>}}).axe.run();});
     expect(result.violations).toEqual([]);
     expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
-    if(['width-1440','width-390'].includes(info.project.name))await page.screenshot({path:resolve(`../docs/evidence/system-design-${track}-${info.project.name}.png`),fullPage:true});
+    if(['width-1440','width-390'].includes(info.project.name))await page.screenshot({path:resolve(`../docs/evidence/engine-v2-${track}-${info.project.name}.png`),fullPage:true});
   }
 });

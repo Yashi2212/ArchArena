@@ -4,12 +4,12 @@ Learn system design by changing an architecture, running a model, and explaining
 
 ArchArena is a planned portfolio application for Java backend developers preparing for system design interviews. The first release combines interactive Learn lessons with a basic Practice workflow. Both use the same server-side simulation engine. Design Studio is a later milestone.
 
-**Current:** Distinct HLD/LLD learning and practice views, forty original exercise briefs, five existing simulation labs, twenty company-inspired scenarios and a rule-based design coach. Full theory lessons, domain correctness and live AI remain pending. Read [prompt.md](prompt.md), [docs/STATUS.md](docs/STATUS.md), [the walkthrough](docs/learning-practice.md) and [verification](docs/evidence/system-design-verification.md). [Step 2 evidence](docs/evidence/step-02-verification.md) is historical.
+**Current:** Bounded resilience engine v2 on Java 21 / Boot 4.0.9, sampled replay, distinct HLD/LLD views, forty exercise briefs, five existing labs and twenty company-inspired scenarios. See [simulation scope](docs/simulation-v2.md) and [twenty security checks](docs/security-review.md). Full theory lessons, domain correctness and live AI remain pending. Read [prompt.md](prompt.md), [docs/STATUS.md](docs/STATUS.md), [the walkthrough](docs/learning-practice.md) and [engine/security verification](docs/evidence/engine-v2-verification.md). [Step 2 evidence](docs/evidence/step-02-verification.md) is historical.
 
 ## Your agreed direction
 
 - Frontend: React with TypeScript, Vite, React Flow and Recharts are implemented locally.
-- Backend direction: Java 21, Spring Boot 3 modular monolith, separate bounded simulation worker, PostgreSQL with Flyway.
+- Backend direction: Java 21, Spring Boot 4 modular monolith, separate bounded simulation worker, PostgreSQL with Flyway.
 - Work budget: interpreted as **9 hours per week**. Confirm this interpretation if “9” meant weeks.
 - Launch horizon: **24 weeks, 216 hours**, a planning assumption rather than a deadline you supplied. Includes 27 hours of contingency; the complete original product is substantially larger.
 - Audience: Java developers preparing for system design interviews.

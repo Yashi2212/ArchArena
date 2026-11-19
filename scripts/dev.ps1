@@ -26,9 +26,18 @@ $vite = Join-Path $projectRoot 'frontend\node_modules\vite\bin\vite.js'
 if (-not (Test-Path -LiteralPath $vite)) { throw 'Install frontend dependencies with npm ci --legacy-peer-deps inside frontend.' }
 $started = @()
 try {
-    $api = Start-Process -FilePath $java -ArgumentList @('-Xmx256m','-jar',('"' + $jar + '"')) -WorkingDirectory $projectRoot -WindowStyle Hidden -RedirectStandardOutput (Join-Path $stateDirectory 'api.log') -RedirectStandardError (Join-Path $stateDirectory 'api-error.log') -PassThru
+    $api = Start-Process -FilePath $java -ArgumentList @('-Xmx256m','-Dh2.bindAddress=127.0.0.1','-jar',('"' + $jar + '"')) -WorkingDirectory $projectRoot -WindowStyle Hidden -RedirectStandardOutput (Join-Path $stateDirectory 'api.log') -RedirectStandardError (Join-Path $stateDirectory 'api-error.log') -PassThru
     $started += @{ name='api'; pid=$api.Id }
-    $worker = Start-Process -FilePath $java -ArgumentList @('-Xmx128m','-jar',('"' + $jar + '"'),'--archarena.worker.enabled=true','--spring.main.web-application-type=none') -WorkingDirectory $projectRoot -WindowStyle Hidden -RedirectStandardOutput (Join-Path $stateDirectory 'worker.log') -RedirectStandardError (Join-Path $stateDirectory 'worker-error.log') -PassThru
+    # H2 AUTO_SERVER must finish opening before the second JVM connects.
+    $apiReady = $false
+    $readinessDeadline = [DateTime]::UtcNow.AddSeconds(120)
+    while ([DateTime]::UtcNow -lt $readinessDeadline) {
+        if ($api.HasExited) { throw 'API exited before readiness. Inspect .local/api logs.' }
+        try { $health = Invoke-WebRequest -Uri 'http://127.0.0.1:8080/actuator/health' -UseBasicParsing -TimeoutSec 2; if ($health.StatusCode -eq 200) { $apiReady = $true; break } } catch { }
+        Start-Sleep -Milliseconds 500
+    }
+    if (-not $apiReady) { throw 'API readiness timed out. The worker was not started.' }
+    $worker = Start-Process -FilePath $java -ArgumentList @('-Xmx128m','-Dh2.bindAddress=127.0.0.1','-jar',('"' + $jar + '"'),'--archarena.worker.enabled=true','--spring.main.web-application-type=none') -WorkingDirectory $projectRoot -WindowStyle Hidden -RedirectStandardOutput (Join-Path $stateDirectory 'worker.log') -RedirectStandardError (Join-Path $stateDirectory 'worker-error.log') -PassThru
     $started += @{ name='worker'; pid=$worker.Id }
     $frontend = Start-Process -FilePath $node -ArgumentList @(('"' + $vite + '"'),'--host','127.0.0.1','--port','5173','--strictPort') -WorkingDirectory (Join-Path $projectRoot 'frontend') -WindowStyle Hidden -RedirectStandardOutput (Join-Path $stateDirectory 'frontend.log') -RedirectStandardError (Join-Path $stateDirectory 'frontend-error.log') -PassThru
     $started += @{ name='frontend'; pid=$frontend.Id }

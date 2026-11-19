@@ -24,16 +24,16 @@ public class JobRepository {
     public <T> T decode(String value,Class<T> type) {if(value==null)return null;try{return json.readValue(value,type);}catch(JsonProcessingException e){throw new IllegalStateException("Stored data could not be decoded",e);}}
     private String canonical(Request r) {
         List<Node> nodes=r.graph().nodes().stream().sorted(Comparator.comparing(Node::id)).map(n->new Node(n.id(),n.type(),n.label(),n.config()==null?Map.of():new TreeMap<>(n.config()))).toList();
-        return encode(new Request(new Graph(nodes,r.graph().edges().stream().sorted(Comparator.comparing(Edge::id)).toList()),r.arrivalRate(),r.durationSeconds(),r.seed(),r.profile(),r.failure()));
+        return encode(new Request(new Graph(nodes,r.graph().edges().stream().sorted(Comparator.comparing(Edge::id)).toList()),r.arrivalRate(),r.durationSeconds(),r.seed(),r.profile(),r.failure(),r.options()==null?Map.of():new TreeMap<>(r.options())));
     }
     private String hash(String text) {try{return HexFormat.of().formatHex(MessageDigest.getInstance("SHA-256").digest(text.getBytes(StandardCharsets.UTF_8)));}catch(Exception e){throw new IllegalStateException(e);}}
     @Transactional public RunView submit(String owner,String key,Request request) {
         if(key==null||!key.matches("[a-zA-Z0-9_-]{8,100}")) throw new IllegalArgumentException("Idempotency-Key must contain 8–100 letters, digits, underscores or hyphens");
         String body=canonical(request),hash=hash(body);
         jdbc.queryForObject("SELECT id FROM admission_lock WHERE id=1 FOR UPDATE",Integer.class);
-        var existing=jdbc.queryForList("SELECT id,request_hash FROM simulation_runs WHERE owner_id=? AND idempotency_key=?",owner,key);
+        var existing=jdbc.queryForList("SELECT id,request_hash,request_text FROM simulation_runs WHERE owner_id=? AND idempotency_key=?",owner,key);
         if(!existing.isEmpty()) {
-            if(!existing.getFirst().get("request_hash").equals(hash)) throw new Conflict("Idempotency key already belongs to a different request");
+            if(!existing.getFirst().get("request_hash").equals(hash)&&!canonical(decode(existing.getFirst().get("request_text").toString(),Request.class)).equals(body)) throw new Conflict("Idempotency key already belongs to a different request");
             return find(owner,UUID.fromString(existing.getFirst().get("id").toString()));
         }
         int queued=jdbc.queryForObject("SELECT COUNT(*) FROM simulation_runs WHERE status IN ('QUEUED','RUNNING')",Integer.class);
@@ -92,7 +92,7 @@ public class JobRepository {
         var expired=jdbc.queryForList("SELECT id,result_text FROM simulation_runs WHERE created_at<? AND result_text IS NOT NULL",cutoff);
         for(var row:expired) {
             Result r=decode(row.get("result_text").toString(),Result.class);
-            if(!r.timeline().isEmpty())jdbc.update("UPDATE simulation_runs SET result_text=? WHERE id=?",encode(new Result(r.engineVersion(),r.assumptionsVersion(),r.mode(),r.seed(),r.requests(),r.successful(),r.errors(),r.rejected(),r.throughputRps(),r.p50Ms(),r.p95Ms(),r.p99Ms(),r.nodes(),List.of(),r.findings(),r.assumptions(),r.roughCostPerHour())),row.get("id"));
+            if(!r.timeline().isEmpty())jdbc.update("UPDATE simulation_runs SET result_text=? WHERE id=?",encode(new Result(r.engineVersion(),r.assumptionsVersion(),r.mode(),r.seed(),r.requests(),r.successful(),r.errors(),r.rejected(),r.throughputRps(),r.p50Ms(),r.p95Ms(),r.p99Ms(),r.nodes(),List.of(),r.findings(),r.assumptions(),r.roughCostPerHour(),r.telemetry()==null?null:new Telemetry(r.telemetry().attempts(),r.telemetry().retries(),r.telemetry().timeouts(),r.telemetry().circuitRejections(),r.telemetry().staleReads(),r.telemetry().processedEvents(),r.telemetry().peakPendingEvents(),List.of(),List.of()))),row.get("id"));
         }
         OffsetDateTime summaries=OffsetDateTime.now().minusDays(30);
         jdbc.update("DELETE FROM lesson_progress WHERE run_id IN (SELECT id FROM simulation_runs WHERE created_at<?)",summaries);

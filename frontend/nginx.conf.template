@@ -14,5 +14,7 @@ server {
         proxy_read_timeout 60s;
     }
     location / { try_files $uri $uri/ /index.html; }
-    location /assets/ { expires 1y; add_header Cache-Control "public, immutable"; }
+    location ~ (^|/)\. { return 404; }
+    location ~ \.map$ { return 404; }
+    location /assets/ { expires 1y; }
 }

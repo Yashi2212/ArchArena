@@ -5,7 +5,7 @@ import static dev.archarena.engine.Model.*;
 
 public final class GraphValidator {
     public static final int MAX_EVENTS = 200_000;
-    private static final Set<String> CONFIG = Set.of("replicas", "serviceMs", "concurrency", "hitRatio", "readRatio", "rate", "burst", "queueLimit");
+    private static final Set<String> CONFIG = Set.of("replicas", "serviceMs", "concurrency", "hitRatio", "readRatio", "rate", "burst", "queueLimit", "failureProbability", "networkMs", "holdUpstream", "breakerThreshold", "breakerResetSeconds", "autoscaleMax", "autoscaleThreshold", "autoscaleDelaySeconds", "replicationLagMs", "requireFreshReads");
     public void validate(Request request) {
         if (request == null || request.graph() == null) fail("A graph is required");
         Graph graph = request.graph();
@@ -13,10 +13,15 @@ public final class GraphValidator {
         if (!Double.isFinite(request.arrivalRate()) || request.arrivalRate() < 0.1 || request.arrivalRate() > 500) fail("Arrival rate must be 0.1–500 virtual requests/s");
         if (!Double.isFinite(request.durationSeconds()) || request.durationSeconds() < 5 || request.durationSeconds() > 120) fail("Duration must be 5–120 virtual seconds");
         if (!Set.of("steady", "spike").contains(Objects.toString(request.profile(), ""))) fail("Profile must be steady or spike");
-        if (!Set.of("none", "service-kill", "cache-flush").contains(Objects.toString(request.failure(), ""))) fail("Unknown failure profile");
+        if (!Set.of("none", "service-kill", "cache-flush", "dependency-outage", "slow-dependency", "az-outage").contains(Objects.toString(request.failure(), ""))) fail("Unknown failure profile");
         if (request.seed() < 0 || request.seed() > 9_007_199_254_740_991L) fail("Seed must be a nonnegative safe JavaScript integer");
         double expected = request.arrivalRate() * request.durationSeconds() * (request.profile().equals("spike") ? 1.9 : 1);
         if (expected > 8000) fail("Reduce traffic or duration: expected arrivals exceed the 8,000 safety envelope");
+        Set<String> options=Set.of("retries","retryBackoffMs","retryJitter","attemptTimeoutMs","deadlineMs");
+        if(request.options()!=null) for(var e:request.options().entrySet()) if(!options.contains(e.getKey())||e.getValue()==null||!Double.isFinite(e.getValue())) fail("Unknown or non-finite simulation option");
+        option(request,"retries",0,3,0,true);option(request,"retryBackoffMs",0,2000,100,false);option(request,"retryJitter",0,1,1,false);
+        option(request,"deadlineMs",100,10000,2000,false);option(request,"attemptTimeoutMs",50,10000,2000,false);
+        if(request.option("attemptTimeoutMs",2000)>request.option("deadlineMs",2000))fail("Attempt timeout cannot exceed overall deadline");
         Map<String, Node> nodes = new HashMap<>();
         for (Node node : graph.nodes()) {
             if (node == null || node.id() == null || !node.id().matches("[a-zA-Z0-9_-]{1,48}") || node.type() == null || node.label() == null || node.label().length() > 80) fail("Each node needs an ID, supported type and label of at most 80 characters");
@@ -32,6 +37,13 @@ public final class GraphValidator {
             range(node, "rate", 0.1, 1000, 80, false);
             range(node, "burst", 1, 1000, 20, true);
             range(node, "queueLimit", 0, 2000, 200, true);
+            range(node,"failureProbability",0,1,0,false);range(node,"networkMs",0,2000,0,false);
+            range(node,"holdUpstream",0,1,0,true);range(node,"breakerThreshold",0,100,0,true);range(node,"breakerResetSeconds",1,60,5,false);
+            range(node,"autoscaleMax",1,16,node.value("replicas",1),true);range(node,"autoscaleThreshold",0.1,1,0.8,false);range(node,"autoscaleDelaySeconds",1,60,5,false);
+            range(node,"replicationLagMs",0,10000,0,false);range(node,"requireFreshReads",0,1,0,true);
+            if(node.value("autoscaleMax",node.value("replicas",1))<node.value("replicas",1))fail("Autoscale maximum must be at least initial replicas");
+            if(node.type()!=NodeType.SERVICE&&node.config()!=null&&node.config().keySet().stream().anyMatch(k->k.startsWith("autoscale")))fail("Autoscaling applies only to service nodes");
+            if(node.type()!=NodeType.DATABASE&&(node.value("replicationLagMs",0)!=0||node.value("requireFreshReads",0)!=0))fail("Replication settings apply only to databases");
         }
         List<Node> clients = graph.nodes().stream().filter(n -> n.type() == NodeType.CLIENT).toList();
         if (clients.size() != 1 || graph.nodes().size() < 2) fail("Use exactly one client and at least one processing node");
@@ -47,19 +59,22 @@ public final class GraphValidator {
         for (Node node : graph.nodes()) {
             int count = adjacency.getOrDefault(node.id(), List.of()).size();
             if (node.type() != NodeType.LOAD_BALANCER && count > 1) fail("Only a load balancer may route to multiple downstream nodes");
-            if (node.type() != NodeType.DATABASE && count == 0) fail("Every request path must end at a database node");
-            if (node.type() == NodeType.DATABASE && count != 0) fail("Database must be terminal in this model");
+            if (node.type() != NodeType.DATABASE && node.type()!=NodeType.EXTERNAL_API && count == 0) fail("Every request path must end at a database or external API node");
+            if ((node.type() == NodeType.DATABASE || node.type()==NodeType.EXTERNAL_API) && count != 0) fail("Database/external API must be terminal in this model");
         }
         Set<String> visited = new HashSet<>();
         visit(clients.getFirst().id(), adjacency, new HashSet<>(), visited);
         if (visited.size() != nodes.size()) fail("Every node must be reachable from the client");
+    }
+    private void option(Request r,String key,double min,double max,double fallback,boolean integer) {
+        double v=r.option(key,fallback);if(v<min||v>max||(integer&&v!=Math.rint(v)))fail("Invalid simulation option: "+key);
     }
     private void range(Node n, String key, double min, double max, double fallback, boolean integer) {
         double value = n.value(key, fallback);
         if (value < min || value > max || (integer && value != Math.rint(value))) fail(key + " must be " + min + "–" + max + (integer ? " and an integer" : ""));
     }
     private void visit(String id, Map<String,List<String>> edges, Set<String> stack, Set<String> visited) {
-        if (stack.contains(id)) fail("Cycles and retry loops are not supported in engine v1");
+        if (stack.contains(id)) fail("Topology must be acyclic; use bounded retry options instead of graph cycles");
         if (!visited.add(id)) return;
         stack.add(id);
         for (String next : edges.getOrDefault(id, List.of())) visit(next, edges, stack, visited);

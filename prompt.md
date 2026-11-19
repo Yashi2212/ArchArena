@@ -2,7 +2,7 @@
 
 ## 0. Session protocol
 1. Read this file and docs/STATUS.md. Before doing anything else, reply with: current phase, what is done, what is not verified, and the single next step (max 8 lines).
-2. Do ONLY the step I approve, then stop and wait. I type "next" to continue.
+2. Current user steering authorizes continuing phases without a next-step pause, prioritizing bounded simulation, security checks and public-hosting preparation. Earlier step-specific waits are historical.
 3. At the end of every step: update docs/STATUS.md (done / in progress / blocked / decisions / open questions) and ISSUES.md (each risk with its PROOF: a test, metric, config or screenshot; no proof means not handled). Commit with a clear message.
 4. If this file and my message conflict, tell me and ask. If you are unsure of a fact, API or library behavior, say so and tell me what to verify. Never invent.
 
@@ -112,7 +112,7 @@ Follow section 0 now.
 
 This is the active `prompt.md`, created from the user's complete master prompt. The original `prompt.md.txt` and `status.md.txt` are preserved inputs, not separate competing state files. Read `docs/STATUS.md` for the short current state and `docs/session-log.md` for detailed events. `AGENTS.md` points future sessions here. The latest direct user instructions always take precedence.
 
-Current authorized scope: November 19 user steering explicitly requests distinct HLD/LLD views, a 20-company-inspired scenario library, foundation-to-advanced learning and Uber-style guided practice. This supersedes the old Step 3-only sequencing. Implement this frontend vertical slice; preserve backend/engine/API contracts. Step 2 remains historical verified work. Do not claim complete theory lessons, finished simulation or live AI.
+Current authorized scope: section 22 supersedes all old frontend-only freezes and next-step waits. Continue bounded simulation v2, backend/API work, twenty security checks and public-hosting preparation. HLD/LLD learning/practice is the earlier completed slice. Do not claim complete theory content, game UI or live AI.
 
 Already completed: repo audit, design choice, five unverified topic-note drafts and publication guard. Step 2 adds the chosen warm dark foundation, local fonts, shared components and actual frontend tests. The content pack remains unpublished; UI work does not approve its technical claims.
 
@@ -128,7 +128,7 @@ Already completed: repo audit, design choice, five unverified topic-note drafts 
 - Latest audit still reports one high-severity affected package, Vite, with multiple advisories. The captured report suggests 6.4.6. Address it first in approved Step 2 and rerun audit/build/tests; do not blindly trust the earlier downgrade or claim CI green.
 - API/worker/Vite were previously started locally. Rebuild the JAR before claiming newly tested source is in a running packaged server. No cloud was created. Docker Compose, container memory enforcement, backup/restore, CI execution and AWS costs remain unverified.
 
-## 17. UI honesty constraints discovered from the real contract
+## 17. UI honesty constraints — historical v1 contract; v2 update below
 
 Read `docs/ui/repo-audit.md` before implementing presentation. `Result.nodes` is whole-run aggregate data; `Result.timeline` only has global throughput, combined unsuccessful-outcome ratio and queue depth per sample. There are no per-node historical metrics, request traversal traces or exact individual failure events.
 
@@ -150,7 +150,7 @@ Workflow: targeted private reading → short original concept notes with claim I
 
 After every approved step update STATUS (short), ISSUES (proof and open gaps), this prompt (decisions/current constraints) and session-log (detailed events). Preserve failed checks in the evidence record. Commit locally with a clear message; do not push, publish, spend money or alter cloud access just because a commit was requested.
 
-The user chose B — Expedition Console, overriding the earlier recommendation of A. Only Step 2 foundations are currently authorized. After its verification/commit, wait for `next` before Step 3 hero layout and living-diagram work. Guide name, knowledge verification and AWS account details remain separate open inputs. Three implementation-specific interview answers and an exit checklist accompany each completed step.
+The user chose B — Expedition Console. Step 2 is historical; the latest direct request authorizes continuing backend/engine/security phases without waiting for next. Guide name, knowledge verification and AWS account details remain separate open inputs. Three implementation-specific interview answers and an exit checklist accompany each completed step.
 
 Recorded Step 0/1 evidence: seven knowledge-gate tests pass; five notes/13 claim references validate; all five are deliberately rejected by `--publish`; 14 proposed contrast pairs pass; 22 frozen backend/API files match; 14 session-entry docs, 35 local links and 13 note-line references validate. These checks do not certify runtime UI accessibility, performance, content accuracy or legal clearance. See `docs/evidence/step-01-verification.txt` for failed and unrun checks as well as passes. This workspace had no Git repository before the requested step commit; local initialization/commit status is recorded in STATUS/session-log, with no push or remote CI implied.
 
@@ -189,3 +189,31 @@ Worksheets persist browser-locally per scenario under a versioned key; restored 
 Verification and remaining gaps are recorded in docs/evidence/system-design-verification.md. Maintain STATUS, ISSUES and session-log after this slice, commit locally, then continue only with the next authorized slice. Engine retries/cascades/autoscaling/replication lag/performance validation and the remaining UI hero work are still pending.
 
 Final slice evidence: 86 frontend unit tests pass; full 44 browser cases pass, followed by 24 passing separation/visual checks (12 baselines matching, 32 zero-violation axe scans) and 8 final filter-reset/accessibility checks. These are overlapping regression runs, not 76 unique browser cases. Build passes at JS 952.80 kB/295.31 kB gzip with a large-chunk warning. Backend/API freeze: 22 files unchanged. Prior 20 Java tests are historical, not rerun for this frontend-only slice. Notes stay unverified and the publication gate still rejects all five. Normal preview/API health return 200. No live AI, cloud work or public publication. The scope is implemented original exercise/practice scaffolding; full theory content is still outstanding.
+
+## 22. Latest authorization: simulation first, security and public demo
+
+User authorizes continuing through further phases, including backend/API changes, without the earlier next-step wait. Complete the bounded educational simulation features and validation first, then all twenty requested security checks before public hosting. AWS is for controlled operational practice/evidence, not necessarily always-on hosting. Preserve the $0 target and verify eligibility before resource creation. Do not fabricate experience or change the user’s model settings.
+
+New content sources: liquidslr/system-design-notes and donnemartin/system-design-primer. Inspect per-file licenses/provenance, attribute permitted adaptations, and do not assume repository owners can relicense book diagrams. Primer declares CC BY 4.0. Inspected liquidslr listing has no license, and LICENSE fetch was inconclusive; do not copy without verified permission. Existing notes remain owner-unverified.
+
+Engine v2 adds CDN/synthetic external API, bounded root retries/deadlines/backoff/jitter, attempt timeouts, circuit breakers, synchronous dependency holding/cascading pressure, delayed service scale-out, synthetic shared-record replica lag/fresh reads, incident profiles and node snapshots/bounded request traces. Define/test each simplification. This is not consensus, actual cloud provisioning, arbitrary network topologies or business correctness. Security results must be tested, explicitly N/A or open; a checklist does not certify public readiness.
+
+## 23. Engine/security continuation and dependency remediation
+
+Initial engine v2 backend tests exposed and fixed a real held-upstream breaker reset bug. The old 3.5.8 runtime inventory scan returned 65 OSV package/advisory matches. Upgrading to 3.5.16 and verified patched Tomcat/Jackson/logging versions reduced this to three: two Spring MVC advisories (SSE fragments and XsltView, unused by current JSON API) and the PostgreSQL driver. Initial/intermediate reports are preserved rather than overwritten. To remove known affected packages, migrate to available Spring Boot 4.0.9 / Framework 7.x with the official modular starters, Servlet 6.1 and Jackson 2 storage-compatibility support. This is an intentional evolution of the earlier Boot 3 target, justified by public-hosting security; preserve Java 21 and existing stored JSON behavior with tests. Do not mix Framework 7 into Boot 3.
+
+Current frontend unit suite: 91 passing tests, including replay/timeout bounds and canonical option ordering. Browser checks initially timed out during navigation/readiness and local Vite startup; retain these failures. Raise only server cold-start allowance, collect script errors and verify visible readiness; do not represent these timeouts as a successful product performance test. Final browser/build/Java/audit outcomes must be recorded after reruns.
+
+The new security inventory covers all twenty requested categories with tested-local/N-A/partial/open outcomes. It must fail public readiness while HTTP identity mapping, session/CSRF design, PostgreSQL role/RLS approach, MFA and deployment scans remain open. No public deployment, paid resources or AWS operations merely to fabricate experience. Record actual commands and outcomes only.
+
+## 24. Final engine-v2 handoff
+
+Core v2 is verified locally: 40 Java tests, 91 frontend tests, all 48 fixture scenarios covered by passing full/focused checks (initial full 45/48 with three traversal-budget timeouts; follow-up passes all keyboard flows and twelve image baselines; new replay axe focus failures fixed and four final replay checks pass). One real 1440px React/API/worker/replay/native-download test and a persisted-job API smoke pass. Do not add overlapping runs as unique case counts. Exact failures and evidence: docs/evidence/engine-v2-verification.md.
+
+Final stack is Java 21 / Boot 4.0.9 / Framework 7.0.10 / Tomcat 11.0.29. Jackson 2 BOM 2.21.8 bridge preserves repository JSON, with HTTP Jackson 3 compatibility defaults; bridge is deprecated technical debt. JDBC/H2 remains the verified local adapter, not JPA or verified PostgreSQL. Final npm zero findings and OSV zero matches across 77 runtime artifacts; prior 65/3 reports preserved. Public identity/session/CSRF, PostgreSQL roles/RLS, MFA and TLS/container/dynamic checks still block public launch.
+
+Final benchmark: 30 nodes, twenty measured runs, p95 1079.448 ms/max 1186.589 ms, 128 MiB max heap, sum-of-pool peaks 58.58 MiB. This is busy-host sequential engine timing, not simultaneous RSS/full-stack SLO/FPS. Production JS 959.60 kB/297.55 kB gzip; large chunk remains.
+
+Runtime upgrade initially hit a Windows JAR lock and a class-loading failure during live backup. Preserved closed-file and standalone SQL backups privately, rebuilt after stopping only verified owned processes, and reopened the existing DB. Simultaneous H2 opening initially killed the worker; dev.ps1 now binds H2 sharing to loopback and waits for API health before worker start. Actual queued run and browser flow verify both JVMs. Flyway warns H2 2.4 is newer than its verified version; record this rather than imply PostgreSQL/container certification.
+
+Core telemetry now includes sampled per-node history and bounded actual trace events; the v1 “no node history” paragraph is historical. Node occupancy and p95 remain whole-run when shown on architecture cards. Replay table steps actual samples; smooth/complete traffic paths, synchronized animated hero, mobile graph readability and 300-node/FPS/Lighthouse are unfinished presentation work. Learning theory/notes remain unverified, no copied source assets, no live AI, push, public or AWS deployment. Next phase is public identity/isolation and session/CSRF design before hosting.

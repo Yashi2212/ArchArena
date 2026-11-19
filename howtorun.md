@@ -88,3 +88,15 @@ With the normal local frontend/API/worker running, open Learn → System design 
 Open Practice → select Uber → Start selected scenario (save your current graph first). Complete HLD assumptions and model a bounded request flow; switch to LLD for Java contracts/invariants/tests. Review my design flags missing decisions and reports current model evidence without pretending to validate matching or Java code. AI is disabled. Worksheets are browser-local, whereas backend saves and exports preserve only the existing graph/model.
 
 Validation commands from `frontend`: `npm.cmd test`, `npm.cmd run build`, `npm.cmd run test:e2e`. New focused browser checks: `npm.cmd run test:e2e -- tests/system-design.spec.ts`. See [scope and walkthrough](docs/learning-practice.md).
+
+## Engine v2 / Boot 4 continuation
+
+The verified local runtime uses Java 21 and Spring Boot 4.0.9. Stop the recorded API/worker before rebuilding the JAR on Windows; running JVMs lock it. Back up local data before a driver/runtime upgrade. This phase's private closed-file and SQL backups are under ignored `.local/backups/pre-engine-v2`; do not publish them.
+
+`scripts/dev.ps1` now binds H2 automatic sharing to loopback and waits for API health before launching the separate worker, avoiding the observed simultaneous-open failure. Inspect both API and worker logs; API health alone does not prove worker readiness. The launcher still preserves local data and only stops command-line-verified recorded processes.
+
+In the UI, expand Resilience settings for retry/deadline options. Select a node for advanced failure/breaker/holding/scaling/lag settings. Add CDN or synthetic external API nodes through the component selector; connect them before running. Replay steps through actual returned node samples at 1×/4×/8×, with p95 kept whole-run.
+
+Run `python scripts/smoke_simulation.py` for one real API → queue → worker → telemetry/export check (it submits a synthetic job, using a fixed idempotency key). For an opt-in real-browser check, set `ARCHARENA_LIVE_TEST=1` only for `npm.cmd run test:e2e -- tests/live-simulation.spec.ts --project=width-1440 --reporter=list`; it submits one experiment through the normal preview. Default browser runs remain fixtures and skip this opt-in test.
+
+Security reproduction and public blockers: [security review](docs/security-review.md). Model assumptions/limits: [simulation v2](docs/simulation-v2.md). Public hosting is not enabled by these commands.

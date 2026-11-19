@@ -15,9 +15,16 @@ spring:
       connection-timeout: 3000
   flyway:
     enabled: true
-  jackson:
+  jackson2:
     deserialization:
       fail-on-unknown-properties: true
+  jackson:
+    use-jackson2-defaults: true
+    deserialization:
+      fail-on-unknown-properties: true
+  servlet:
+    multipart:
+      enabled: false
 management:
   endpoints:
     web:

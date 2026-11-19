@@ -1,21 +1,23 @@
 # ArchArena status
 
-Updated: 2026-11-19, Asia/Calcutta. Read with `../prompt.md`.
+Updated: 2026-11-19, Asia/Calcutta. Read `../prompt.md`.
 
-**Current:** System-design learning/practice slice complete locally; latest direct request supersedes old Step 3-only sequencing. Expedition Console Step 2 remains complete.
+**Current:** Core bounded simulation v2 implemented and verified locally; user authorizes continuing phases/backend work. No next-step approval wait or old API freeze applies.
 
-**Implemented:** Distinct HLD system-map and LLD Java-blueprint views; 40 original exercise briefs (24 HLD/16 LLD); five existing labs; twenty company-inspired practice scenarios including Uber; per-scenario browser-local worksheets; rule-based missing-decision/topology/current-metric coach.
+**Done:** Nine node types; bounded retries/backoff/jitter/deadlines; breakers; held-dependency cascading pressure; delayed service scale-out; synthetic follower lag/fresh reads; incidents; node snapshots/bounded traces; sampled replay; forty learning briefs/twenty practice scenarios.
 
-**Verification:** 86 frontend tests; full 44-case four-width browser pass; 24-case separation/visual follow-up passes with 12 baselines matching and 32 zero-violation axe scans. Final 8 filter-reset/accessibility checks pass. Build passes (JS 952.80 kB/295.31 kB gzip); 22 backend files unchanged. Prior 20 Java/H2 tests not rerun for frontend-only work. See `evidence/system-design-verification.md`.
+**Verified:** 40 Java tests; 91 frontend tests. Full 48 fixture browser cases: 45 pass initially, three keyboard timeouts pass follow-up; twelve visual baselines match. Replay focus issue fixed; final four-width replay/axe checks pass. One actual browser/API/worker/export flow and real persisted-job smoke pass. See `evidence/engine-v2-verification.md`.
 
-**Boundaries:** Exercise briefs are not finished theory lessons. Five book notes remain unverified/unpublished. Company scenarios are original exercises, not actual company blueprints/rankings. AI disabled; supplied reasoning requires human review.
+**Runtime:** Java 21 / Boot 4.0.9 / Framework 7; JDBC and H2 local adapter, not JPA/Hibernate. npm zero findings; OSV zero matches in 77 runtime artifacts. Deprecated Jackson 2 bridge preserves stored JSON; HTTP uses Jackson 3 compatibility defaults.
 
-**Simulation:** Working bounded analytic/event prototype, not complete. No geospatial matching/assignment/payment validation, retries, cascades, autoscaling delay, replication lag or validated animation performance. Backend/API unchanged.
+**Preview:** API/worker/React running at loopback 8080/5173. Local H2 backed up privately before upgrade. Launcher binds H2 to loopback and waits for API before worker. H2/Flyway compatibility warning remains recorded.
 
-**Storage:** Graph saves/exports exclude worksheet/scenario metadata. Worksheets are local to the browser, with visible memory fallback on storage failure. Save a graph before starting a new scenario.
+**Measured:** 30-node engine p95 1079.448 ms, max 1186.589 ms under 128 MiB heap; pool peaks 58.58 MiB (not RSS/full-stack SLO). JS 959.60 kB/297.55 kB gzip; large-chunk warning remains.
 
-**Open:** Complete theory content needs source notes and owner review; mobile graph readability, hero/animation, large bundle, real PostgreSQL, real-backend browser flow, remote CI and AWS remain unverified/pending. No publication/push/cloud work.
+**Security:** All twenty items reviewed; fifteen local automated checks pass. Public gate intentionally blocked: identity/owner mapping, session/CSRF design, PostgreSQL roles/RLS, MFA and deployment/container/dynamic checks remain open.
 
-**Next:** Expand reviewed learning explanations and deeper domain-aware practice in separately bounded slices. Current slice verified locally; see Git history for its commit.
+**Content:** Five notes unverified/unpublished. Primer declares CC BY 4.0; liquidslr rights unresolved. No copied repository/book assets. AI disabled.
 
-Details: `learning-practice.md`, `knowledge/missing-from-knowledge-pack.md`, `session-log.md`, `../ISSUES.md`.
+**Next:** Public identity/isolation and CSRF/session design, then PostgreSQL roles/RLS/deployment security. Remaining simulation UI: synchronized animated hero/particles, mobile graph readability, 300-node FPS/Lighthouse. Full theory lessons still need review. No push/public/AWS deployment.
+
+Details: `simulation-v2.md`, `security-review.md`, `knowledge/open-source-register.md`, `session-log.md`, `../ISSUES.md`.

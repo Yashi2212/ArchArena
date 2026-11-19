@@ -26,7 +26,11 @@ jobs:
           java-version: '21'
           cache: maven
           cache-dependency-path: backend/pom.xml
-      - run: mvn -B -f backend/pom.xml verify
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: mvn -B -f backend/pom.xml verify dependency:list -DincludeScope=runtime -DoutputFile=../.local/runtime-dependencies.txt
+      - run: python scripts/scan_java_dependencies.py
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -47,7 +51,7 @@ jobs:
       - run: npm ci --legacy-peer-deps --no-fund
       - run: npm test
       - run: npm run build
-      - run: npm audit --audit-level=high
+      - run: npm audit --audit-level=low
   browser:
     runs-on: windows-latest
     defaults:
@@ -68,5 +72,5 @@ jobs:
           name: browser-regression-evidence
           path: |
             frontend/test-results
-            docs/evidence/step02-browser-results.json
+            docs/evidence/engine-v2-browser-results.json
   # No cloud deployments, AWS credentials or paid services are enabled by this workflow.

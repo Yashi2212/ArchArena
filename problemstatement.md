@@ -45,3 +45,9 @@ The target learner is a Java developer preparing for system-design interviews. R
 ArchArena addresses that gap with an ordered exercise route, distinct HLD and LLD artifacts, scenario-specific requirements and a predict/change/run/review loop. HLD connects assumptions to modeled queueing evidence. LLD asks for contracts, ownership, transaction/concurrency decisions and behavioral tests. Uber-inspired practice makes the gap concrete: good simulated latency cannot prove exclusive driver assignment. The coach surfaces missing reasoning instead of awarding an inflated architecture score.
 
 The current slice supplies forty original exercise briefs and twenty company-inspired problems, not a complete theory course or factual company architecture library. Its value is structured practice and visible evidence boundaries. Learning outcomes, interview success and time saved have not been measured. Full reviewed theory, domain-aware correctness checks and optional evaluated AI assistance remain separate deliverables.
+
+## What the resilience simulator adds
+
+Learners need to see why a timeout or retry can make a bad situation worse. Counting only successful throughput hides work still occupying a slow dependency. Engine v2 separates logical outcomes from attempt pressure, permits synchronous upstream holding, and makes breaker recovery, delayed capacity and synthetic staleness visible through sampled telemetry. This helps learners compare assumptions and explain trade-offs; it does not establish actual company behavior, production performance or business correctness.
+
+Security is treated similarly: all twenty requested controls have explicit local evidence, non-applicability or an open deployment gap. A public demo must not expose the current shared local owner merely because model tests or vulnerability scans pass.

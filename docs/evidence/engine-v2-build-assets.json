@@ -1,0 +1,41 @@
+{
+  "timestamp": "2026-11-19T07:23:22.294861+00:00",
+  "scope": "Successful local Vite production build; sizes are not load-time or FPS measurements",
+  "assets": [
+    {
+      "file": "assets/ibm-plex-mono-latin-400-normal-DMJ8VG8y.woff2",
+      "bytes": 14708,
+      "gzipLevel6Bytes": 14731
+    },
+    {
+      "file": "assets/index-B-suKvpQ.css",
+      "bytes": 47343,
+      "gzipLevel6Bytes": 8889
+    },
+    {
+      "file": "assets/index-D0lFTKip.js",
+      "bytes": 959599,
+      "gzipLevel6Bytes": 296631
+    },
+    {
+      "file": "assets/sora-latin-wght-normal-DdqRvwsR.woff2",
+      "bytes": 33652,
+      "gzipLevel6Bytes": 33685
+    },
+    {
+      "file": "index.html",
+      "bytes": 619,
+      "gzipLevel6Bytes": 382
+    },
+    {
+      "file": "licenses/ibm-plex-mono-OFL.txt",
+      "bytes": 5299,
+      "gzipLevel6Bytes": 2015
+    },
+    {
+      "file": "licenses/sora-OFL.txt",
+      "bytes": 4382,
+      "gzipLevel6Bytes": 1954
+    }
+  ]
+}

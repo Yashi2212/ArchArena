@@ -22,7 +22,7 @@ export default defineConfig({
     command: 'npm run dev:test',
     url: 'http://127.0.0.1:5174',
     reuseExistingServer: !process.env.CI,
-    timeout: 30000,
+    timeout: 120000,
   },
-  reporter: [['list'],['json',{outputFile:'../docs/evidence/system-design-browser-results.json'}]],
+  reporter: [['list'],['json',{outputFile:'../docs/evidence/engine-v2-browser-results.json'}]],
 });

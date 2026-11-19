@@ -1,0 +1,198 @@
+{
+  "timestamp": "2026-11-19T07:26:51.967427+00:00",
+  "automatedChecks": [
+    {
+      "check": "JUnit evidence: sqlPayloadRemainsDataAndDoesNotEscapeOwnerScope",
+      "passed": true
+    },
+    {
+      "check": "JUnit evidence: repositoryScopesRunsAndDesignsToOwner",
+      "passed": true
+    },
+    {
+      "check": "JUnit evidence: blocksDnsRebindingAndCrossSiteMutations",
+      "passed": true
+    },
+    {
+      "check": "JUnit evidence: apiQuotaIsBoundedAndHasRetryAfter",
+      "passed": true
+    },
+    {
+      "check": "JUnit evidence: formUploadsAndServerSideUrlParametersAreRejected",
+      "passed": true
+    },
+    {
+      "check": "JUnit evidence: nullOriginAndWeakRemoteSecretAreRejected",
+      "passed": true
+    },
+    {
+      "check": "No raw HTML injection sink in application React source",
+      "passed": true
+    },
+    {
+      "check": "No auth token written to localStorage",
+      "passed": true
+    },
+    {
+      "check": "Production source maps disabled",
+      "passed": true
+    },
+    {
+      "check": "Multipart processing disabled",
+      "passed": true
+    },
+    {
+      "check": "Worker logs omit raw exception messages/stack arguments",
+      "passed": true
+    },
+    {
+      "check": "No high-confidence credential patterns in tracked/unignored text",
+      "passed": true
+    },
+    {
+      "check": "Frontend advisory snapshot has zero findings",
+      "passed": true
+    },
+    {
+      "check": "Java audit matches current Boot release",
+      "passed": true
+    },
+    {
+      "check": "Java runtime advisory scan complete and clear",
+      "passed": true
+    }
+  ],
+  "credentialPatternPaths": [],
+  "controls": [
+    {
+      "id": 1,
+      "name": "SQL injection",
+      "status": "tested-local",
+      "evidenceAndLimits": "Parameterized JDBC; hostile title/owner tests. Public database-role review remains separate."
+    },
+    {
+      "id": 2,
+      "name": "Cross-site scripting",
+      "status": "tested-local",
+      "evidenceAndLimits": "React text rendering, raw-HTML-sink check and existing hostile finding component test; proxy CSP configured, deployed CSP unverified."
+    },
+    {
+      "id": 3,
+      "name": "CSRF",
+      "status": "partial",
+      "evidenceAndLimits": "Origin/fetch-metadata/JSON-only mutation tests pass for local bearer/no-cookie model. Reassess with public sessions and synchronizer tokens."
+    },
+    {
+      "id": 4,
+      "name": "Insecure file uploads",
+      "status": "not-applicable",
+      "evidenceAndLimits": "No upload feature; multipart disabled and upload/form requests rejected."
+    },
+    {
+      "id": 5,
+      "name": "IDOR and object authorization",
+      "status": "partial",
+      "evidenceAndLimits": "Repository owner isolation tested. Current HTTP API has one configured owner; public identity-to-owner mapping is not implemented."
+    },
+    {
+      "id": 6,
+      "name": "Rate limiting",
+      "status": "tested-local",
+      "evidenceAndLimits": "240 API requests/minute global filter, preview quota and DB-backed job admission quotas. Public distributed/IP/user quotas not validated."
+    },
+    {
+      "id": 7,
+      "name": "Insecure JWT secrets",
+      "status": "not-applicable",
+      "evidenceAndLimits": "No JWT issuer/parser. Shared bearer access is a separate local control; non-loopback keys require at least 32 characters."
+    },
+    {
+      "id": 8,
+      "name": "Exposed API secrets",
+      "status": "tested-local",
+      "evidenceAndLimits": "No credential patterns found by narrow source scan; no frontend auth secrets. Public secret-store/rotation review remains open."
+    },
+    {
+      "id": 9,
+      "name": "Weak password hashing",
+      "status": "not-applicable",
+      "evidenceAndLimits": "No password login or password database. Use a reviewed identity provider if accounts are added."
+    },
+    {
+      "id": 10,
+      "name": "Missing MFA",
+      "status": "open",
+      "evidenceAndLimits": "No account/admin identity provider yet. Require MFA for hosting/AWS/admin accounts before launch; not inferable from repository code."
+    },
+    {
+      "id": 11,
+      "name": "Permissive CORS",
+      "status": "tested-local",
+      "evidenceAndLimits": "Exact local origins; hostile/null origins rejected. No wildcard credentialed CORS. Public origin must be configured/tested separately."
+    },
+    {
+      "id": 12,
+      "name": "Auth tokens in local storage",
+      "status": "tested-local",
+      "evidenceAndLimits": "Storage holds graph/run-id/worksheet drafts only; no auth-token writes detected. Drafts must not contain sensitive data."
+    },
+    {
+      "id": 13,
+      "name": "Client-only permissions",
+      "status": "partial",
+      "evidenceAndLimits": "Backend validates graph bounds and repository ownership. Public request principal mapping still missing."
+    },
+    {
+      "id": 14,
+      "name": "Missing row-level security",
+      "status": "open",
+      "evidenceAndLimits": "PostgreSQL RLS and least-privilege runtime roles are not implemented/verified; H2 tests do not prove them."
+    },
+    {
+      "id": 15,
+      "name": "Unverified webhook signatures",
+      "status": "not-applicable",
+      "evidenceAndLimits": "No webhook endpoints or inbound provider integrations."
+    },
+    {
+      "id": 16,
+      "name": "SSRF",
+      "status": "tested-local",
+      "evidenceAndLimits": "External API nodes are numeric synthetic models, not HTTP clients. URL parameter/metadata-address payload rejected."
+    },
+    {
+      "id": 17,
+      "name": "Exposed source maps",
+      "status": "tested-local",
+      "evidenceAndLimits": "Vite source maps disabled; dist inspected for map files. Public server hidden-file/source exposure still needs a deployment scan."
+    },
+    {
+      "id": 18,
+      "name": "Default credentials",
+      "status": "partial",
+      "evidenceAndLimits": "Blank H2 development credentials are loopback-only. Public mode must require PostgreSQL, distinct roles and injected random credentials; not deployed."
+    },
+    {
+      "id": 19,
+      "name": "Sensitive logs",
+      "status": "tested-local",
+      "evidenceAndLimits": "Worker failure logs contain run id/type, not raw exception payload. No body/token logging configured; public log pipeline unverified."
+    },
+    {
+      "id": 20,
+      "name": "Vulnerable dependencies",
+      "status": "partial",
+      "evidenceAndLimits": "npm and resolved Maven runtime advisory snapshots checked. Build-plugin/container/OS scans and deployed inventory remain outstanding."
+    }
+  ],
+  "publicReady": false,
+  "publicBlockers": [
+    "No public principal/session to owner mapping",
+    "No public CSRF/session model",
+    "PostgreSQL roles/RLS unverified",
+    "Admin/account MFA unverified",
+    "Deployment TLS, secrets, container/OS and dynamic scans pending"
+  ],
+  "scope": "Source hygiene and named local JUnit evidence, not penetration-test or compliance certification",
+  "pomSha256": "f9210c7b5506ec756a812521798bf4168337d4ce9850cd13d55baef07fab147f"
+}

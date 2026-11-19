@@ -14,7 +14,8 @@ export function StatusBadge({ state, children }: { state: SignalState; children:
 
 export function NodeLoad({ value, scope = 'analytic' }: { value?: number; scope?: 'analytic' | 'event' }) {
   const status = formatUtilization(value);
-  return <div className="node-load"><StatusBadge state={status.state}>{status.text}</StatusBadge><span className="node-scope">{scope === 'event' ? 'Whole-run model' : 'Approximate estimate'}</span></div>;
+  const text=scope==='event'&&value!==undefined&&Number.isFinite(value)?`Average slot occupancy: ${(value*100).toFixed(1)}%`:status.text;
+  return <div className="node-load"><StatusBadge state={status.state}>{text}</StatusBadge><span className="node-scope">{scope === 'event' ? 'Whole-run model' : 'Approximate estimate'}</span></div>;
 }
 
 export function ModelNotice() {

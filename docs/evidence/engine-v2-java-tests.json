@@ -1,0 +1,93 @@
+{
+  "timestamp": "2026-11-19T07:23:22.084481+00:00",
+  "scope": "Local Java 21, Boot 4.0.9, H2 tests; PostgreSQL/container/CI not implied",
+  "backendSourceSha256": "40beaf1713c585098b56850212dea92b8fa7400b8d47d9cecd8ed9f6c0de8d2f",
+  "suites": [
+    {
+      "suite": "dev.archarena.api.AccessFilterTest",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 2.018,
+      "cases": [
+        "bearerTokenProtectsOwnerApi",
+        "nullOriginAndWeakRemoteSecretAreRejected",
+        "refusesUnprotectedNonLoopbackBinding",
+        "apiQuotaIsBoundedAndHasRetryAfter",
+        "blocksDnsRebindingAndCrossSiteMutations"
+      ]
+    },
+    {
+      "suite": "dev.archarena.api.ApiTest",
+      "tests": 14,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 26.845,
+      "cases": [
+        "sqlPayloadRemainsDataAndDoesNotEscapeOwnerScope",
+        "repositoryScopesRunsAndDesignsToOwner",
+        "concurrentDuplicateAdmissionsCreateOneJob",
+        "workerCompletionCheckpointScorecardAndExportUseStoredEvidence",
+        "crossOriginWritesAreBlocked",
+        "formUploadsAndServerSideUrlParametersAreRejected",
+        "legacyRequestHashesStillReturnTheExistingIdempotentRun",
+        "staleDesignVersionCannotOverwriteSnapshot",
+        "retrySettingsArePersistedAndParticipateInIdempotency",
+        "admissionQueueIsBoundedAcrossOwners",
+        "catalogContainsFiveLessonsAndNoPretendAi",
+        "malformedBodyAndOversizedBodyAreRejected",
+        "idempotencyReturnsSameRunAndRejectsPayloadChange",
+        "expiredLeaseRetriesThenStops"
+      ]
+    },
+    {
+      "suite": "dev.archarena.engine.EngineTest",
+      "tests": 8,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 2.036,
+      "cases": [
+        "analyticCapacityIsMonotoneForIndependentReadOnlyDatabase",
+        "requestAccountingAndQuantilesStayConsistentAcrossSeeds",
+        "rateLimitIsSeparateFromServiceErrors",
+        "replayIsExactAndNodeOrderDoesNotAffectIt",
+        "rejectsCyclesUnknownParametersAndUnboundedInputs",
+        "cacheNeverEliminatesWrites",
+        "mm1AndMmcClosedForms",
+        "eventMeansMatchExponentialQueueingAtModerateUtilization"
+      ]
+    },
+    {
+      "suite": "dev.archarena.engine.ResilienceEngineTest",
+      "tests": 13,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 0.955,
+      "cases": [
+        "staticReplicaCostAgreesAcrossAnalyticAndEventModels",
+        "autoscalingHasAnObservableDelayAndBoundedReplicaCount",
+        "malformedOptionsAndInvalidScalingAreRejected",
+        "policyRejectionsAreNeverAutomaticallyRetried",
+        "timeoutsDoNotFreeRunningDependencyWorkAndHoldingPropagatesPressure",
+        "followerLagIsVisibleAndFreshReadModeAvoidsFollowerStaleness",
+        "largeMmcCapacityAndPureWorkloadMixDoNotCreateNaNs",
+        "everyFailureProfileHasConsistentBoundedSamplesAndReplay",
+        "breakerOpensAndRecoversAfterSyntheticDependencyOutage",
+        "interruptionStopsBoundedExecutionAndOptionsSurviveLegacyJson",
+        "thirtyNodeResultFitsStorageBoundAndIsolatedLatencyDoesNotAccumulateUpstream",
+        "cdnServesReadsAndExternalApiCanBeATerminalWithoutARealNetworkCall",
+        "retryRecoveryIsBoundedAndPreservesLogicalAccounting"
+      ]
+    }
+  ],
+  "totals": {
+    "tests": 40,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}

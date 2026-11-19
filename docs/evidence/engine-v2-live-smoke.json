@@ -1,0 +1,19 @@
+{
+  "timestamp": "2026-11-19T07:11:52.878338+00:00",
+  "scope": "Actual loopback HTTP, local H2 persisted queue and separate worker; not a fixture or production load test",
+  "runId": "08766178-5a87-4fbb-a471-e6e9517fd410",
+  "status": "DONE",
+  "engineVersion": "2.0.0",
+  "requests": 417,
+  "successful": 219,
+  "errors": 198,
+  "policyRejections": 0,
+  "attempts": 837,
+  "retries": 420,
+  "timeouts": 0,
+  "circuitRejections": 572,
+  "staleReads": 35,
+  "nodeSamples": 72,
+  "traceEvents": 212,
+  "exportIncludesResilienceCounters": true
+}

@@ -113,3 +113,11 @@ Validate migrations on real PostgreSQL, run owner-isolation/idempotency/conflict
 - `PracticeGuide`: staged scenario selection, separate HLD/LLD sections, per-scenario local drafts, visible storage-failure fallback. Feedback recomputes against current graph/result on render. No HTML injection path or remote AI request.
 
 Backend DTOs, persistence and grading endpoints are unchanged. Backend saved graph/version and Markdown export do not contain the worksheet. See [the implementation decision](docs/adr/ui-003-system-design-tracks.md).
+
+## Engine v2 implementation
+
+`Request.options` carries finite bounded retry/backoff/jitter/attempt-timeout/overall-deadline values; the six-argument constructor and missing-options JSON remain valid. `Logical`, `Attempt` and `Visit` distinguish one user request from amplified attempts and stage occupancy. The event queue is ordered by time then sequence; per-node/request/attempt RNG streams preserve seeded replay independently of node list order. Held upstream visits release on attempt completion; already-running timed-out local work occupies a slot until completion/horizon.
+
+`Telemetry` adds attempt/retry/timeout/breaker/staleness counters, resource counters, exact per-node sample records and first-sixteen-request bounded traces. Result constructors preserve legacy stored results. Retention removes raw timeline/trace data while preserving counters. Node residence now means isolated queue/service/dependency-hold time, rather than cumulative time since client entry. Whole-run occupancy is labeled separately from analytic demand.
+
+The repository canonicalizes option key order and normalizes old stored requests when checking legacy idempotency hashes. Stored JSON uses the supported Jackson 2 compatibility module on Boot 4 while HTTP uses Jackson 3 compatibility defaults. See [the runtime ADR](docs/adr/security-001-runtime-upgrade.md).

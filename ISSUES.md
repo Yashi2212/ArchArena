@@ -71,3 +71,16 @@ Canonical `prompt.md`, short `docs/STATUS.md` and detailed `docs/session-log.md`
 | SD04 Practice artifact storage | Per-scenario browser-local worksheets, safe restore and visible memory fallback | Browser isolation/reload checks. Backend save/export does not contain worksheet/scenario metadata; cross-device/versioned storage remains unimplemented | PARTIAL |
 | SD05 Simulation scope | Existing bounded generic engine unchanged | Backend freeze check; no matching/geospatial/payment correctness, retries/cascades/autoscaling/lag or animation performance proof | OPEN |
 | SD06 Separate views and accessibility | HLD route/canvas, LLD Java contract view; explicit restored textarea labels | New four-width navigation/axe checks recorded in system-design verification. Full manual and real-backend browser review still pending | PARTIAL |
+
+## Engine v2 and security continuation
+
+| ID | Result | Proof and remaining gap | Status |
+|---|---|---|---|
+| E01 Resilience semantics | Bounded attempts/deadlines, holding/cascades, breakers, scale-out, synthetic lag and nine node types | 40 Java tests plus actual API/worker/export evidence. Domain correctness, arbitrary fan-out/consensus and real cloud behavior remain outside the model | VERIFIED BOUNDED CORE |
+| E02 Resource/performance | Event/pending/arrival/result bounds and bounded traces; worker heap 128 MiB | Final 30-node benchmark p95 1079.448 ms, pool peaks 58.58 MiB; not RSS, API SLO or 300-node renderer/FPS proof | PARTIAL |
+| E03 Runtime advisories | Boot 4.0.9 migration; compatible patched dependencies | 65 initial / 3 intermediate / 0 final OSV matches, 77 runtime artifacts; npm zero. Build-plugin/container/OS scans and Jackson 2 bridge removal pending | CURRENT RUNTIME AUDIT CLEAR |
+| E04 Replay accessibility | Explicit failure label, named focusable scrolling table | Four-width replay/axe pass after caught failures; 12 baseline images match. Full manual/all-state and mobile fitted-node readability remain open | PARTIAL |
+| E05 Local upgrade/worker | Private SQL/closed-file backups; H2 loopback binding and API-readiness sequencing | Actual persisted-job and browser/worker/export pass after JAR-lock/DB-open failures. H2/Flyway warning and real PostgreSQL/restore validation remain open | PARTIAL |
+| S01 Twenty-control review | Each requested control has tested-local, N/A, partial or open evidence | scripts/check_security.py: 15 local checks pass; --public intentionally nonzero. Public identity, CSRF/session, DB roles/RLS, MFA and deployed dynamic/container checks pending | PUBLIC BLOCKED |
+
+Detailed evidence: docs/evidence/engine-v2-verification.md and docs/security-review.md. Prior UI freezes and one-step waits are historical; user explicitly authorized further phases. No public/AWS work or fabricated experience.

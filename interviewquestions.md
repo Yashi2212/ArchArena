@@ -107,3 +107,11 @@ It uses real keyboard events to enter a prediction, run the UI fixture, activate
 **How do you avoid a misleading automated design grade?** The deterministic coach flags missing worksheet sections and model topology restrictions. Supplied text remains manual review. It cites only a result matching current inputs and never interprets good latency as proof of correct driver assignment or payment handling. Live AI is disabled.
 
 **What would you change when practice artifacts need reliable cross-device persistence?** Replace browser-only worksheets with owner-scoped versioned server artifacts and explicit scenario ids. Add authorization, conflict and export tests, and migrate existing drafts deliberately. Current backend saves contain only graphs, and the UI states that boundary.
+
+## Simulation v2 and security continuation
+
+**Why distinguish logical requests, attempts and visits?** One logical request may retry the full graph several times, and each attempt visits several nodes. Success/error accounting is per logical request; resource use and node failure counts can be amplified by attempts. Combining these counts hides retry pressure.
+
+**What breaker bug did the tests expose?** An upstream stage reset its failure count when its local service finished, even though it held the slot waiting for a failed downstream call. The fix records held-stage success only after the dependency succeeds. A regression verifies opening and recovery across an outage.
+
+**Does zero dependency-scan output make this publicly secure?** No. It describes known advisories in the scanned inventory at that time. HTTP identity/owner mapping, CSRF/session behavior, DB roles/RLS, MFA, TLS, logs and deployment/container scans require separate evidence. The public-readiness check intentionally stays blocked.

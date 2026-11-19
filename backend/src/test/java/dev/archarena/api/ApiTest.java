@@ -6,7 +6,7 @@ import dev.archarena.engine.Model.*;
 import dev.archarena.persistence.JobRepository;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.web.servlet.MockMvc;
@@ -85,5 +85,33 @@ class ApiTest {
         var second=jobs.claim().orElseThrow();assertThat(second.lease()).isNotEqualTo(first.lease());
         jdbc.update("UPDATE simulation_runs SET lease_until=? WHERE id=?",java.time.OffsetDateTime.now().minusMinutes(1),run.id());
         assertThat(jobs.claim()).isEmpty();assertThat(jobs.find("owner-a",run.id()).status()).isEqualTo("TIMED_OUT");
+    }
+    @Test void retrySettingsArePersistedAndParticipateInIdempotency()throws Exception {
+        Request base=valid();Request input=new Request(base.graph(),20,10,42,"steady","none",Map.of("retries",2.0,"retryJitter",0.5));
+        var first=jobs.submit("options-owner","options-key-01",input);
+        assertThat(first.request().option("retries",0)).isEqualTo(2);
+        Request changed=new Request(base.graph(),20,10,42,"steady","none",Map.of("retries",1.0,"retryJitter",0.5));
+        assertThatThrownBy(()->jobs.submit("options-owner","options-key-01",changed)).isInstanceOf(JobRepository.Conflict.class);
+        var claim=jobs.claim().orElseThrow();Result result=new DiscreteEventEngine().run(claim.request());assertThat(jobs.complete(claim,result)).isTrue();
+        assertThat(jobs.find("options-owner",first.id()).result().telemetry().nodeTimeline()).isNotEmpty();
+    }
+    @Test void sqlPayloadRemainsDataAndDoesNotEscapeOwnerScope(){
+        String hostile="x'); DROP TABLE designs; --";
+        var d=jobs.save("owner-a",null,hostile,1,valid().graph());assertThat(jobs.designs("owner-a").getFirst().title()).isEqualTo(hostile);
+        assertThat(jobs.designs("owner-b' OR '1'='1")).isEmpty();assertThatThrownBy(()->jobs.deleteDesign("owner-b' OR '1'='1",d.id())).isInstanceOf(JobRepository.Missing.class);
+        assertThat(jdbc.queryForObject("SELECT COUNT(*) FROM designs",Integer.class)).isEqualTo(1);
+    }
+    @Test void formUploadsAndServerSideUrlParametersAreRejected()throws Exception {
+        mvc.perform(post("/api/preview").contentType("application/x-www-form-urlencoded").content("graph=attacker")).andExpect(status().isUnsupportedMediaType());
+        mvc.perform(post("/api/designs").contentType("multipart/form-data; boundary=x").content("--x--")).andExpect(status().isUnsupportedMediaType());
+        String body=json.writeValueAsString(valid()).replace("\"replicas\":2.0","\"replicas\":2.0,\"url\":\"http://169.254.169.254/latest/meta-data\"");
+        mvc.perform(post("/api/preview").contentType("application/json").content(body)).andExpect(status().isBadRequest());
+    }
+    @Test void legacyRequestHashesStillReturnTheExistingIdempotentRun(){
+        var first=jobs.submit("legacy-owner","legacy-key-01",valid());
+        jdbc.update("UPDATE simulation_runs SET request_hash=? WHERE id=?","legacy-v1-canonical-hash",first.id());
+        assertThat(jobs.submit("legacy-owner","legacy-key-01",valid()).id()).isEqualTo(first.id());
+        Request different=new Request(valid().graph(),21,10,42,"steady","none");
+        assertThatThrownBy(()->jobs.submit("legacy-owner","legacy-key-01",different)).isInstanceOf(JobRepository.Conflict.class);
     }
 }
