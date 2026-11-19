@@ -1,6 +1,6 @@
 {
-  "status": "proposal-only-not-implemented",
-  "direction": "Signal Deck",
+  "status": "historical-unselected-proposal",
+  "direction": "A — Signal Deck (not selected; active tokens are frontend/src/styles/tokens.css)",
   "colors": {
     "bg": "#06080F", "panel": "#0D1220", "raised": "#151E30",
     "text": "#E6ECFF", "muted": "#ABB8D1", "traffic": "#2DE2E6",

@@ -49,3 +49,19 @@ Wait for A/B, then implement Step 2 only. Owner review of the knowledge pack sep
 Seven knowledge-gate tests passed; five notes and 13 claim references validated; the publish command intentionally rejected all five drafts. All 14 proposed contrast pairs passed, with runtime accessibility still unverified. Documentation checks covered 14 entry files, 35 local links and 13 claim-line references. The freeze covered 22 backend/API files with no changes. Initialized local Git because no repository existed; source PDFs, private `.local` inventory, original user prompt/status `.txt` inputs and build/dependency artifacts are excluded. No remote push or CI execution is claimed.
 
 The historical Phase 0 link checker initially reported 37 failures after dependencies were installed because it scanned third-party/generated Markdown. Updated that documentation script to exclude node_modules, build outputs and private tool/state folders, matching the current doc checker's scope. This is a validator correction, not an application/backend change; rerun output is included in the evidence record.
+
+## November 18–19 2026 — Expedition Console Step 2
+
+The user chose B — Expedition Console. Implemented warm charcoal/teal/amber tokens, self-hosted Sora and IBM Plex Mono with original OFL notices, replacement base CSS and shared SVG/button/status/metric/alert/rules components. Existing API calls, graph model, worker and server checkpoint were preserved; the backend freeze still matches 22 files.
+
+Added persistent model disclosure, precise analytic/event wording, accessible exact latency alongside humanized display, illustrative cost qualifiers and demand/capacity state words/icons. Mobile lesson and saved-design controls remain visible. This is a foundation pass, not the final hero layout or animated skill tree.
+
+Added pinned Vitest/RTL/jsdom/axe testing tools, 79 frontend tests and four-width Playwright fixtures/baselines. The older Vitest candidate exposed critical advisories; switched to compatible 5.1.1 and Vite 6.4.6. November 18's full audit still flagged five glob-chain package entries; November 19's full audit returned zero with the same direct versions and no ignore rule. The feed-change cause was not established. Do not claim a permanent security guarantee.
+
+Initial browser failures were retained and investigated: a numeric text assertion ignored the unit, axe found duplicate unnamed complementary regions, and Edge canceled intercepted attachment downloads. Corrected the assertion and landmark labels; the test-only loopback server now sends a real HTTP Markdown attachment, with normal browser protections. API fixture data remain explicitly separate from engine evidence.
+
+An automatic-approval usage limit interrupted the rerun on November 18. User resumed November 19; the 1440px check passed 8/8, followed by the full 32/32 matrix at 1440/1024/768/390. Keyboard prediction/run/checkpoint/export passed; twelve main-screen baselines matched; all sixteen scanned browser axe states had zero violations. Java regression passed 20/20 on H2, and unit/component/token/font tests passed 79/79. Both normal local preview and API health returned HTTP 200 independently of the UI test server.
+
+Build: JS 926.02 kB/285.71 kB gzip, CSS 43.77 kB/8.15 kB gzip and 48.36 kB of local fonts. Large-chunk warning and small fitted mobile graph text remain open. No FPS/Lighthouse, complete AA, cross-browser or public-launch claim. Browser/CI jobs configured but not executed remotely. Sources stay unverified/unpublished; no new books or lessons distributed.
+
+Updated prompt, STATUS, ISSUES, design brief, run instructions, interview answers, ADR and verification evidence. Stop after the local Step 2 commit; user types `next` for Step 3 hero/static diagram/readable mobile inspection, then illustrative Canvas2D. No backend/API change, cloud deployment or paid AI fallback.

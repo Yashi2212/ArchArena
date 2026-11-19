@@ -1,0 +1,59 @@
+/* Expedition Console — the single source for UI design tokens. */
+:root {
+  color-scheme: dark;
+  --color-bg: #101411;
+  --color-sidebar: #141a16;
+  --color-panel: #1b221d;
+  --color-raised: #253028;
+  --color-canvas: #121b17;
+  --color-text: #f3f0e3;
+  --color-muted: #bdc8bb;
+  --color-traffic: #65dfce;
+  --color-healthy: #a5e2a1;
+  --color-strain: #f5c86a;
+  --color-failure: #ffaaa3;
+  --color-focus: #ffe09a;
+  --color-line: #829584;
+  --color-line-subtle: #465349;
+  --color-grid: #35473c;
+  --color-on-accent: #101411;
+  --color-healthy-surface: #253c2b;
+  --color-strain-surface: #42371f;
+  --color-failure-surface: #482e2c;
+  --font-body: 'Sora Variable', sans-serif;
+  --font-number: 'IBM Plex Mono', monospace;
+  --text-label: 14px;
+  --text-body: 16px;
+  --text-subtitle: 18px;
+  --text-title: 24px;
+  --text-heading: 36px;
+  --text-display: 44px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --radius-control: 4px;
+  --radius-panel: 8px;
+  --motion-fast: 120ms;
+  --motion-panel: 200ms;
+  --motion-reveal: 300ms;
+  --layer-background: 0;
+  --layer-particles: 10;
+  --layer-nodes: 20;
+  --layer-controls: 30;
+  --layer-inspector: 50;
+  --layer-modal: 80;
+  --layer-palette: 90;
+  --layer-announcement: 100;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --motion-fast: 0ms;
+    --motion-panel: 0ms;
+    --motion-reveal: 0ms;
+  }
+}

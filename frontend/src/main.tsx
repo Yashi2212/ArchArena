@@ -2,6 +2,8 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { App } from './App';
 import '@xyflow/react/dist/style.css';
-import './styles.css';
+import './styles/fonts.css';
+import './styles/tokens.css';
+import './styles/workbench.css';
 
 createRoot(document.getElementById('root')!).render(<React.StrictMode><App /></React.StrictMode>);

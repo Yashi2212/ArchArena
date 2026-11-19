@@ -1,0 +1,15 @@
+
+> archarena-frontend@0.1.0 build
+> tsc -b && vite build
+
+vite v6.4.6 building for production...
+transforming...
+✓ 465 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                              0.62 kB │ gzip:   0.38 kB
+dist/assets/ibm-plex-mono-latin-400-normal-DMJ8VG8y.woff2   14.71 kB
+dist/assets/sora-latin-wght-normal-DdqRvwsR.woff2           33.65 kB
+dist/assets/index-DtJtH7Xq.css                              43.77 kB │ gzip:   8.15 kB
+dist/assets/index-C4JmGwpy.js                              926.02 kB │ gzip: 285.71 kB
+✓ built in 48.11s

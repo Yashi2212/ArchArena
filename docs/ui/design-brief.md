@@ -1,6 +1,6 @@
 # ArchArena UI redesign Step 1 design brief
 
-Status: proposed, awaiting the user's visual-direction choice. This document changes no backend, engine, API or application code. The current UI audit is in [repo-audit.md](repo-audit.md).
+Status: Step 1 proposal retained for history. The user subsequently chose **B — Expedition Console**. Step 2 uses warm charcoal, teal/amber, self-hosted Sora and IBM Plex Mono. The old Signal Deck token table below is not the selected implementation. See [Step 2 foundations](step-02-foundations.md) and [repo-audit.md](repo-audit.md); backend/API stay frozen.
 
 ## Goal in plain language
 
@@ -174,7 +174,7 @@ UI risks and content provenance are tracked in ISSUES.md as UI01–UI08 and C01�
 - [x] Tokens, components, responsive hierarchy and interactions specified.
 - [x] Data honesty, backend freeze and 300-node UI-only limit explicit.
 - [x] Content review and future test gates documented.
-- [ ] User selects A or B; then implement only Step 2.
+- [x] User selected B — Expedition Console; Step 2 foundations are the approved implementation scope.
 
 What could go wrong: decorative motion misrepresents missing telemetry, local XP looks authoritative, or small labels return as density increases. Verify with mapping tests, explicit qualifiers, contrast/readability checks, screenshots and manual keyboard review.
 

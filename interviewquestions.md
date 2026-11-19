@@ -85,3 +85,17 @@ The proposed design uses one bounded Canvas2D overlay and requestAnimationFrame,
 ### How do book references become publishable lessons?
 
 We create short original topic notes with claim/source-page references, then the owner reviews accuracy and expression. The current five notes are all unverified. The publication guard rejects them until reviewed; citation and passing tests are not permission or legal clearance. Future lessons must have original scenarios and a claim-to-approved-note map, with no copied book prose, diagrams or chapter reconstruction.
+
+## Expedition Console Step 2
+
+### Why self-host fonts instead of fetching a font CDN?
+
+The application serves two licensed WOFF2 assets itself: Sora Variable and IBM Plex Mono, totaling 48,360 bytes. This removes an external runtime request and makes screenshot typography more repeatable. The OFL notices are retained. Local font delivery does not by itself solve accessibility or performance; those are tested separately.
+
+### Why did both token tests and browser axe checks matter?
+
+The token tests check contrast mathematically against the real CSS values and catch accidental palette regressions. They cannot inspect landmarks, keyboard flow or rendered layout. Browser axe found two complementary regions without distinct names, which I fixed with accessible labels. Passing axe still does not prove every WCAG requirement or graph legibility at every zoom level.
+
+### What does the keyboard export test establish?
+
+It uses real keyboard events to enter a prediction, run the UI fixture, activate its checkpoint and save a Markdown HTTP attachment. The earlier intercepted download was canceled in Edge, so an isolated local test server now serves that fixture over HTTP. No security flags are disabled. This proves the presentation flow under that fixture; Java API and engine behavior have their own tests.

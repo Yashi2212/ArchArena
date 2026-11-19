@@ -1,6 +1,6 @@
 # ArchArena risk and evidence register
 
-Updated November 18, 2026. Owner: project developer. The original ten product risks remain open; prototype controls now have partial test evidence, but no production sign-off. Current gate is T2 Step 0/1 plus unpublished content drafts. A proposal or file configuration is not runtime proof. See the current evidence below rather than treating the historical Phase 0 rows as today's implementation inventory.
+Updated November 19, 2026. Owner: project developer. Original product risks remain open; prototype/foundation controls have partial evidence, not a production sign-off. T2 Step 2 is locally verified, with source notes still unpublished. See current evidence below rather than treating historical Phase 0 implementation rows as today's inventory.
 
 | ID / category | Risk and decision | Implementation status | Required proof to close | Review gate |
 |---|---|---|---|---|
@@ -31,22 +31,23 @@ Updated November 18, 2026. Owner: project developer. The original ten product ri
 
 - R02/R03: eight engine tests pass, including deterministic replay, compatible closed-form fixtures, invalid inputs, request accounting and policy rejection. Engine resource bounds exist, but full adversarial/container/load evidence is incomplete.
 - R04/R08: ten API/repository tests plus two access-filter tests pass on H2, covering owner scoping, idempotency, concurrent duplicates, queue cap, lease fencing/recovery and stale saves. This does not prove real PostgreSQL behavior, public OIDC/IDOR coverage or restore capability.
-- R07: React production build passes; no frontend test files. One prior browser run completed, but no complete lesson/export/keyboard suite, axe, snapshots or frame measurements exist.
+- R07: Step 2 now has 79 frontend tests, 32 fixture-based browser tests across four widths, 12 visual baselines and zero axe violations in 16 scanned states. Keyboard checkpoint/export is verified with fixtures and a native HTTP attachment. Real-backend browser, full manual/all-state accessibility and frame measurements remain open.
 - R05/R06: live AI remains disabled; scripted facts and deterministic findings are available. No provider/gateway/eval implementation is claimed.
 - Detailed commands/results: `docs/evidence/step-01-verification.txt`; Java reports in `docs/evidence/java-tests-2026-11-18.txt`; UI audit in `docs/ui/repo-audit.md`.
+- Current Step 2 results: `docs/evidence/step-02-verification.md`, unit/browser/audit JSON and `step02/java-tests.txt`. Backend freeze remains 22 unchanged files; 20 Java tests rerun successfully on H2.
 
 ## UI redesign risks
 
 | ID | Decision / implementation | Proof and remaining gap | Status |
 |---|---|---|---|
-| UI01 Performance | Separate Canvas2D overlay proposed; quality/static modes; synthetic 300-node UI test only | Brief specifies caps; no animation/frame or Lighthouse measurements. Current bundle 921.21 kB JS, 283.96 kB gzip | OPEN |
-| UI02 Accessibility | Minimum 14px, keyboard alternatives, focus and live summaries proposed | No axe/keyboard/runtime contrast tests; current CSS has much smaller labels and modal focus gaps | OPEN |
-| UI03 Motion | Reduced motion must become static, no shake; pause hidden/offscreen | Existing CSS rule only; no behavioral test or animation implementation | OPEN |
-| UI04 Color readability | Every state must have text/icon/pattern; proposed palette pairs checked separately | Proposal contrast check does not certify the rendered application or color-blind usability | OPEN |
-| UI05 Honesty | Global playback only; node/p95/rules whole-run; particles illustrative | Existing contract inspected and brief specifies mapping; implementation/label tests not written | OPEN |
-| UI06 Feature preservation | All lesson/run/checkpoint/baseline/export/save/assumption actions remain reachable | Source audit finds mobile navigation hidden; full E2E and regression snapshots absent | OPEN |
-| UI07 Dependency security | Inspect suggested Vite patch before Step 2 | Latest npm audit: one high-severity affected package Vite; suggested 6.4.6. Not remediated at docs-only gate | OPEN |
-| UI08 Testing and approval | Direction A/B gate; tests before new UI implementation; backend freeze | No frontend tests; browser follow-up earlier blocked by automatic-review usage limit. New screenshots not captured | OPEN |
+| UI01 Performance | No animation framework; Canvas2D/quality/performance remain future | Current JS 926.02 kB/285.71 kB gzip and fonts 48.36 kB; build warning persists. No frame/Lighthouse measurement | OPEN |
+| UI02 Accessibility | Text tokens ≥14px, semantic statuses, distinct complementary landmarks | Actual token tests, keyboard fixture flow and 16 zero-violation browser axe scans. Fitted graph text remains small on mobile; full modal/manual/all-state checks pending | PARTIAL |
+| UI03 Motion | Existing animated edges become static under reduced motion | Browser checks pass at all four widths; future Canvas2D/offscreen handling still pending | PARTIAL |
+| UI04 Color readability | Expedition tokens and words/icons instead of color alone | Actual CSS contrast comparisons, status tests and reviewed screenshots pass; complete manual/color-blind review not performed | PARTIAL |
+| UI05 Honesty | Persistent model notice, approximate analytic label, whole-run node/p95, illustrative cost | Formatting/component and browser tests pass. Future playback/particle mapping remains unimplemented | PARTIAL |
+| UI06 Feature preservation | Mobile lesson/save access restored; existing actions preserved | Four-width tests cover lessons, save/open, keyboard checkpoint/export and errors; screenshots match. Real-backend browser/complete regression coverage pending | PARTIAL |
+| UI07 Dependency security | Vite 6.4.6, Vitest 5.1.1; no audit-ignore/security bypass | Nov 19 full audit reports zero. Nov 18 five glob-chain entries remain historical; reason for feed change unknown. Continual scans still needed | CURRENT AUDIT CLEAR |
+| UI08 Testing and approval | B selected; Step 2 only, backend frozen | 79 frontend +32 browser +20 Java tests pass; 12 snapshots, 22-file freeze. Prior approval interruption resolved on resume; remote CI not executed | PARTIAL |
 
 ## Learning-content risks
 
@@ -58,4 +59,4 @@ Updated November 18, 2026. Owner: project developer. The original ten product ri
 
 ## Session continuity
 
-Canonical `prompt.md` and short `docs/STATUS.md` created, preserving original user `.txt` files. `docs/session-log.md` records detailed events. A backend hash manifest detects changes during the frozen UI track. A local Git history is being initialized because no repository existed; record the commit result rather than claiming a push/CI run.
+Canonical `prompt.md`, short `docs/STATUS.md` and detailed `docs/session-log.md` are maintained; user originals preserved. Local Git history exists and Step 2 is committed after verification. No push, remote CI execution or public deployment is implied. Wait for `next` before Step 3.

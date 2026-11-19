@@ -1,6 +1,6 @@
 # How to run ArchArena
 
-Current prototype: Windows local Java 21 API, separate worker and React/Vite, using H2 development storage. Read `docs/STATUS.md` first. PostgreSQL/Compose and public deployment are not verified. A high-severity Vite finding remains open; keep development local until the approved dependency-remediation step.
+Current prototype: Windows local Java 21 API, separate worker and React/Vite, using H2 storage. Expedition Console Step 2 foundations are verified locally. Read `docs/STATUS.md` first. PostgreSQL/Compose and public deployment remain unverified; the November 19 full npm audit reports zero findings, which is a dated scan rather than a permanent guarantee.
 
 ## Build and start the Windows prototype
 
@@ -38,7 +38,18 @@ python scripts/check_backend_freeze.py
 python scripts/validate_docs.py
 ```
 
-Java tests run against H2, not PostgreSQL/Testcontainers. Token checks cover a proposed palette, not current runtime accessibility. `python scripts/validate_knowledge.py --publish` deliberately rejects unverified notes. Inside frontend, `npm.cmd test -- --list` currently finds zero tests, and `npm.cmd audit` fails. Do not call those passing suites. Current evidence is recorded in `docs/evidence/step-01-verification.txt`.
+Java tests run against H2, not PostgreSQL/Testcontainers. `check_proposed_tokens.py` retains the historical unselected Signal Deck palette; the actual Expedition CSS token checks run in the frontend suite. `python scripts/validate_knowledge.py --publish` deliberately rejects all five unverified notes.
+
+From frontend, run the new checks:
+
+```powershell
+npm.cmd test
+npm.cmd run build
+npm.cmd run test:e2e
+npm.cmd audit
+```
+
+Current results: 79 frontend tests, 32 browser tests and a successful build; full npm audit zero on November 19. Browser checks use Microsoft Edge on Windows and an automatically managed loopback fixture server at 5174. They do not need a live Java backend and do not prove actual simulation performance. Normal development stays at 5173. Golden images are Windows/Edge baselines; review platform differences before changing them. Evidence: `docs/evidence/step-02-verification.md`.
 
 For Docker later, inspect `.env.example`, generate local-only values in ignored `.env`, and run `docker compose up --build` on a Docker-equipped machine. The configuration has not been run here. Never publish the H2/local-owner profile or assume a file configuration proves cloud/security behavior.
 

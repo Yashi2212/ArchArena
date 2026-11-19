@@ -1,0 +1,15 @@
+/* Local WOFF2 files; original OFL notices are distributed at /licenses/. */
+@font-face {
+  font-family: 'Sora Variable';
+  font-style: normal;
+  font-weight: 100 800;
+  font-display: swap;
+  src: url('../assets/fonts/sora-latin-wght-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../assets/fonts/ibm-plex-mono-latin-400-normal.woff2') format('woff2');
+}

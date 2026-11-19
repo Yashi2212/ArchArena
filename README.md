@@ -4,7 +4,7 @@ Learn system design by changing an architecture, running a model, and explaining
 
 ArchArena is a planned portfolio application for Java backend developers preparing for system design interviews. The first release combines interactive Learn lessons with a basic Practice workflow. Both use the same server-side simulation engine. Design Studio is a later milestone.
 
-**Current:** a local Java/React prototype exists. Active step: UI redesign Step 0/1, audit and design brief, awaiting a visual-direction choice. Read [prompt.md](prompt.md) and [docs/STATUS.md](docs/STATUS.md) every session. Target figures are not deployment benchmarks.
+**Current:** UI Step 2 **Expedition Console foundations** is complete locally: warm-dark tokens, local fonts, shared components and frontend tests. Next is Step 3 hero layout after `next`. Read [prompt.md](prompt.md) and [docs/STATUS.md](docs/STATUS.md) every session. [Step 2 evidence](docs/evidence/step-02-verification.md) distinguishes fixtures, measurements and unverified work.
 
 ## Your agreed direction
 
@@ -56,4 +56,4 @@ The diagram is a product concept, not the Phase 1 technical architecture. Simula
 - [Unpublished knowledge pack](docs/knowledge/README.md) and [content policy](docs/knowledge/content-policy.md). No supplied books are website assets.
 - [Detailed session log](docs/session-log.md) distinguishes implementation, tests, assumptions and unresolved work.
 
-Latest protocol: one approved step at a time. Choose a direction from the UI brief before Step 2; unfinished tracks are not launch-ready.
+Latest protocol: one approved step at a time. The user chose B — Expedition Console. Wait for `next` before Step 3; unfinished tracks are not launch-ready.
