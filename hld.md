@@ -208,3 +208,9 @@ ADR 010: compare an external free LLM, a local GPU model and deterministic feedb
 Review the four sequences, ownership boundary, module dependencies, lean/full differences and every failure row. Cross-check job limits with Phase 0. No performance or failover is proven by these diagrams. Exit: proceed to LLD using explicit adapter deviations, carrying runtime risks into ISSUES.md.
 
 Interview answers: the worker isolates expensive work; the database is the authoritative lifecycle store; optional AI failure must not invalidate deterministic simulation results. More detailed questions are maintained in interviewquestions.md.
+
+## System-design learning and practice views (November 19)
+
+The frontend now separates HLD and LLD artifacts while retaining the existing backend contracts. `system-design/catalog.ts` supplies 24 HLD and 16 LLD original exercise briefs plus twenty scenario briefs. `LearningRoute` renders a route/index and either a system-map sequence or Java blueprint. `PracticeGuide` renders scenario-specific requirements, eight structured worksheet fields and a rule-based coach. In both LLD Learn and LLD Practice the generic simulator/results are hidden; worksheet and graph remain separate artifacts.
+
+The coach receives a graph and only a result matching the current canonical experiment. Missing prose is actionable; supplied prose and business invariants remain manual-review status. Graph constraints mirror only a subset of simulator restrictions, and backend validation remains authoritative. Scenario changes clear result context; the server job itself is not canceled. Worksheets persist in browser-local storage by scenario, not backend saves/exports. See [learning/practice scope](docs/learning-practice.md) and [ADR UI-003](docs/adr/ui-003-system-design-tracks.md).

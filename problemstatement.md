@@ -37,3 +37,11 @@ Targets, not results: at least two of three peer testers complete one Practice e
 ## Why not just a diagramming app, AI chat or a real cluster?
 
 A diagram is necessary but cannot alone explain modeled overload. AI can explain but must be constrained by evidence. A real cluster is valuable later but adds costs and uncontrolled environmental variables. A bounded simulator is the useful middle step, provided its assumptions and unsupported behaviors are visible. Interactive simulations and AI practice already exist; ArchArena's proposed value is the shared, inspectable workflow, not an unsupported uniqueness claim.
+
+## Why concentrate on system-design learning and practice?
+
+The target learner is a Java developer preparing for system-design interviews. Reading terminology alone leaves an application gap: turning requirements into system boundaries, choosing data access patterns, defending concurrency invariants and explaining failure recovery. A single generic graph can also make HLD and class-level design look interchangeable.
+
+ArchArena addresses that gap with an ordered exercise route, distinct HLD and LLD artifacts, scenario-specific requirements and a predict/change/run/review loop. HLD connects assumptions to modeled queueing evidence. LLD asks for contracts, ownership, transaction/concurrency decisions and behavioral tests. Uber-inspired practice makes the gap concrete: good simulated latency cannot prove exclusive driver assignment. The coach surfaces missing reasoning instead of awarding an inflated architecture score.
+
+The current slice supplies forty original exercise briefs and twenty company-inspired problems, not a complete theory course or factual company architecture library. Its value is structured practice and visible evidence boundaries. Learning outcomes, interview success and time saved have not been measured. Full reviewed theory, domain-aware correctness checks and optional evaluated AI assistance remain separate deliverables.

@@ -40,14 +40,14 @@ Updated November 19, 2026. Owner: project developer. Original product risks rema
 
 | ID | Decision / implementation | Proof and remaining gap | Status |
 |---|---|---|---|
-| UI01 Performance | No animation framework; Canvas2D/quality/performance remain future | Current JS 926.02 kB/285.71 kB gzip and fonts 48.36 kB; build warning persists. No frame/Lighthouse measurement | OPEN |
+| UI01 Performance | No animation framework; Canvas2D/quality/performance remain future | Current JS 952.80 kB/295.31 kB gzip and fonts 48.36 kB; build warning persists. No frame/Lighthouse measurement | OPEN |
 | UI02 Accessibility | Text tokens ≥14px, semantic statuses, distinct complementary landmarks | Actual token tests, keyboard fixture flow and 16 zero-violation browser axe scans. Fitted graph text remains small on mobile; full modal/manual/all-state checks pending | PARTIAL |
 | UI03 Motion | Existing animated edges become static under reduced motion | Browser checks pass at all four widths; future Canvas2D/offscreen handling still pending | PARTIAL |
 | UI04 Color readability | Expedition tokens and words/icons instead of color alone | Actual CSS contrast comparisons, status tests and reviewed screenshots pass; complete manual/color-blind review not performed | PARTIAL |
 | UI05 Honesty | Persistent model notice, approximate analytic label, whole-run node/p95, illustrative cost | Formatting/component and browser tests pass. Future playback/particle mapping remains unimplemented | PARTIAL |
 | UI06 Feature preservation | Mobile lesson/save access restored; existing actions preserved | Four-width tests cover lessons, save/open, keyboard checkpoint/export and errors; screenshots match. Real-backend browser/complete regression coverage pending | PARTIAL |
 | UI07 Dependency security | Vite 6.4.6, Vitest 5.1.1; no audit-ignore/security bypass | Nov 19 full audit reports zero. Nov 18 five glob-chain entries remain historical; reason for feed change unknown. Continual scans still needed | CURRENT AUDIT CLEAR |
-| UI08 Testing and approval | B selected; Step 2 only, backend frozen | 79 frontend +32 browser +20 Java tests pass; 12 snapshots, 22-file freeze. Prior approval interruption resolved on resume; remote CI not executed | PARTIAL |
+| UI08 Testing and approval | B selected; Step 2 complete and new system-design slice authorized, backend frozen | Current 86 frontend tests/full 44 browser cases and 24 visual/separation follow-up pass; 12 snapshots, 22-file freeze. Prior 20 Java tests are historical for this frontend slice. Prior approval interruption resolved on resume; remote CI not executed | PARTIAL |
 
 ## Learning-content risks
 
@@ -59,4 +59,15 @@ Updated November 19, 2026. Owner: project developer. Original product risks rema
 
 ## Session continuity
 
-Canonical `prompt.md`, short `docs/STATUS.md` and detailed `docs/session-log.md` are maintained; user originals preserved. Local Git history exists and Step 2 is committed after verification. No push, remote CI execution or public deployment is implied. Wait for `next` before Step 3.
+Canonical `prompt.md`, short `docs/STATUS.md` and detailed `docs/session-log.md` are maintained; user originals preserved. Local Git history exists and Step 2 is committed after verification. No push, remote CI execution or public deployment is implied. The latest direct request authorizes the separate system-design learning/practice slice; older Step 3-only waiting is superseded.
+
+## System-design learning and practice risks
+
+| ID | Implementation | Proof / remaining gap | Status |
+|---|---|---|---|
+| SD01 Curriculum completeness | Forty original exercise briefs across HLD/LLD and three levels, five existing lab links | Catalog/unit checks and browser navigation; full theory lessons and reviewed sources are missing, explicitly disclosed. See docs/knowledge/missing-from-knowledge-pack.md | PARTIAL |
+| SD02 Company provenance | Twenty original company-inspired exercises | Catalog data/tests; no claimed ranking, endorsement or actual private architecture. Requirements and workloads are exercise assumptions | PARTIAL |
+| SD03 Design feedback honesty | Missing-decision/topology/current-model coach; prose manual review, no overall score, AI disabled | Negative rubric tests, stale-run browser check and visible limitations. Domain invariants/Java semantics not assessed; AI gateway/evals pending | PARTIAL |
+| SD04 Practice artifact storage | Per-scenario browser-local worksheets, safe restore and visible memory fallback | Browser isolation/reload checks. Backend save/export does not contain worksheet/scenario metadata; cross-device/versioned storage remains unimplemented | PARTIAL |
+| SD05 Simulation scope | Existing bounded generic engine unchanged | Backend freeze check; no matching/geospatial/payment correctness, retries/cascades/autoscaling/lag or animation performance proof | OPEN |
+| SD06 Separate views and accessibility | HLD route/canvas, LLD Java contract view; explicit restored textarea labels | New four-width navigation/axe checks recorded in system-design verification. Full manual and real-backend browser review still pending | PARTIAL |

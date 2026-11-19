@@ -1,0 +1,831 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "tests/system-design.spec.ts"
+    ],
+    "configFile": "C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\playwright.config.ts",
+    "rootDir": "C:/Users/abhis/OneDrive/Documents/ChatGPT/Placementprep/ArchArena/frontend/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/abhis/OneDrive/Documents/ChatGPT/Placementprep/ArchArena/frontend/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "width-1440",
+        "name": "width-1440",
+        "testDir": "C:/Users/abhis/OneDrive/Documents/ChatGPT/Placementprep/ArchArena/frontend/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "C:/Users/abhis/OneDrive/Documents/ChatGPT/Placementprep/ArchArena/frontend/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "width-1024",
+        "name": "width-1024",
+        "testDir": "C:/Users/abhis/OneDrive/Documents/ChatGPT/Placementprep/ArchArena/frontend/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "C:/Users/abhis/OneDrive/Documents/ChatGPT/Placementprep/ArchArena/frontend/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "width-768",
+        "name": "width-768",
+        "testDir": "C:/Users/abhis/OneDrive/Documents/ChatGPT/Placementprep/ArchArena/frontend/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "C:/Users/abhis/OneDrive/Documents/ChatGPT/Placementprep/ArchArena/frontend/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "width-390",
+        "name": "width-390",
+        "testDir": "C:/Users/abhis/OneDrive/Documents/ChatGPT/Placementprep/ArchArena/frontend/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "width-1440",
+        "testDir": "C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\tests",
+        "snapshotDir": "C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\tests",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 30000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5174",
+          "browserName": "chromium",
+          "channel": "msedge",
+          "headless": true,
+          "locale": "en-US",
+          "timezoneId": "Asia/Calcutta",
+          "reducedMotion": "reduce",
+          "colorScheme": "dark",
+          "trace": "retain-on-failure",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "width-1440"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "width-1024",
+        "testDir": "C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\tests",
+        "snapshotDir": "C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\tests",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 30000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5174",
+          "browserName": "chromium",
+          "channel": "msedge",
+          "headless": true,
+          "locale": "en-US",
+          "timezoneId": "Asia/Calcutta",
+          "reducedMotion": "reduce",
+          "colorScheme": "dark",
+          "trace": "retain-on-failure",
+          "viewport": {
+            "width": 1024,
+            "height": 1000
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "width-1024"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "width-768",
+        "testDir": "C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\tests",
+        "snapshotDir": "C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\tests",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 30000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5174",
+          "browserName": "chromium",
+          "channel": "msedge",
+          "headless": true,
+          "locale": "en-US",
+          "timezoneId": "Asia/Calcutta",
+          "reducedMotion": "reduce",
+          "colorScheme": "dark",
+          "trace": "retain-on-failure",
+          "viewport": {
+            "width": 768,
+            "height": 1000
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "width-768"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "width-390",
+        "testDir": "C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\tests",
+        "snapshotDir": "C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\tests",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 30000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5174",
+          "browserName": "chromium",
+          "channel": "msedge",
+          "headless": true,
+          "locale": "en-US",
+          "timezoneId": "Asia/Calcutta",
+          "reducedMotion": "reduce",
+          "colorScheme": "dark",
+          "trace": "retain-on-failure",
+          "viewport": {
+            "width": 390,
+            "height": 1000
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "width-390"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "../docs/evidence/step02-browser-results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.65.1",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run dev:test",
+      "url": "http://127.0.0.1:5174",
+      "reuseExistingServer": true,
+      "timeout": 30000
+    }
+  },
+  "suites": [
+    {
+      "title": "system-design.spec.ts",
+      "file": "system-design.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "learning switches between the HLD route and Java blueprint, including advanced topics",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-1440",
+              "projectName": "width-1440",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5494,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T01:40:06.369Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            },
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-1024",
+              "projectName": "width-1024",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3951,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T01:40:37.773Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            },
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-768",
+              "projectName": "width-768",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4087,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T01:41:06.642Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            },
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-390",
+              "projectName": "width-390",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5777,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T01:41:35.925Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d8160f1742561d8929d6-1eb6a759e78f7dc94305",
+          "file": "system-design.spec.ts",
+          "line": 5,
+          "column": 1
+        },
+        {
+          "title": "Uber practice keeps worksheets separate and gives actionable honest feedback",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-1440",
+              "projectName": "width-1440",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 14960,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveValue\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByLabel('Invariant and concurrency', { exact: true })\nExpected pattern: \u001b[32m/atomic conditional/\u001b[39m\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toHaveValue\" getByLabel('Invariant and concurrency', { exact: true }) with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByLabel('Invariant and concurrency', { exact: true })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveValue\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByLabel('Invariant and concurrency', { exact: true })\nExpected pattern: \u001b[32m/atomic conditional/\u001b[39m\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toHaveValue\" getByLabel('Invariant and concurrency', { exact: true }) with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByLabel('Invariant and concurrency', { exact: true })\u001b[22m\n\n    at C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\tests\\system-design.spec.ts:39:75",
+                    "location": {
+                      "file": "C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\tests\\system-design.spec.ts",
+                      "column": 75,
+                      "line": 39
+                    },
+                    "snippet": " \u001b[90m 37 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByLabel(\u001b[32m'Practice scenario'\u001b[39m)\u001b[33m.\u001b[39mselectOption(\u001b[32m'uber'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 38 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'button'\u001b[39m\u001b[33m,\u001b[39m{name\u001b[33m:\u001b[39m\u001b[32m'Start selected scenario'\u001b[39m})\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 39 |\u001b[39m   \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByLabel(\u001b[32m'Invariant and concurrency'\u001b[39m\u001b[33m,\u001b[39m{exact\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m}))\u001b[33m.\u001b[39mtoHaveValue(\u001b[35m/atomic conditional/\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                                           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 40 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mreload()\u001b[33m;\u001b[39m\u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'button'\u001b[39m\u001b[33m,\u001b[39m{name\u001b[33m:\u001b[39m\u001b[35m/^Practice/\u001b[39m})\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByLabel(\u001b[32m'Practice scenario'\u001b[39m)\u001b[33m.\u001b[39mselectOption(\u001b[32m'uber'\u001b[39m)\u001b[33m;\u001b[39m\u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'button'\u001b[39m\u001b[33m,\u001b[39m{name\u001b[33m:\u001b[39m\u001b[32m'Start selected scenario'\u001b[39m})\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'button'\u001b[39m\u001b[33m,\u001b[39m{name\u001b[33m:\u001b[39m\u001b[32m'LLD · Java contracts'\u001b[39m\u001b[33m,\u001b[39mexact\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m})\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m 41 |\u001b[39m   \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByLabel(\u001b[32m'Invariant and concurrency'\u001b[39m\u001b[33m,\u001b[39m{exact\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m}))\u001b[33m.\u001b[39mtoHaveValue(\u001b[35m/atomic conditional/\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 42 |\u001b[39m })\u001b[33m;\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\tests\\system-design.spec.ts",
+                        "column": 75,
+                        "line": 39
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveValue\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByLabel('Invariant and concurrency', { exact: true })\nExpected pattern: \u001b[32m/atomic conditional/\u001b[39m\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toHaveValue\" getByLabel('Invariant and concurrency', { exact: true }) with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByLabel('Invariant and concurrency', { exact: true })\u001b[22m\n\n\n  37 |   await page.getByLabel('Practice scenario').selectOption('uber');\n  38 |   await page.getByRole('button',{name:'Start selected scenario'}).click();\n> 39 |   await expect(page.getByLabel('Invariant and concurrency',{exact:true})).toHaveValue(/atomic conditional/);\n     |                                                                           ^\n  40 |   await page.reload();await page.getByRole('button',{name:/^Practice/}).click();await page.getByLabel('Practice scenario').selectOption('uber');await page.getByRole('button',{name:'Start selected scenario'}).click();await page.getByRole('button',{name:'LLD · Java contracts',exact:true}).click();\n  41 |   await expect(page.getByLabel('Invariant and concurrency',{exact:true})).toHaveValue(/atomic conditional/);\n  42 | });\n    at C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\tests\\system-design.spec.ts:39:75"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T01:40:14.371Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\test-results\\system-design-Uber-practic-4a5d0--actionable-honest-feedback-width-1440\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\test-results\\system-design-Uber-practic-4a5d0--actionable-honest-feedback-width-1440\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\tests\\system-design.spec.ts",
+                    "column": 75,
+                    "line": 39
+                  }
+                }
+              ],
+              "status": "unexpected"
+            },
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-1024",
+              "projectName": "width-1024",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 14778,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveValue\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByLabel('Invariant and concurrency', { exact: true })\nExpected pattern: \u001b[32m/atomic conditional/\u001b[39m\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toHaveValue\" getByLabel('Invariant and concurrency', { exact: true }) with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByLabel('Invariant and concurrency', { exact: true })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveValue\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByLabel('Invariant and concurrency', { exact: true })\nExpected pattern: \u001b[32m/atomic conditional/\u001b[39m\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toHaveValue\" getByLabel('Invariant and concurrency', { exact: true }) with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByLabel('Invariant and concurrency', { exact: true })\u001b[22m\n\n    at C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\tests\\system-design.spec.ts:39:75",
+                    "location": {
+                      "file": "C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\tests\\system-design.spec.ts",
+                      "column": 75,
+                      "line": 39
+                    },
+                    "snippet": " \u001b[90m 37 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByLabel(\u001b[32m'Practice scenario'\u001b[39m)\u001b[33m.\u001b[39mselectOption(\u001b[32m'uber'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 38 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'button'\u001b[39m\u001b[33m,\u001b[39m{name\u001b[33m:\u001b[39m\u001b[32m'Start selected scenario'\u001b[39m})\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 39 |\u001b[39m   \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByLabel(\u001b[32m'Invariant and concurrency'\u001b[39m\u001b[33m,\u001b[39m{exact\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m}))\u001b[33m.\u001b[39mtoHaveValue(\u001b[35m/atomic conditional/\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                                           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 40 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mreload()\u001b[33m;\u001b[39m\u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'button'\u001b[39m\u001b[33m,\u001b[39m{name\u001b[33m:\u001b[39m\u001b[35m/^Practice/\u001b[39m})\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByLabel(\u001b[32m'Practice scenario'\u001b[39m)\u001b[33m.\u001b[39mselectOption(\u001b[32m'uber'\u001b[39m)\u001b[33m;\u001b[39m\u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'button'\u001b[39m\u001b[33m,\u001b[39m{name\u001b[33m:\u001b[39m\u001b[32m'Start selected scenario'\u001b[39m})\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'button'\u001b[39m\u001b[33m,\u001b[39m{name\u001b[33m:\u001b[39m\u001b[32m'LLD · Java contracts'\u001b[39m\u001b[33m,\u001b[39mexact\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m})\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m 41 |\u001b[39m   \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByLabel(\u001b[32m'Invariant and concurrency'\u001b[39m\u001b[33m,\u001b[39m{exact\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m}))\u001b[33m.\u001b[39mtoHaveValue(\u001b[35m/atomic conditional/\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 42 |\u001b[39m })\u001b[33m;\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\tests\\system-design.spec.ts",
+                        "column": 75,
+                        "line": 39
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveValue\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByLabel('Invariant and concurrency', { exact: true })\nExpected pattern: \u001b[32m/atomic conditional/\u001b[39m\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toHaveValue\" getByLabel('Invariant and concurrency', { exact: true }) with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByLabel('Invariant and concurrency', { exact: true })\u001b[22m\n\n\n  37 |   await page.getByLabel('Practice scenario').selectOption('uber');\n  38 |   await page.getByRole('button',{name:'Start selected scenario'}).click();\n> 39 |   await expect(page.getByLabel('Invariant and concurrency',{exact:true})).toHaveValue(/atomic conditional/);\n     |                                                                           ^\n  40 |   await page.reload();await page.getByRole('button',{name:/^Practice/}).click();await page.getByLabel('Practice scenario').selectOption('uber');await page.getByRole('button',{name:'Start selected scenario'}).click();await page.getByRole('button',{name:'LLD · Java contracts',exact:true}).click();\n  41 |   await expect(page.getByLabel('Invariant and concurrency',{exact:true})).toHaveValue(/atomic conditional/);\n  42 | });\n    at C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\tests\\system-design.spec.ts:39:75"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T01:40:42.549Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\test-results\\system-design-Uber-practic-4a5d0--actionable-honest-feedback-width-1024\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\test-results\\system-design-Uber-practic-4a5d0--actionable-honest-feedback-width-1024\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\tests\\system-design.spec.ts",
+                    "column": 75,
+                    "line": 39
+                  }
+                }
+              ],
+              "status": "unexpected"
+            },
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-768",
+              "projectName": "width-768",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 14355,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveValue\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByLabel('Invariant and concurrency', { exact: true })\nExpected pattern: \u001b[32m/atomic conditional/\u001b[39m\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toHaveValue\" getByLabel('Invariant and concurrency', { exact: true }) with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByLabel('Invariant and concurrency', { exact: true })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveValue\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByLabel('Invariant and concurrency', { exact: true })\nExpected pattern: \u001b[32m/atomic conditional/\u001b[39m\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toHaveValue\" getByLabel('Invariant and concurrency', { exact: true }) with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByLabel('Invariant and concurrency', { exact: true })\u001b[22m\n\n    at C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\tests\\system-design.spec.ts:39:75",
+                    "location": {
+                      "file": "C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\tests\\system-design.spec.ts",
+                      "column": 75,
+                      "line": 39
+                    },
+                    "snippet": " \u001b[90m 37 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByLabel(\u001b[32m'Practice scenario'\u001b[39m)\u001b[33m.\u001b[39mselectOption(\u001b[32m'uber'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 38 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'button'\u001b[39m\u001b[33m,\u001b[39m{name\u001b[33m:\u001b[39m\u001b[32m'Start selected scenario'\u001b[39m})\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 39 |\u001b[39m   \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByLabel(\u001b[32m'Invariant and concurrency'\u001b[39m\u001b[33m,\u001b[39m{exact\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m}))\u001b[33m.\u001b[39mtoHaveValue(\u001b[35m/atomic conditional/\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                                           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 40 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mreload()\u001b[33m;\u001b[39m\u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'button'\u001b[39m\u001b[33m,\u001b[39m{name\u001b[33m:\u001b[39m\u001b[35m/^Practice/\u001b[39m})\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByLabel(\u001b[32m'Practice scenario'\u001b[39m)\u001b[33m.\u001b[39mselectOption(\u001b[32m'uber'\u001b[39m)\u001b[33m;\u001b[39m\u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'button'\u001b[39m\u001b[33m,\u001b[39m{name\u001b[33m:\u001b[39m\u001b[32m'Start selected scenario'\u001b[39m})\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'button'\u001b[39m\u001b[33m,\u001b[39m{name\u001b[33m:\u001b[39m\u001b[32m'LLD · Java contracts'\u001b[39m\u001b[33m,\u001b[39mexact\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m})\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m 41 |\u001b[39m   \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByLabel(\u001b[32m'Invariant and concurrency'\u001b[39m\u001b[33m,\u001b[39m{exact\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m}))\u001b[33m.\u001b[39mtoHaveValue(\u001b[35m/atomic conditional/\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 42 |\u001b[39m })\u001b[33m;\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\tests\\system-design.spec.ts",
+                        "column": 75,
+                        "line": 39
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveValue\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByLabel('Invariant and concurrency', { exact: true })\nExpected pattern: \u001b[32m/atomic conditional/\u001b[39m\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toHaveValue\" getByLabel('Invariant and concurrency', { exact: true }) with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByLabel('Invariant and concurrency', { exact: true })\u001b[22m\n\n\n  37 |   await page.getByLabel('Practice scenario').selectOption('uber');\n  38 |   await page.getByRole('button',{name:'Start selected scenario'}).click();\n> 39 |   await expect(page.getByLabel('Invariant and concurrency',{exact:true})).toHaveValue(/atomic conditional/);\n     |                                                                           ^\n  40 |   await page.reload();await page.getByRole('button',{name:/^Practice/}).click();await page.getByLabel('Practice scenario').selectOption('uber');await page.getByRole('button',{name:'Start selected scenario'}).click();await page.getByRole('button',{name:'LLD · Java contracts',exact:true}).click();\n  41 |   await expect(page.getByLabel('Invariant and concurrency',{exact:true})).toHaveValue(/atomic conditional/);\n  42 | });\n    at C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\tests\\system-design.spec.ts:39:75"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T01:41:11.664Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\test-results\\system-design-Uber-practic-4a5d0--actionable-honest-feedback-width-768\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\test-results\\system-design-Uber-practic-4a5d0--actionable-honest-feedback-width-768\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\tests\\system-design.spec.ts",
+                    "column": 75,
+                    "line": 39
+                  }
+                }
+              ],
+              "status": "unexpected"
+            },
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-390",
+              "projectName": "width-390",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5695,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T01:41:42.708Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d8160f1742561d8929d6-df2ee6e073599e73a8ef",
+          "file": "system-design.spec.ts",
+          "line": 18,
+          "column": 1
+        },
+        {
+          "title": "both new design views remain accessible and fit the viewport",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-1440",
+              "projectName": "width-1440",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 3042,
+                  "error": {
+                    "message": "ReferenceError: require is not defined",
+                    "stack": "ReferenceError: require is not defined\n    at C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\tests\\system-design.spec.ts:44:26",
+                    "location": {
+                      "file": "C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\tests\\system-design.spec.ts",
+                      "column": 26,
+                      "line": 44
+                    },
+                    "snippet": " \u001b[90m 42 |\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m 43 |\u001b[39m test(\u001b[32m'both new design views remain accessible and fit the viewport'\u001b[39m\u001b[33m,\u001b[39m\u001b[36masync\u001b[39m({page})\u001b[33m=>\u001b[39m{\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 44 |\u001b[39m   \u001b[36mconst\u001b[39m axe\u001b[33m=\u001b[39mreadFileSync(require\u001b[33m.\u001b[39mresolve(\u001b[32m'axe-core/axe.min.js'\u001b[39m)\u001b[33m,\u001b[39m\u001b[32m'utf8'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                          \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 45 |\u001b[39m   \u001b[36mfor\u001b[39m(\u001b[36mconst\u001b[39m track \u001b[36mof\u001b[39m [\u001b[32m'learn-hld'\u001b[39m\u001b[33m,\u001b[39m\u001b[32m'learn-lld'\u001b[39m\u001b[33m,\u001b[39m\u001b[32m'practice-hld'\u001b[39m\u001b[33m,\u001b[39m\u001b[32m'practice-lld'\u001b[39m]) {\n \u001b[90m 46 |\u001b[39m     \u001b[36mif\u001b[39m(track\u001b[33m===\u001b[39m\u001b[32m'learn-lld'\u001b[39m)\u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'button'\u001b[39m\u001b[33m,\u001b[39m{name\u001b[33m:\u001b[39m\u001b[32m'LLD · Java blueprint'\u001b[39m\u001b[33m,\u001b[39mexact\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m})\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m 47 |\u001b[39m     \u001b[36mif\u001b[39m(track\u001b[33m===\u001b[39m\u001b[32m'practice-hld'\u001b[39m)\u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'button'\u001b[39m\u001b[33m,\u001b[39m{name\u001b[33m:\u001b[39m\u001b[35m/^Practice/\u001b[39m})\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\tests\\system-design.spec.ts",
+                        "column": 26,
+                        "line": 44
+                      },
+                      "message": "ReferenceError: require is not defined\n\n  42 | });\n  43 | test('both new design views remain accessible and fit the viewport',async({page})=>{\n> 44 |   const axe=readFileSync(require.resolve('axe-core/axe.min.js'),'utf8');\n     |                          ^\n  45 |   for(const track of ['learn-hld','learn-lld','practice-hld','practice-lld']) {\n  46 |     if(track==='learn-lld')await page.getByRole('button',{name:'LLD · Java blueprint',exact:true}).click();\n  47 |     if(track==='practice-hld')await page.getByRole('button',{name:/^Practice/}).click();\n    at C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\tests\\system-design.spec.ts:44:26"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T01:40:31.800Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\test-results\\system-design-both-new-des-2c3bc-ssible-and-fit-the-viewport-width-1440\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\test-results\\system-design-both-new-des-2c3bc-ssible-and-fit-the-viewport-width-1440\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\tests\\system-design.spec.ts",
+                    "column": 26,
+                    "line": 44
+                  }
+                }
+              ],
+              "status": "unexpected"
+            },
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-1024",
+              "projectName": "width-1024",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 3078,
+                  "error": {
+                    "message": "ReferenceError: require is not defined",
+                    "stack": "ReferenceError: require is not defined\n    at C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\tests\\system-design.spec.ts:44:26",
+                    "location": {
+                      "file": "C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\tests\\system-design.spec.ts",
+                      "column": 26,
+                      "line": 44
+                    },
+                    "snippet": " \u001b[90m 42 |\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m 43 |\u001b[39m test(\u001b[32m'both new design views remain accessible and fit the viewport'\u001b[39m\u001b[33m,\u001b[39m\u001b[36masync\u001b[39m({page})\u001b[33m=>\u001b[39m{\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 44 |\u001b[39m   \u001b[36mconst\u001b[39m axe\u001b[33m=\u001b[39mreadFileSync(require\u001b[33m.\u001b[39mresolve(\u001b[32m'axe-core/axe.min.js'\u001b[39m)\u001b[33m,\u001b[39m\u001b[32m'utf8'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                          \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 45 |\u001b[39m   \u001b[36mfor\u001b[39m(\u001b[36mconst\u001b[39m track \u001b[36mof\u001b[39m [\u001b[32m'learn-hld'\u001b[39m\u001b[33m,\u001b[39m\u001b[32m'learn-lld'\u001b[39m\u001b[33m,\u001b[39m\u001b[32m'practice-hld'\u001b[39m\u001b[33m,\u001b[39m\u001b[32m'practice-lld'\u001b[39m]) {\n \u001b[90m 46 |\u001b[39m     \u001b[36mif\u001b[39m(track\u001b[33m===\u001b[39m\u001b[32m'learn-lld'\u001b[39m)\u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'button'\u001b[39m\u001b[33m,\u001b[39m{name\u001b[33m:\u001b[39m\u001b[32m'LLD · Java blueprint'\u001b[39m\u001b[33m,\u001b[39mexact\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m})\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m 47 |\u001b[39m     \u001b[36mif\u001b[39m(track\u001b[33m===\u001b[39m\u001b[32m'practice-hld'\u001b[39m)\u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'button'\u001b[39m\u001b[33m,\u001b[39m{name\u001b[33m:\u001b[39m\u001b[35m/^Practice/\u001b[39m})\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\tests\\system-design.spec.ts",
+                        "column": 26,
+                        "line": 44
+                      },
+                      "message": "ReferenceError: require is not defined\n\n  42 | });\n  43 | test('both new design views remain accessible and fit the viewport',async({page})=>{\n> 44 |   const axe=readFileSync(require.resolve('axe-core/axe.min.js'),'utf8');\n     |                          ^\n  45 |   for(const track of ['learn-hld','learn-lld','practice-hld','practice-lld']) {\n  46 |     if(track==='learn-lld')await page.getByRole('button',{name:'LLD · Java blueprint',exact:true}).click();\n  47 |     if(track==='practice-hld')await page.getByRole('button',{name:/^Practice/}).click();\n    at C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\tests\\system-design.spec.ts:44:26"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T01:41:00.307Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\test-results\\system-design-both-new-des-2c3bc-ssible-and-fit-the-viewport-width-1024\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\test-results\\system-design-both-new-des-2c3bc-ssible-and-fit-the-viewport-width-1024\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\tests\\system-design.spec.ts",
+                    "column": 26,
+                    "line": 44
+                  }
+                }
+              ],
+              "status": "unexpected"
+            },
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-768",
+              "projectName": "width-768",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 3946,
+                  "error": {
+                    "message": "ReferenceError: require is not defined",
+                    "stack": "ReferenceError: require is not defined\n    at C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\tests\\system-design.spec.ts:44:26",
+                    "location": {
+                      "file": "C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\tests\\system-design.spec.ts",
+                      "column": 26,
+                      "line": 44
+                    },
+                    "snippet": " \u001b[90m 42 |\u001b[39m   \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByLabel(\u001b[32m'Invariant and concurrency'\u001b[39m\u001b[33m,\u001b[39m{exact\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m}))\u001b[33m.\u001b[39mtoHaveValue(\u001b[35m/atomic conditional/\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 43 |\u001b[39m })\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 44 |\u001b[39m test(\u001b[32m'both new design views remain accessible and fit the viewport'\u001b[39m\u001b[33m,\u001b[39m\u001b[36masync\u001b[39m({page})\u001b[33m=>\u001b[39m{\n \u001b[90m    |\u001b[39m                          \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 45 |\u001b[39m   \u001b[36mconst\u001b[39m axe\u001b[33m=\u001b[39mreadFileSync(resolve(\u001b[32m'node_modules/axe-core/axe.min.js'\u001b[39m)\u001b[33m,\u001b[39m\u001b[32m'utf8'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 46 |\u001b[39m   \u001b[36mfor\u001b[39m(\u001b[36mconst\u001b[39m track \u001b[36mof\u001b[39m [\u001b[32m'learn-hld'\u001b[39m\u001b[33m,\u001b[39m\u001b[32m'learn-lld'\u001b[39m\u001b[33m,\u001b[39m\u001b[32m'practice-hld'\u001b[39m\u001b[33m,\u001b[39m\u001b[32m'practice-lld'\u001b[39m]) {\n \u001b[90m 47 |\u001b[39m     \u001b[36mif\u001b[39m(track\u001b[33m===\u001b[39m\u001b[32m'learn-lld'\u001b[39m)\u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'button'\u001b[39m\u001b[33m,\u001b[39m{name\u001b[33m:\u001b[39m\u001b[32m'LLD · Java blueprint'\u001b[39m\u001b[33m,\u001b[39mexact\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m})\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\tests\\system-design.spec.ts",
+                        "column": 26,
+                        "line": 44
+                      },
+                      "message": "ReferenceError: require is not defined\n\n  42 |   await expect(page.getByLabel('Invariant and concurrency',{exact:true})).toHaveValue(/atomic conditional/);\n  43 | });\n> 44 | test('both new design views remain accessible and fit the viewport',async({page})=>{\n     |                          ^\n  45 |   const axe=readFileSync(resolve('node_modules/axe-core/axe.min.js'),'utf8');\n  46 |   for(const track of ['learn-hld','learn-lld','practice-hld','practice-lld']) {\n  47 |     if(track==='learn-lld')await page.getByRole('button',{name:'LLD · Java blueprint',exact:true}).click();\n    at C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\tests\\system-design.spec.ts:44:26"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T01:41:28.999Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\test-results\\system-design-both-new-des-2c3bc-ssible-and-fit-the-viewport-width-768\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\test-results\\system-design-both-new-des-2c3bc-ssible-and-fit-the-viewport-width-768\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\tests\\system-design.spec.ts",
+                    "column": 26,
+                    "line": 44
+                  }
+                }
+              ],
+              "status": "unexpected"
+            },
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-390",
+              "projectName": "width-390",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 2204,
+                  "error": {
+                    "message": "ReferenceError: require is not defined",
+                    "stack": "ReferenceError: require is not defined\n    at C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\tests\\system-design.spec.ts:44:26",
+                    "location": {
+                      "file": "C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\tests\\system-design.spec.ts",
+                      "column": 26,
+                      "line": 44
+                    },
+                    "snippet": " \u001b[90m 42 |\u001b[39m   \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByLabel(\u001b[32m'Invariant and concurrency'\u001b[39m\u001b[33m,\u001b[39m{exact\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m}))\u001b[33m.\u001b[39mtoHaveValue(\u001b[35m/atomic conditional/\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 43 |\u001b[39m })\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 44 |\u001b[39m test(\u001b[32m'both new design views remain accessible and fit the viewport'\u001b[39m\u001b[33m,\u001b[39m\u001b[36masync\u001b[39m({page})\u001b[33m=>\u001b[39m{\n \u001b[90m    |\u001b[39m                          \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 45 |\u001b[39m   \u001b[36mconst\u001b[39m axe\u001b[33m=\u001b[39mreadFileSync(resolve(\u001b[32m'node_modules/axe-core/axe.min.js'\u001b[39m)\u001b[33m,\u001b[39m\u001b[32m'utf8'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 46 |\u001b[39m   \u001b[36mfor\u001b[39m(\u001b[36mconst\u001b[39m track \u001b[36mof\u001b[39m [\u001b[32m'learn-hld'\u001b[39m\u001b[33m,\u001b[39m\u001b[32m'learn-lld'\u001b[39m\u001b[33m,\u001b[39m\u001b[32m'practice-hld'\u001b[39m\u001b[33m,\u001b[39m\u001b[32m'practice-lld'\u001b[39m]) {\n \u001b[90m 47 |\u001b[39m     \u001b[36mif\u001b[39m(track\u001b[33m===\u001b[39m\u001b[32m'learn-lld'\u001b[39m)\u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'button'\u001b[39m\u001b[33m,\u001b[39m{name\u001b[33m:\u001b[39m\u001b[32m'LLD · Java blueprint'\u001b[39m\u001b[33m,\u001b[39mexact\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m})\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\tests\\system-design.spec.ts",
+                        "column": 26,
+                        "line": 44
+                      },
+                      "message": "ReferenceError: require is not defined\n\n  42 |   await expect(page.getByLabel('Invariant and concurrency',{exact:true})).toHaveValue(/atomic conditional/);\n  43 | });\n> 44 | test('both new design views remain accessible and fit the viewport',async({page})=>{\n     |                          ^\n  45 |   const axe=readFileSync(resolve('node_modules/axe-core/axe.min.js'),'utf8');\n  46 |   for(const track of ['learn-hld','learn-lld','practice-hld','practice-lld']) {\n  47 |     if(track==='learn-lld')await page.getByRole('button',{name:'LLD · Java blueprint',exact:true}).click();\n    at C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\tests\\system-design.spec.ts:44:26"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T01:41:48.457Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\test-results\\system-design-both-new-des-2c3bc-ssible-and-fit-the-viewport-width-390\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\test-results\\system-design-both-new-des-2c3bc-ssible-and-fit-the-viewport-width-390\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\tests\\system-design.spec.ts",
+                    "column": 26,
+                    "line": 44
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "d8160f1742561d8929d6-0c158ace2280dd3374c8",
+          "file": "system-design.spec.ts",
+          "line": 43,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-19T01:40:00.996Z",
+    "duration": 111461.251,
+    "expected": 5,
+    "skipped": 0,
+    "unexpected": 7,
+    "flaky": 0
+  }
+}

@@ -4,11 +4,11 @@ Learn system design by changing an architecture, running a model, and explaining
 
 ArchArena is a planned portfolio application for Java backend developers preparing for system design interviews. The first release combines interactive Learn lessons with a basic Practice workflow. Both use the same server-side simulation engine. Design Studio is a later milestone.
 
-**Current:** UI Step 2 **Expedition Console foundations** is complete locally: warm-dark tokens, local fonts, shared components and frontend tests. Next is Step 3 hero layout after `next`. Read [prompt.md](prompt.md) and [docs/STATUS.md](docs/STATUS.md) every session. [Step 2 evidence](docs/evidence/step-02-verification.md) distinguishes fixtures, measurements and unverified work.
+**Current:** Distinct HLD/LLD learning and practice views, forty original exercise briefs, five existing simulation labs, twenty company-inspired scenarios and a rule-based design coach. Full theory lessons, domain correctness and live AI remain pending. Read [prompt.md](prompt.md), [docs/STATUS.md](docs/STATUS.md), [the walkthrough](docs/learning-practice.md) and [verification](docs/evidence/system-design-verification.md). [Step 2 evidence](docs/evidence/step-02-verification.md) is historical.
 
 ## Your agreed direction
 
-- Frontend: React with TypeScript. Vite is the proposed build tool; React Flow and a chart library will be selected and version-checked during implementation.
+- Frontend: React with TypeScript, Vite, React Flow and Recharts are implemented locally.
 - Backend direction: Java 21, Spring Boot 3 modular monolith, separate bounded simulation worker, PostgreSQL with Flyway.
 - Work budget: interpreted as **9 hours per week**. Confirm this interpretation if “9” meant weeks.
 - Launch horizon: **24 weeks, 216 hours**, a planning assumption rather than a deadline you supplied. Includes 27 hours of contingency; the complete original product is substantially larger.

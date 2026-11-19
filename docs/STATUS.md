@@ -1,23 +1,21 @@
 # ArchArena status
 
-Updated: 2026-11-19, Asia/Calcutta. Read with `../prompt.md` at every session start.
+Updated: 2026-11-19, Asia/Calcutta. Read with `../prompt.md`.
 
-**Current:** T2 UI redesign — Step 2 Expedition Console foundations complete locally; wait for `next` before Step 3. T1 — five unpublished topic-note drafts remain unverified.
+**Current:** System-design learning/practice slice complete locally; latest direct request supersedes old Step 3-only sequencing. Expedition Console Step 2 remains complete.
 
-**Done:** Prototype + Phase 0/HLD/LLD docs; selected B warm-dark tokens, self-hosted Sora/IBM Plex Mono, base components, honest metric formatting, persistent model notice, restored mobile actions, frontend test foundations and CI configuration.
+**Implemented:** Distinct HLD system-map and LLD Java-blueprint views; 40 original exercise briefs (24 HLD/16 LLD); five existing labs; twenty company-inspired practice scenarios including Uber; per-scenario browser-local worksheets; rule-based missing-decision/topology/current-metric coach.
 
-**Verified:** 79 frontend tests, 32 four-width browser tests, 12 visual baselines, zero axe violations in 16 scanned states, 20 Java tests on H2, 22 frozen backend files unchanged. Build: JS 926.02 kB/285.71 kB gzip; fonts 48.36 kB. Full npm audit Nov 19: zero findings. Evidence: `evidence/step-02-verification.md`.
+**Verification:** 86 frontend tests; full 44-case four-width browser pass; 24-case separation/visual follow-up passes with 12 baselines matching and 32 zero-violation axe scans. Final 8 filter-reset/accessibility checks pass. Build passes (JS 952.80 kB/295.31 kB gzip); 22 backend files unchanged. Prior 20 Java/H2 tests not rerun for frontend-only work. See `evidence/system-design-verification.md`.
 
-**Not verified:** real PostgreSQL/Compose, real-backend browser flow (browser data are fixtures), full manual/all-state accessibility, other browsers, 300-node animation, Lighthouse, remote CI, restore and AWS cost. No public deployment/live AI.
+**Boundaries:** Exercise briefs are not finished theory lessons. Five book notes remain unverified/unpublished. Company scenarios are original exercises, not actual company blueprints/rankings. AI disabled; supplied reasoning requires human review.
 
-**Open:** mobile fitted graph text is small; hero layout/animation and remaining UX are later steps; large-chunk warning; notes need owner verification. Nov 18 audit findings and approval interruption are historical; resumed tests and Nov 19 audit passed. Local Git only, no push.
+**Simulation:** Working bounded analytic/event prototype, not complete. No geospatial matching/assignment/payment validation, retries, cascades, autoscaling delay, replication lag or validated animation performance. Backend/API unchanged.
 
-**Decisions:** user chose B — Expedition Console. Backend/API frozen. Playback will use global samples; node metrics/p95/rules stay whole-run. Future particles illustrative, 300 nodes UI-only/engine cap 30, XP local practice only. Test-only HTTP attachment server: 5174; normal preview: 5173.
+**Storage:** Graph saves/exports exclude worksheet/scenario metadata. Worksheets are local to the browser, with visible memory fallback on storage failure. Save a graph before starting a new scenario.
 
-**Books:** targeted notes only, no PDFs/assets published. Supplied DDIA second-edition file is an incomplete early release; absent chapters are not sources. Owner must review before publishing original lessons.
+**Open:** Complete theory content needs source notes and owner review; mobile graph readability, hero/animation, large bundle, real PostgreSQL, real-backend browser flow, remote CI and AWS remain unverified/pending. No publication/push/cloud work.
 
-**Next single step:** on `next`, T2 Step 3 — rebuild the Learn hero layout/static diagram and readable mobile inspection first, then bounded illustrative Canvas2D traffic. Do not add scrubber/XP/command palette or change backend/API in that step.
+**Next:** Expand reviewed learning explanations and deeper domain-aware practice in separately bounded slices. Current slice verified locally; see Git history for its commit.
 
-**Open questions:** guide persona name later; owner review of notes; confirm 9 hours/week and provisional 24-week plan before scheduling. Account plan/credit expiry required before cloud work.
-
-Details: `ui/design-brief.md`, `ui/repo-audit.md`, `knowledge/README.md`, `session-log.md`, `../ISSUES.md`.
+Details: `learning-practice.md`, `knowledge/missing-from-knowledge-pack.md`, `session-log.md`, `../ISSUES.md`.

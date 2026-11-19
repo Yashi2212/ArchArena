@@ -99,3 +99,11 @@ The token tests check contrast mathematically against the real CSS values and ca
 ### What does the keyboard export test establish?
 
 It uses real keyboard events to enter a prediction, run the UI fixture, activate its checkpoint and save a Markdown HTTP attachment. The earlier intercepted download was canceled in Edge, so an isolated local test server now serves that fixture over HTTP. No security flags are disabled. This proves the presentation flow under that fixture; Java API and engine behavior have their own tests.
+
+## HLD/LLD learning and practice slice
+
+**Why separate HLD and LLD views instead of duplicating the workbench?** HLD asks about service/data boundaries and traffic, while LLD asks about contracts, responsibilities and invariants. Separate presentations share scenario context and keep the existing graph engine unchanged; LLD hides irrelevant generic queueing controls.
+
+**How do you avoid a misleading automated design grade?** The deterministic coach flags missing worksheet sections and model topology restrictions. Supplied text remains manual review. It cites only a result matching current inputs and never interprets good latency as proof of correct driver assignment or payment handling. Live AI is disabled.
+
+**What would you change when practice artifacts need reliable cross-device persistence?** Replace browser-only worksheets with owner-scoped versioned server artifacts and explicit scenario ids. Add authorization, conflict and export tests, and migrate existing drafts deliberately. Current backend saves contain only graphs, and the UI states that boundary.

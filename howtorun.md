@@ -80,3 +80,11 @@ No AWS account or LLM key is needed for local development. Never put credentials
 ## Troubleshooting principles
 
 If Java reports an unsupported release, select Java 21 explicitly rather than lowering the target silently. If dependency downloads fail, report that failure and use verified cached tools where possible; do not claim a build passed. If Docker is unavailable, engine/unit tests may still run, but real PostgreSQL integration and full-stack startup remain unverified. AWS deployment requires a separate eligibility/cost gate.
+
+## New system-design views
+
+With the normal local frontend/API/worker running, open Learn → System design learning path. Switch HLD/LLD and filter Foundation/Intermediate/Advanced. Only five topics have working simulation lab links; other entries are original exercises with theory explicitly pending review.
+
+Open Practice → select Uber → Start selected scenario (save your current graph first). Complete HLD assumptions and model a bounded request flow; switch to LLD for Java contracts/invariants/tests. Review my design flags missing decisions and reports current model evidence without pretending to validate matching or Java code. AI is disabled. Worksheets are browser-local, whereas backend saves and exports preserve only the existing graph/model.
+
+Validation commands from `frontend`: `npm.cmd test`, `npm.cmd run build`, `npm.cmd run test:e2e`. New focused browser checks: `npm.cmd run test:e2e -- tests/system-design.spec.ts`. See [scope and walkthrough](docs/learning-practice.md).

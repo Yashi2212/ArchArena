@@ -24,5 +24,5 @@ export default defineConfig({
     reuseExistingServer: !process.env.CI,
     timeout: 30000,
   },
-  reporter: [['list'],['json',{outputFile:'../docs/evidence/step02-browser-results.json'}]],
+  reporter: [['list'],['json',{outputFile:'../docs/evidence/system-design-browser-results.json'}]],
 });

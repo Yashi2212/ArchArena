@@ -25,8 +25,8 @@ test('Learn foundation screenshot and responsive access',async({page},info)=>{
   expect(layout.bodyColor).toBe('rgb(16, 20, 17)');
   expect(external).toEqual([]);
   await expect(page).toHaveScreenshot('learn-foundations.png',{fullPage:true});
-  if(['width-1440','width-390'].includes(info.project.name))await page.screenshot({path:resolve(`../docs/evidence/step02-${info.project.name}.png`),fullPage:true});
-  if(info.project.name==='width-1440')await page.screenshot({path:resolve('../docs/evidence/step02-desktop-preview.png')});
+  if(['width-1440','width-390'].includes(info.project.name))await page.screenshot({path:resolve(`../docs/evidence/system-design-${info.project.name}.png`),fullPage:true});
+  if(info.project.name==='width-1440')await page.screenshot({path:resolve('../docs/evidence/system-design-desktop-preview.png')});
 });
 
 test('all five lessons remain reachable',async({page})=>{

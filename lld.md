@@ -103,3 +103,13 @@ Use Strategy for analytic/event engines and optional feedback providers. Use exp
 ## Phase 2 verification and exit
 
 Validate migrations on real PostgreSQL, run owner-isolation/idempotency/conflict tests and align OpenAPI with controllers during implementation. The ER/class diagrams do not prove these properties. Exit from design means the data and lifecycle contracts are defined; runtime risks remain open until those checks run. Interview explanations and limitations are maintained in interviewquestions.md.
+
+## Frontend design-artifact slice (November 19)
+
+- `Topic`: id, HLD/LLD track, level, task, challenge question and optional existing lab id. Availability is explicit; no published theory flag is inferred.
+- `Scenario`: id, company inspiration, mission, requirements, invariant, suggested operations and deep-dive prompt; these are original exercises, not company infrastructure facts.
+- `Worksheet`: eight bounded strings keyed by scope, scale, api, data, invariant, failure, tradeoff and tests. Restore accepts only known scenario/field keys and string values, capped at 4,000 characters each.
+- `ReviewItem`: stable id, missing/inspect/evidence state, plain text. `reviewDesign` is a pure function. It checks missing inputs, client/reachability/cycles/branching/terminal constraints, and quotes supplied current-run metrics. It does not grade Java, domain correctness or prose semantics.
+- `PracticeGuide`: staged scenario selection, separate HLD/LLD sections, per-scenario local drafts, visible storage-failure fallback. Feedback recomputes against current graph/result on render. No HTML injection path or remote AI request.
+
+Backend DTOs, persistence and grading endpoints are unchanged. Backend saved graph/version and Markdown export do not contain the worksheet. See [the implementation decision](docs/adr/ui-003-system-design-tracks.md).
