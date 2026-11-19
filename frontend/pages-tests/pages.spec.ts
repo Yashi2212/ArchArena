@@ -1,0 +1,20 @@
+import { test,expect } from '@playwright/test';
+import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
+test('static project site loads media and retains honest local workspaces',async({page})=>{
+ const backendCalls:string[]=[],errors:string[]=[];page.on('request',r=>{if(new URL(r.url()).pathname.startsWith('/api'))backendCalls.push(r.url());});page.on('pageerror',e=>errors.push(e.message));
+ await page.goto('./');await expect(page.getByLabel('GitHub Pages preview',{exact:true})).toBeVisible();
+ await expect(page.getByRole('heading',{name:'System design library.'})).toBeVisible();
+ const video=page.getByLabel('How ArchArena works',{exact:true});await expect.poll(()=>video.evaluate((v:HTMLVideoElement)=>Number.isFinite(v.duration)?v.duration:0)).toBeCloseTo(72,0);
+ await expect(video.locator('source')).toHaveAttribute('src','/ArchArena/media/archarena-intro.mp4');
+ await video.evaluate((v:HTMLVideoElement)=>{v.muted=true;return v.play();});await expect.poll(()=>video.evaluate((v:HTMLVideoElement)=>v.currentTime)).toBeGreaterThan(.1);await video.evaluate((v:HTMLVideoElement)=>v.pause());
+ await page.getByRole('button',{name:'Companies',exact:true}).click();await page.getByRole('button',{name:'Open Uber playground →'}).click();
+ await expect(page.getByRole('heading',{name:'Design a ride-hailing service.'})).toBeVisible();await expect(page.getByRole('button',{name:'Run experiment',exact:true})).toBeDisabled();
+ await page.getByLabel('Scope and requirements',{exact:true}).fill('One city and exclusive driver assignment.');await page.getByRole('button',{name:'Review my design',exact:true}).click();await expect(page.getByLabel('Rule-based design feedback')).toContainText('manual review');
+ await page.getByLabel('Add architecture component').selectOption('CACHE');await expect(page.locator('.pill').filter({hasText:'5 nodes'})).toBeVisible();
+ await page.getByRole('button',{name:/^Design Studio/}).click();await page.getByLabel('Requirements decisions').fill('One city; one active trip per driver.');
+ const download=page.waitForEvent('download');await page.getByRole('button',{name:'Export design bundle ↓'}).click();const file=await download;expect(JSON.parse(readFileSync((await file.path())!,'utf8')).artifacts.requirements).toContain('one active trip');
+ await page.reload();await page.getByRole('button',{name:/^Design Studio/}).click();await expect(page.getByLabel('Requirements decisions')).toHaveValue('One city; one active trip per driver.');
+ await page.addScriptTag({path:resolve('node_modules/axe-core/axe.min.js')});const scan=await page.evaluate(async()=>await (window as unknown as {axe:{run:()=>Promise<{violations:unknown[]}>}}).axe.run());expect(scan.violations).toEqual([]);
+ expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);expect(backendCalls).toEqual([]);expect(errors).toEqual([]);
+});

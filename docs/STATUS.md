@@ -2,7 +2,7 @@
 
 Updated: 2026-11-19, Asia/Calcutta. Read `../prompt.md` section 25.
 
-**Current:** Latest product slice complete locally: read-only Learn, editable Practice, unlocked artifact Studio, introduction video and original-prompt audit. Public deployment is NOT READY.
+**Current:** Latest product slice complete locally: read-only Learn, editable Practice, unlocked artifact Studio, introduction video and original-prompt audit. Full public Java backend is NOT READY. Static GitHub preview publication is now explicitly authorized.
 
 **Learn:** 24 HLD + 16 LLD original readings with Story/Simple/Pro, flows/examples/trade-offs/references; twenty proposed company studies. Uber separates dated documented context from proposed ownership/trip design. Local review edition; editorial verification pending. Five book-source drafts remain unpublished.
 
@@ -24,4 +24,4 @@ Updated: 2026-11-19, Asia/Calcutta. Read `../prompt.md` section 25.
 
 **Preview:** Normal API/worker/React healthy at loopback 8080/5173. Isolated 5174 test server stopped after checks; normal preview retained.
 
-**Next:** Public identity/session design and PostgreSQL isolation before hosting; continue editorial review separately. Detail: PHASE-AUDIT.md, evidence/library-studio-verification.md, ../ISSUES.md, session-log.md.
+**Next:** Publish the verified static preview to Yashi2212/ArchArena, record the observed URL/CI, then public identity/session design and PostgreSQL isolation before backend hosting. AWS deferred. Private documents remain outside Git. Detail: PHASE-AUDIT.md, evidence/library-studio-verification.md, ../ISSUES.md, session-log.md.

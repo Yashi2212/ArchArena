@@ -13,6 +13,7 @@ export const symbols: Record<NodeType, string> = { CLIENT: '↗', LOAD_BALANCER:
 export const names: Record<NodeType, string> = { CLIENT: 'Client', LOAD_BALANCER: 'Load balancer', SERVICE: 'Java service', CACHE: 'Read cache', DATABASE: 'Database', QUEUE: 'Queue + workers', RATE_LIMITER: 'Rate limiter', CDN:'CDN edge', EXTERNAL_API:'External API (modeled)' };
 
 export async function api<T>(path: string, options: RequestInit = {}): Promise<T> {
+  if(import.meta.env.VITE_STATIC_DEMO==='true')throw new Error('Java backend unavailable on GitHub Pages. Run the full project locally for simulation and server saves.');
   const response = await fetch(`/api${path}`, { ...options, headers: { 'Content-Type': 'application/json', ...options.headers } });
   if (!response.ok) {
     const problem = await response.json().catch(() => ({ detail: `Request failed (${response.status})` }));

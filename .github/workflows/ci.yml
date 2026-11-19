@@ -72,5 +72,5 @@ jobs:
           name: browser-regression-evidence
           path: |
             frontend/test-results
-            docs/evidence/engine-v2-browser-results.json
-  # No cloud deployments, AWS credentials or paid services are enabled by this workflow.
+            docs/evidence/library-studio-browser-results.json
+  # This quality workflow creates no cloud resources. Static Pages publication is separate.

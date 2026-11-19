@@ -1,0 +1,227 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config",
+      "playwright.pages.config.ts"
+    ],
+    "configFile": "C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\playwright.pages.config.ts",
+    "rootDir": "C:/Users/abhis/OneDrive/Documents/ChatGPT/Placementprep/ArchArena/frontend/pages-tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/abhis/OneDrive/Documents/ChatGPT/Placementprep/ArchArena/frontend/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "width-1440",
+        "name": "width-1440",
+        "testDir": "C:/Users/abhis/OneDrive/Documents/ChatGPT/Placementprep/ArchArena/frontend/pages-tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "C:/Users/abhis/OneDrive/Documents/ChatGPT/Placementprep/ArchArena/frontend/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "width-390",
+        "name": "width-390",
+        "testDir": "C:/Users/abhis/OneDrive/Documents/ChatGPT/Placementprep/ArchArena/frontend/pages-tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "width-1440",
+        "testDir": "C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\pages-tests",
+        "snapshotDir": "C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\pages-tests",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 60000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5175/ArchArena/",
+          "browserName": "chromium",
+          "channel": "msedge",
+          "headless": true,
+          "reducedMotion": "reduce",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "width-1440"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "width-390",
+        "testDir": "C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\pages-tests",
+        "snapshotDir": "C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\pages-tests",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 60000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5175/ArchArena/",
+          "browserName": "chromium",
+          "channel": "msedge",
+          "headless": true,
+          "reducedMotion": "reduce",
+          "viewport": {
+            "width": 390,
+            "height": 1000
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "width-390"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "../docs/evidence/pages-browser-results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.65.1",
+    "workers": 1,
+    "webServer": {
+      "command": "node ../scripts/serve-pages.mjs",
+      "url": "http://127.0.0.1:5175/ArchArena/",
+      "reuseExistingServer": true,
+      "timeout": 30000
+    }
+  },
+  "suites": [
+    {
+      "title": "pages.spec.ts",
+      "file": "pages.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "static project site loads media and retains honest local workspaces",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-1440",
+              "projectName": "width-1440",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4985,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T14:54:39.362Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            },
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-390",
+              "projectName": "width-390",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4867,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T14:54:46.527Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9bb6bb2ed574bebb3c58-8d2904507fdac2d133b4",
+          "file": "pages.spec.ts",
+          "line": 4,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-19T14:54:38.061Z",
+    "duration": 14693.947,
+    "expected": 2,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

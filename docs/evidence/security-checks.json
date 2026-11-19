@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-19T13:01:55.955383+00:00",
+  "timestamp": "2026-11-19T14:57:07.070017+00:00",
   "automatedChecks": [
     {
       "check": "JUnit evidence: sqlPayloadRemainsDataAndDoesNotEscapeOwnerScope",

@@ -1,59 +1,79 @@
 # ArchArena
 
-Learn system design by changing an architecture, running a model, and explaining what happened.
+A system-design learning and practice platform for Java backend developers. Study an idea, draw a request path, predict a bottleneck, and use a bounded Java model to investigate the trade-off.
 
-ArchArena is a local portfolio application for Java backend developers preparing for system design interviews. Learn is a read-only reference library; Practice is the editable graph/worksheet playground backed by a bounded Java simulation engine. Design Studio is now an unlocked workspace for six design artifacts.
+**Live static preview:** https://yashi2212.github.io/ArchArena/
+**Source:** https://github.com/Yashi2212/ArchArena
 
-**Current:** Bounded engine v2 on Java 21 / Boot 4.0.9, sampled replay, forty original HLD/LLD readings, twenty company-inspired reference studies, five concept experiments in Practice, local Studio bundle export and a 72-second captioned introduction video. The reference edition is editorial-review-pending; company proposals are not verified internal architectures. AI and domain-correctness grading remain unimplemented. Public deployment is **not ready**: see the [original-prompt phase audit](docs/PHASE-AUDIT.md), [twenty security checks](docs/security-review.md), [current status](docs/STATUS.md) and [latest verification](docs/evidence/library-studio-verification.md). Earlier reports remain historical evidence.
+The GitHub Pages preview provides the learning library, tutorial, local architecture editor, scenario worksheets and Design Studio exports. GitHub Pages cannot host Spring Boot: server-side simulations, checkpoints and server saves run locally for now. The preview clearly labels this and never supplies fabricated run metrics. AWS deployment is deferred.
 
-## Your agreed direction
+## What you can explore
 
-- Frontend: React with TypeScript, Vite, React Flow and Recharts are implemented locally.
-- Backend direction: Java 21, Spring Boot 4 modular monolith, separate bounded simulation worker, PostgreSQL with Flyway.
-- Work budget: interpreted as **9 hours per week**. Confirm this interpretation if “9” meant weeks.
-- Launch horizon: **24 weeks, 216 hours**, a planning assumption rather than a deadline you supplied. Includes 27 hours of contingency; the complete original product is substantially larger.
-- Audience: Java developers preparing for system design interviews.
-- Release: personal portfolio demo, Learn plus basic Practice. No public registrations.
-- AWS: account created after July 15, 2025. Exact creation date, current plan, remaining credits and expiry are unknown. Existing account eligibility does not restart when this project deploys.
-- Target new cloud spend: $0/month. Local operation is the default and remains the launch fallback.
+- **Learn:** 24 HLD and 16 LLD topics, each with Story/Simple/Pro explanations, an original flow, worked example, trade-off, common mistake and references.
+- **Company studies:** twenty original interview reference proposals, including an Uber-inspired ride-hailing study covering location freshness, candidate discovery, exclusive assignment and trip lifecycle. These are not verified company blueprints or endorsements.
+- **Practice:** editable graphs and scenario-specific HLD/LLD worksheets, capacity assumptions, predictions and rule-based coaching. Five concept labs cover load balancing, caching, replication, queues and rate limiting.
+- **Java engine:** analytic estimates and a seeded discrete-event simulator with nine component types, bounded retries/deadlines, circuit breakers, cascading pressure, delayed scale-out, synthetic replica lag and failure injection.
+- **Replay:** sampled node history, bounded request traces, modeled metrics, baseline comparison and Markdown experiment export when the backend is running.
+- **Design Studio:** six browser-local artifacts: requirements, capacity, HLD, API, data model and LLD. Capture a detached Practice graph snapshot and export a JSON bundle.
+- **Tutorial:** an original 72-second introduction with synthetic narration, captions, chapter controls and transcript.
 
-## Read the Phase 0 deliverables
-
-1. [Product requirements and acceptance criteria](docs/phase-0/product-requirements.md)
-2. [Capacity assumptions and cost comparison](docs/phase-0/capacity-and-cost.md)
-3. [Competitor evidence and honest positioning](docs/phase-0/competitors.md)
-4. [Week-by-week delivery plan](docs/phase-0/roadmap.md)
-5. [Architecture decision records](docs/adr/phase-0-decisions.md)
-6. [Risks and evidence register](ISSUES.md)
-7. [Verification, exit checklist and interview answers](docs/phase-0/review.md)
-
-Machine-readable planning inputs live in [planning.json](docs/phase-0/planning.json). Validate their arithmetic and document references using Python 3:
-
-```powershell
-python scripts/validate_phase0.py
-```
-
-This validates the Phase 0 plan only. Current Windows prototype commands are in [howtorun.md](howtorun.md). Compose/PostgreSQL and remote CI remain unverified. No AWS resources were created; AI is disabled.
-
-## Product loop
+## Architecture
 
 ```mermaid
 flowchart LR
-    A[Predict the bottleneck] --> B[Edit React canvas or lesson controls]
-    B --> C[Submit graph and seed to shared backend model]
-    C --> D[Inspect modeled metrics and animated flow]
-    D --> E[Explain a trade off]
-    E --> A
-    D --> F[Practice scorecard citing the run]
+  Browser[React learning and design workbench] --> API[Spring Boot REST API]
+  API --> DB[(SQL data and durable job queue)]
+  Worker[Separate bounded Java worker] --> DB
+  API --> Result[Versioned model results and exports]
+  Pages[GitHub Pages static preview] --> Local[Browser-local graphs and worksheets]
 ```
 
-The diagram is a product concept, not the Phase 1 technical architecture. Simulated latency and throughput describe explicit assumptions; they are not measurements of a real deployed architecture.
+The API validates graphs and admits bounded jobs. A separate worker claims durable jobs with leases, runs the model and persists results. Idempotent submission and version checks protect repeated requests and stale writes. The browser distinguishes analytic estimates from completed seeded experiments.
 
-## Current project documents
+| Layer | Current implementation |
+|---|---|
+| Backend | Java 21, Spring Boot 4.0.9, REST API, separate JVM worker |
+| Persistence | JDBC, Flyway and H2 verified locally; PostgreSQL adapter verification remains pending |
+| Frontend | React, TypeScript, Vite, React Flow and Recharts |
+| Quality | JUnit, Vitest, Testing Library, Playwright, axe and visual baselines |
+| Publishing | GitHub Actions builds a static Pages preview; no Java API or credentials in that site |
 
-- [Problem discussion](problemstatement.md), [HLD](hld.md), [LLD](lld.md), [interview questions](interviewquestions.md), [issues](ISSUES.md).
-- [UI audit](docs/ui/repo-audit.md), [design brief and alternatives](docs/ui/design-brief.md).
-- [Unpublished knowledge pack](docs/knowledge/README.md) and [content policy](docs/knowledge/content-policy.md). No supplied books are website assets.
-- [Detailed session log](docs/session-log.md) distinguishes implementation, tests, assumptions and unresolved work.
+JPA/Hibernate, managed AWS services and live AI are not implemented merely because they appear in planning documents. Current coaching is deterministic and supplied prose still needs human review.
 
-Latest protocol: one approved step at a time. The user chose B — Expedition Console. Wait for `next` before Step 3; unfinished tracks are not launch-ready.
+## Run the complete project locally
+
+Prerequisites: Node.js 24 and Java 21. On Windows, from the repository root:
+
+```powershell
+npm.cmd --prefix frontend ci --legacy-peer-deps --no-fund
+./scripts/maven.ps1 -MavenArgs @('package')
+./scripts/dev.ps1
+```
+
+Open http://127.0.0.1:5173. The launcher starts the API first, then the separate worker and frontend. Stop only the recorded project processes with `./scripts/dev.ps1 -Stop`. See [how to run](howtorun.md) for tool setup, non-Windows/manual operation, storage and troubleshooting.
+
+For the static project-site build:
+
+```powershell
+$env:VITE_STATIC_DEMO='true'
+$env:ARCHARENA_BASE_PATH='/ArchArena/'
+npm.cmd --prefix frontend run build
+```
+
+Clear those variables when returning to a full local build. The Pages workflow sets them only for its build.
+
+## Verification and honest limits
+
+The bounded engine was locally verified with 40 Java tests. The last complete UI slice passed 95 unit tests, 64 fixture browser checks at four widths, twelve visual baselines and a separate actual browser/API/worker/replay/export flow. New static deployment checks are recorded in [Pages verification](docs/evidence/pages-verification.md). Historical and current runs are distinguished in the evidence files; fixtures are not engine benchmarks or deployed traffic measurements.
+
+- Modeled latency, throughput and illustrative cost are not real infrastructure benchmarks or AWS pricing quotes.
+- The engine permits up to 30 nodes; it does not simulate Uber dispatch, payment correctness, real replication or arbitrary distributed systems.
+- Public backend readiness remains blocked by identity/session/CSRF, PostgreSQL isolation and deployment security gates. The static preview exposes no backend.
+- Reference explanations are independently written and source-linked, with editorial review pending. Five book-derived drafts remain unpublished. Source PDFs, copied book diagrams and private extracts are excluded.
+- Studio and worksheet data are browser-local. Export important work; backend graph saves do not include every worksheet or Studio artifact.
+
+## Documentation
+
+[Problem statement](problemstatement.md) · [HLD](hld.md) · [LLD](lld.md) · [Runbook](howtorun.md) · [Interview questions](interviewquestions.md) · [Status](docs/STATUS.md) · [Phase audit](docs/PHASE-AUDIT.md) · [Security review](docs/security-review.md) · [Content provenance](docs/knowledge/local-reference-edition.md)
+
+No AWS resources or paid AI services have been provisioned for this project. The pending owner-action document and resume deliverables are private and are not part of this repository.

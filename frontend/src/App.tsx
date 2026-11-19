@@ -1,3 +1,5 @@
+import { staticDemo } from './deployment';
+import staticLessons from './system-design/staticLessons.json';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { ReactFlow, Background, Controls, Handle, Position, addEdge, type Node as FlowNode, type Edge as FlowEdge, type NodeProps, type Connection, type NodeChangeset, type EdgeChangeset } from '@xyflow/react';
 import { Area, AreaChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
@@ -95,7 +97,7 @@ export function App() {
   const target=canvas.nodes.find(n=>n.data.kind===(labMode?lesson?.nodeType:'SERVICE'));
   const controlLesson=labMode?lesson:undefined;
 
-  useEffect(()=>{let live=true;api<{lessons:Lesson[];completed:string[]}>('/catalog').then(c=>{if(live){setLessons(c.lessons);setCompleted(c.completed);setOnline(true);}}).catch(e=>{if(live)setError(`Backend unavailable. Start the API and worker using howtorun.md. ${e.message}`);});return()=>{live=false;};},[]);
+  useEffect(()=>{if(staticDemo){setLessons(staticLessons as Lesson[]);return;}let live=true;api<{lessons:Lesson[];completed:string[]}>('/catalog').then(c=>{if(live){setLessons(c.lessons);setCompleted(c.completed);setOnline(true);}}).catch(e=>{if(live)setError(`Backend unavailable. Start the API and worker using howtorun.md. ${e.message}`);});return()=>{live=false;};},[]);
   useEffect(()=>{if(crossTab)return;const timer=setTimeout(()=>{try{localStorage.setItem(DRAFT,JSON.stringify({canvas,lessonId,savedAt:Date.now()}));}catch{setNotice('Browser storage is unavailable. Save a design to the backend to keep it.');}},500);return()=>clearTimeout(timer);},[canvas,crossTab,lessonId]);
   useEffect(()=>{const onStorage=(event:StorageEvent)=>{if(event.key===DRAFT){setCrossTab(true);setNotice('Another tab changed the draft. Your current canvas is preserved; reload that draft explicitly.');}};window.addEventListener('storage',onStorage);return()=>window.removeEventListener('storage',onStorage);},[]);
   useEffect(()=>{
@@ -148,14 +150,15 @@ export function App() {
       <div className="sidebar-divider" />
       <div className="workspace-label">Learning route <Icon name="compass" /></div>
       <nav className="lesson-nav" aria-label="Lessons">{lessons.map((l,i)=><button key={l.id} className={`lesson-link ${learnTopic===topicForLab[l.id]&&mode==='learn'?'current':''}`} aria-current={learnTopic===topicForLab[l.id]&&mode==='learn'?'step':undefined} onClick={()=>{setMode('learn');setLearnTopic(topicForLab[l.id]);}}><span className={completed.includes(l.id)?'lesson-number complete':'lesson-number'}>{completed.includes(l.id)?<Icon name="check" />:`0${i+1}`}</span><span>{l.title}</span>{learnTopic===topicForLab[l.id]&&mode==='learn'&&<span className="current-dot" />}</button>)}</nav>
-      <div className="sidebar-bottom"><div className="progress-label"><span>Foundation progress</span><strong>{completed.length}/5</strong></div><div className="progress-track"><span style={{width:`${completed.length/5*100}%`}} /></div>{mode!=='learn'&&<button className="saved-designs" onClick={async()=>{try{setDesigns(await api<Design[]>('/designs'));}catch(e){setError((e as Error).message);}}}><Icon name="folder" /> Saved designs <Icon name="arrow" /></button>}<div className="owner"><span className="avatar">YS</span><div><strong>Your learning space</strong><small>Personal portfolio demo</small></div><span className="owner-dot" /></div></div>
+      <div className="sidebar-bottom"><div className="progress-label"><span>Foundation progress</span><strong>{completed.length}/5</strong></div><div className="progress-track"><span style={{width:`${completed.length/5*100}%`}} /></div>{mode!=='learn'&&!staticDemo&&<button className="saved-designs" onClick={async()=>{try{setDesigns(await api<Design[]>('/designs'));}catch(e){setError((e as Error).message);}}}><Icon name="folder" /> Saved designs <Icon name="arrow" /></button>}<div className="owner"><span className="avatar">YS</span><div><strong>Your learning space</strong><small>Personal portfolio demo</small></div><span className="owner-dot" /></div></div>
     </aside>
     <div className="main-shell">
       <header className="topbar"><div className="breadcrumbs">Workspace <span>/</span> <strong>{mode==='learn'?'Learn':mode==='practice'?'Practice':'Design Studio'}</strong></div><div className="topbar-right"><span className="local-badge"><Icon name="compass" /> Local lab</span><span className="mini-avatar">YS</span></div></header>
       <ModelNotice />
+      {staticDemo&&<aside className="model-notice" aria-label="GitHub Pages preview"><Icon name="info"/><div><strong>GitHub Pages preview</strong><span>Learn, local diagrams, worksheets and Studio work here. Java simulation, server saves and checkpoints require the local backend. No server runs or metrics are fabricated.</span></div></aside>}
       <main id="workspace">
         {mode==='learn'?<LearnLibrary topicId={learnTopic} onTopic={setLearnTopic} onPractice={chooseScenario} onLab={chooseLesson}/>:mode==='studio'?<DesignStudio graph={graph} onPlayground={()=>setMode('practice')}/>:<>
-        <div className="page-heading"><div><span className="eyebrow">{labMode?'PRACTICE / CONCEPT EXPERIMENT':`PRACTICE / ${scenario.company.toUpperCase()}-INSPIRED`}</span><h1>{labMode?lesson?.title||'Concept experiment':`Design ${scenario.id==='shortener'?'a URL shortener':`a ${scenario.title}`}`}<span className="heading-dot">.</span></h1><p>{labMode?lesson?.subtitle:scenario.mission}</p></div><div className="heading-tools"><StatusBadge state={online?'healthy':'unknown'}>{online?'Engine connected':'Connecting to engine'}</StatusBadge><Button icon="save" onClick={save} disabled={!online}>Save design</Button></div></div>
+        <div className="page-heading"><div><span className="eyebrow">{labMode?'PRACTICE / CONCEPT EXPERIMENT':`PRACTICE / ${scenario.company.toUpperCase()}-INSPIRED`}</span><h1>{labMode?lesson?.title||'Concept experiment':`Design ${scenario.id==='shortener'?'a URL shortener':`a ${scenario.title}`}`}<span className="heading-dot">.</span></h1><p>{labMode?lesson?.subtitle:scenario.mission}</p></div><div className="heading-tools"><StatusBadge state={online?'healthy':'unknown'}>{online?'Engine connected':staticDemo?'Local editing only':'Connecting to engine'}</StatusBadge><Button icon="save" onClick={save} disabled={!online}>Save design</Button></div></div>
         <nav className="concept-labs" aria-label="Practice concept labs"><button className="secondary" aria-pressed={!labMode} onClick={()=>{setLabMode(false);setPracticeTrack('hld');}}>Company playground</button>{lessons.map(l=><button className="text-button" key={l.id} aria-pressed={labMode&&lessonId===l.id} onClick={()=>chooseLesson(l.id)}>{l.title}</button>)}</nav>
         {error&&<AlertBanner tone="error" onDismiss={()=>setError('')}>{error}</AlertBanner>}
         {notice&&<AlertBanner tone="notice" onDismiss={()=>setNotice('')}>{notice}</AlertBanner>}
@@ -194,7 +197,7 @@ export function App() {
         {scorecard&&<section className="scorecard"><h2>Evidence-backed scorecard</h2><p>AI is disabled. Unimplemented grading dimensions are explicitly unassessed.</p><div className="scorecard-grid">{scorecard.dimensions.map(d=><div key={d.name}><strong>{d.name}</strong><span>{d.score!==undefined?`${d.score}/100`:'Not assessed'}</span><small>{d.evidence}</small></div>)}</div></section>}
         <details className="assumptions"><summary>Model assumptions and limitations <span>This is a model, not a benchmark ↗</span></summary><ul>{(shown?.assumptions||['Start the backend and run a preview to load the modeling assumptions.']).map(a=><li key={a}>{a}</li>)}</ul></details>
         </>}
-        <footer className="page-footer"><span>ArchArena · Local development prototype</span><span>Java engine · React workbench · No cloud resources created</span></footer>
+        <footer className="page-footer"><span>ArchArena · {staticDemo?'Static portfolio preview':'Local development prototype'}</span><span>Java engine · React workbench · No cloud resources created</span></footer>
         </>}
       </main>
     </div>
