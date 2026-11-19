@@ -45,8 +45,8 @@ Output #0, null, to 'pipe:':
         handler_name    : SoundHandler
         vendor_id       : [0][0][0][0]
         encoder         : Lavc61.19.100 pcm_s16le
-frame=  110 fps=0.0 q=-0.0 size=N/A time=00:00:09.16 bitrate=N/A speed=16.9x    
-frame=  393 fps=351 q=-0.0 size=N/A time=00:00:32.75 bitrate=N/A speed=29.3x    
-frame=  704 fps=434 q=-0.0 size=N/A time=00:00:58.66 bitrate=N/A speed=36.1x    
+frame=  110 fps=0.0 q=-0.0 size=N/A time=00:00:09.16 bitrate=N/A speed=16.9x
+frame=  393 fps=351 q=-0.0 size=N/A time=00:00:32.75 bitrate=N/A speed=29.3x
+frame=  704 fps=434 q=-0.0 size=N/A time=00:00:58.66 bitrate=N/A speed=36.1x
 [out#0/null @ 000001cdec0beb80] video:371KiB audio:3102KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: unknown
-frame=  864 fps=448 q=-0.0 Lsize=N/A time=00:01:12.00 bitrate=N/A speed=37.3x    
+frame=  864 fps=448 q=-0.0 Lsize=N/A time=00:01:12.00 bitrate=N/A speed=37.3x
