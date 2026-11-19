@@ -2,27 +2,28 @@ import { test, expect } from '@playwright/test';
 import { mockApi } from './fixtures';
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
-test.beforeEach(async({page})=>{await mockApi(page);await page.goto('/');await expect(page.getByText('Engine connected',{exact:true})).toBeVisible();});
-test('learning switches between the HLD route and Java blueprint, including advanced topics',async({page})=>{
-  await expect(page.getByRole('heading',{name:'Requirements and scope',exact:true})).toBeVisible();
-  await page.getByRole('button',{name:'LLD · Java blueprint',exact:true}).click();
-  await expect(page.getByLabel('LLD responsibility blueprint')).toBeVisible();
-  await expect(page.getByRole('region',{name:'Architecture workbench'})).toHaveCount(0);
-  await expect(page.getByRole('heading',{level:1})).toHaveText('Low-level design.');
-  await expect(page.getByRole('navigation',{name:'HLD curriculum'})).toHaveCount(0);
-  await page.getByLabel('Topic level').selectOption('Advanced');
+test.beforeEach(async({page})=>{await mockApi(page);await page.goto('/');await expect(page.getByRole('heading',{name:'System design library.'})).toBeVisible();});
+test('learning contains full HLD and LLD headings and opens experiments only in Practice',async({page})=>{
+  const writes:string[]=[];page.on('request',r=>{if(r.method()==='POST')writes.push(r.url());});
+  await expect(page.locator('main input, main textarea, .react-flow')).toHaveCount(0);
+  await page.getByRole('button',{name:'HLD · Systems',exact:true}).click();
+  await expect(page.getByRole('navigation',{name:'HLD topic headings'}).getByRole('button')).toHaveCount(24);
+  await page.getByRole('button',{name:/End-to-end interview synthesis/}).click();
+  await expect(page.locator('.reading > h2')).toHaveText('End-to-end interview synthesis');
+  await page.getByRole('button',{name:'LLD · Java design',exact:true}).click();
+  await expect(page.getByRole('navigation',{name:'LLD topic headings'}).getByRole('button')).toHaveCount(16);
   await page.getByRole('button',{name:/Java design walkthrough/}).click();
-  await expect(page.getByRole('heading',{name:'Java design walkthrough',exact:true})).toBeVisible();
-  await page.getByRole('button',{name:'HLD · System map',exact:true}).click();
-  await page.getByRole('button',{name:/Caching.*Foundation/}).click();
-  await page.getByRole('button',{name:'Open simulation lab →'}).click();
+  await expect(page.locator('.reading > h2')).toHaveText('Java design walkthrough');
+  await page.getByRole('button',{name:'Pro',exact:true}).click();
+  await expect(page.getByRole('heading',{name:'Reason about the boundary'})).toBeVisible();
+  expect(writes).toEqual([]);
+  await page.getByRole('button',{name:'02 Caching',exact:true}).click();
+  await expect(page.locator('.reading > h2')).toHaveText('Caching');
+  await page.getByRole('button',{name:'Open Caching experiment in Practice →'}).click();
+  await expect(page.getByRole('region',{name:'Architecture workbench'})).toBeVisible();
   await expect(page.getByRole('heading',{level:1})).toHaveText('Caching.');
-  await page.getByRole('button',{name:'LLD · Java blueprint',exact:true}).click();
-  await page.getByLabel('Topic level').selectOption('Advanced');
-  await page.getByRole('button',{name:'01 Load balancing',exact:true}).click();
-  await expect(page.getByLabel('Topic level')).toHaveValue('All');
-  await expect(page.getByRole('heading',{name:'Requirements and scope',exact:true})).toBeVisible();
 });
+
 test('Uber practice keeps worksheets separate and gives actionable honest feedback',async({page})=>{
   await page.getByRole('button',{name:/^Practice/}).click();
   await expect(page.getByLabel('Practice scenario').locator('option')).toHaveCount(20);
@@ -48,23 +49,26 @@ test('Uber practice keeps worksheets separate and gives actionable honest feedba
   await expect(page.getByRole('region',{name:'Rule-based design feedback'})).toContainText('Invariant and concurrency: supplied for manual review');
   await page.getByLabel('Practice scenario').selectOption('shortener');
   await page.getByRole('button',{name:'Start selected scenario'}).click();
+  await page.getByRole('button',{name:'LLD · Java contracts',exact:true}).click();
   await expect(page.getByLabel('Invariant and concurrency',{exact:true})).toHaveValue('');
   await page.getByLabel('Practice scenario').selectOption('uber');
   await page.getByRole('button',{name:'Start selected scenario'}).click();
+  await page.getByRole('button',{name:'LLD · Java contracts',exact:true}).click();
   await expect(page.getByLabel('Invariant and concurrency',{exact:true})).toHaveValue(/atomic conditional/);
   await page.reload();await page.getByRole('button',{name:/^Practice/}).click();await page.getByLabel('Practice scenario').selectOption('uber');await page.getByRole('button',{name:'Start selected scenario'}).click();await page.getByRole('button',{name:'LLD · Java contracts',exact:true}).click();
   await expect(page.getByLabel('Invariant and concurrency',{exact:true})).toHaveValue(/atomic conditional/);
 });
 test('both new design views remain accessible and fit the viewport',async({page},info)=>{
   const axe=readFileSync(resolve('node_modules/axe-core/axe.min.js'),'utf8');
+  await page.getByRole('button',{name:'HLD · Systems',exact:true}).click();
   for(const track of ['learn-hld','learn-lld','practice-hld','practice-lld']) {
-    if(track==='learn-lld')await page.getByRole('button',{name:'LLD · Java blueprint',exact:true}).click();
+    if(track==='learn-lld')await page.getByRole('button',{name:'LLD · Java design',exact:true}).click();
     if(track==='practice-hld')await page.getByRole('button',{name:/^Practice/}).click();
     if(track==='practice-lld')await page.getByRole('button',{name:'LLD · Java contracts',exact:true}).click();
     await page.addScriptTag({content:axe});
     const result=await page.evaluate(async()=>{return await (window as unknown as {axe:{run:()=>Promise<{violations:unknown[]}>}}).axe.run();});
     expect(result.violations).toEqual([]);
     expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
-    if(['width-1440','width-390'].includes(info.project.name))await page.screenshot({path:resolve(`../docs/evidence/engine-v2-${track}-${info.project.name}.png`),fullPage:true});
+    if(['width-1440','width-390'].includes(info.project.name))await page.screenshot({path:resolve(`../docs/evidence/library-studio-${track}-${info.project.name}.png`),fullPage:true});
   }
 });

@@ -1,5 +1,7 @@
 # Knowledge pack and publication gate
 
+Latest scope: the website now also has an independently authored [local reference edition](local-reference-edition.md): forty readings and twenty company-inspired proposals. It is visibly editorial-review-pending and separate from these five guarded book-source drafts. The old validator does not clear that TypeScript content for public publication. Statements below about no new website lessons describe the earlier note-writing step.
+
 These are **unpublished draft notes**, not owner-verified lessons and not chapter-by-chapter book summaries. They cover five selected ideas in original wording and connect them to the current ArchArena model. Read the [source register](sources.md) and [content policy](content-policy.md).
 
 | Draft | Source basis | Review state |

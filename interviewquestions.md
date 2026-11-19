@@ -115,3 +115,14 @@ It uses real keyboard events to enter a prediction, run the UI fixture, activate
 **What breaker bug did the tests expose?** An upstream stage reset its failure count when its local service finished, even though it held the slot waiting for a failed downstream call. The fix records held-stage success only after the dependency succeeds. A regression verifies opening and recovery across an outage.
 
 **Does zero dependency-scan output make this publicly secure?** No. It describes known advisories in the scanned inventory at that time. HTTP identity/owner mapping, CSRF/session behavior, DB roles/RLS, MFA, TLS, logs and deployment/container scans require separate evidence. The public-readiness check intentionally stays blocked.
+
+
+## Reference library and Studio decisions
+
+**Why separate Learn and Practice?** Learn holds a stable reference with sources and explicit assumptions; Practice captures a learner's mutable hypothesis and bounded model evidence. Keeping them separate avoids presenting an edited starter as approved knowledge.
+
+**Does the Uber simulation prove exclusive driver assignment?** No. The reference proposal uses authoritative conditional assignment and an active-trip invariant. The queueing engine models load/dependency behavior, not geospatial matching or concurrent business transitions. Verify the invariant with domain/database concurrency tests.
+
+**What does the unlocked Studio validate?** It records six browser-local artifacts, estimates average/assumed peak operations per second and snapshots the current Practice graph. Coverage checks identify missing text; drafted text still requires human review. It does not compile Java, evaluate semantic consistency or provide cloud synchronization.
+
+**Can the site be deployed publicly now?** Not safely as the current complete application. Local engine tests and clean dated dependency scans do not establish public identity/owner isolation, session/CSRF design, PostgreSQL roles/RLS, MFA, deployed controls or editorial clearance. See the T0-T7 audit.

@@ -1,5 +1,7 @@
 # Original learning content policy
 
+November 19 scope update: the latest user request authorizes a substantive **local reference preview**, independently authored from general concepts and linked public documentation, separate from the five unpublished book-source notes. See [local reference edition](local-reference-edition.md). This updates the earlier sole-knowledge-pack restriction for local preview only; it does not waive editorial verification or public publication gates. No owner verification is inferred.
+
 ArchArena will teach selected ideas through its own explanations, scenarios, diagrams, exercises and model observations. It will not distribute the books or generate a substitute for them.
 
 The general distinction is between an idea and its particular expression; [WIPO explains this distinction](https://www.wipo.int/en/web/copyright/protection). Access to a file and attribution do not automatically authorize reusing its protected text, images or distinctive examples. Exceptions and permissions depend on the use and jurisdiction; this workflow is risk reduction, not a guarantee of legal clearance.

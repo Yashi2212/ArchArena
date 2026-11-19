@@ -1,0 +1,55 @@
+WEBVTT
+
+00:00:00.091 --> 00:00:02.725
+Learn is your read-only reference library.
+
+00:00:02.725 --> 00:00:05.531
+Follow HLD from requirements to architecture,
+
+00:00:05.531 --> 00:00:07.953
+and LLD from responsibilities to Java contracts.
+
+00:00:12.086 --> 00:00:15.409
+Use Companies to study twenty proposed designs. Uber
+
+00:00:15.409 --> 00:00:19.216
+connects location freshness, spatial discovery, exclusive assignment and
+
+00:00:19.216 --> 00:00:22.532
+trip state. Published context is separated from our proposal.
+
+00:00:24.090 --> 00:00:25.431
+Open Practice to edit a graph
+
+00:00:25.431 --> 00:00:28.718
+and write decisions. Start with scope, workload
+
+00:00:28.718 --> 00:00:31.343
+assumptions, an invariant and one bottleneck prediction.
+
+00:00:36.086 --> 00:00:38.574
+Keep the same seed, traffic profile and failure
+
+00:00:38.574 --> 00:00:42.029
+setting. Run a baseline, pin it, change one
+
+00:00:42.029 --> 00:00:46.028
+input and rerun. Compare successful throughput, latency and errors.
+
+00:00:48.087 --> 00:00:51.329
+Inject a bounded outage. Inspect sampled node history
+
+00:00:51.329 --> 00:00:55.078
+and request traces, then export the experiment. This model
+
+00:00:55.078 --> 00:00:57.883
+does not prove payment correctness or exclusive driver assignment.
+
+00:01:00.086 --> 00:01:03.652
+Use Design Studio to capture requirements, capacity, HLD,
+
+00:01:03.652 --> 00:01:07.465
+API, data model and LLD. Export your browser-local
+
+00:01:07.465 --> 00:01:11.682
+bundle. Practice offers rule-based feedback. AI is disabled.

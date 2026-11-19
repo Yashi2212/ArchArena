@@ -1,23 +1,27 @@
 # ArchArena status
 
-Updated: 2026-11-19, Asia/Calcutta. Read `../prompt.md`.
+Updated: 2026-11-19, Asia/Calcutta. Read `../prompt.md` section 25.
 
-**Current:** Core bounded simulation v2 implemented and verified locally; user authorizes continuing phases/backend work. No next-step approval wait or old API freeze applies.
+**Current:** Latest product slice complete locally: read-only Learn, editable Practice, unlocked artifact Studio, introduction video and original-prompt audit. Public deployment is NOT READY.
 
-**Done:** Nine node types; bounded retries/backoff/jitter/deadlines; breakers; held-dependency cascading pressure; delayed service scale-out; synthetic follower lag/fresh reads; incidents; node snapshots/bounded traces; sampled replay; forty learning briefs/twenty practice scenarios.
+**Learn:** 24 HLD + 16 LLD original readings with Story/Simple/Pro, flows/examples/trade-offs/references; twenty proposed company studies. Uber separates dated documented context from proposed ownership/trip design. Local review edition; editorial verification pending. Five book-source drafts remain unpublished.
 
-**Verified:** 40 Java tests; 91 frontend tests. Full 48 fixture browser cases: 45 pass initially, three keyboard timeouts pass follow-up; twelve visual baselines match. Replay focus issue fixed; final four-width replay/axe checks pass. One actual browser/API/worker/export flow and real persisted-job smoke pass. See `evidence/engine-v2-verification.md`.
+**Practice:** Editable graph and worksheets, five concept labs/checkpoints, rule-based coach, bounded simulation/replay/baseline/export. AI disabled; a model run does not prove business invariants.
 
-**Runtime:** Java 21 / Boot 4.0.9 / Framework 7; JDBC and H2 local adapter, not JPA/Hibernate. npm zero findings; OSV zero matches in 77 runtime artifacts. Deprecated Jackson 2 bridge preserves stored JSON; HTTP uses Jackson 3 compatibility defaults.
+**Studio:** Six browser-local artifacts, capacity assumptions, detached Practice graph snapshot and JSON export. No semantic correctness grading, Java execution or cloud sync.
 
-**Preview:** API/worker/React running at loopback 8080/5173. Local H2 backed up privately before upgrade. Launcher binds H2 to loopback and waits for API before worker. H2/Flyway compatibility warning remains recorded.
+**Tutorial:** Actual self-hosted 72-second MP4, original animation, offline synthetic narration, captions, chapters and transcript. Decode and native playback/seek/captions verified.
 
-**Measured:** 30-node engine p95 1079.448 ms, max 1186.589 ms under 128 MiB heap; pool peaks 58.58 MiB (not RSS/full-stack SLO). JS 959.60 kB/297.55 kB gzip; large-chunk warning remains.
+**Verified this slice:** Final build; 95 unit tests; 64 fixture browser cases pass at four widths (four opt-in live cases skipped); separate real browser/API/worker/replay/export case passes. Twelve visual baselines match. Forty-four axe scans in the full run report zero violations (some repeated states).
 
-**Security:** All twenty items reviewed; fifteen local automated checks pass. Public gate intentionally blocked: identity/owner mapping, session/CSRF design, PostgreSQL roles/RLS, MFA and deployment/container/dynamic checks remain open.
+**Correction:** Comparison follow-up initially 18/20 due to Practice preview hydration during capture at 1024/390. Settled images exactly matched baselines; explicit preview-readiness wait fixes all four Practice/Studio comparisons, with unchanged tolerance/timeout/baselines. Failure evidence retained.
 
-**Content:** Five notes unverified/unpublished. Primer declares CC BY 4.0; liquidslr rights unresolved. No copied repository/book assets. AI disabled.
+**Existing engine:** Core bounded v2 previously verified with 40 Java tests. No backend code changes or Java-suite rerun this slice. Java21/Boot4/JDBC/H2; PostgreSQL/JPA remains unverified. New real browser run verifies the retained engine integration.
 
-**Next:** Public identity/isolation and CSRF/session design, then PostgreSQL roles/RLS/deployment security. Remaining simulation UI: synchronized animated hero/particles, mobile graph readability, 300-node FPS/Lighthouse. Full theory lessons still need review. No push/public/AWS deployment.
+**Security:** Fifteen local evidence/hygiene checks pass; twenty categories inventoried. Public gate fails closed: identity/owner mapping, session/CSRF, PostgreSQL roles/RLS, MFA and deployed/dynamic/container checks remain open. Content public review also remains open.
 
-Details: `simulation-v2.md`, `security-review.md`, `knowledge/open-source-register.md`, `session-log.md`, `../ISSUES.md`.
+**Performance/operations:** JS 1,023.05 kB / 317.33 kB gzip; large-chunk warning. Game hero/particles/synchronized playback, mobile graph readability, FPS/Lighthouse, AI evaluation, AWS eligibility/operations/restore and launch evidence remain incomplete. No push/public/AWS deployment.
+
+**Preview:** Normal API/worker/React healthy at loopback 8080/5173. Isolated 5174 test server stopped after checks; normal preview retained.
+
+**Next:** Public identity/session design and PostgreSQL isolation before hosting; continue editorial review separately. Detail: PHASE-AUDIT.md, evidence/library-studio-verification.md, ../ISSUES.md, session-log.md.

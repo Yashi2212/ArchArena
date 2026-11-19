@@ -84,3 +84,14 @@ Canonical `prompt.md`, short `docs/STATUS.md` and detailed `docs/session-log.md`
 | S01 Twenty-control review | Each requested control has tested-local, N/A, partial or open evidence | scripts/check_security.py: 15 local checks pass; --public intentionally nonzero. Public identity, CSRF/session, DB roles/RLS, MFA and deployed dynamic/container checks pending | PUBLIC BLOCKED |
 
 Detailed evidence: docs/evidence/engine-v2-verification.md and docs/security-review.md. Prior UI freezes and one-step waits are historical; user explicitly authorized further phases. No public/AWS work or fabricated experience.
+
+
+## Latest product audit and local reference edition
+
+- Original-prompt audit: [T0-T7](docs/PHASE-AUDIT.md). The full definition of done is not met and public deployment remains blocked; prior checklist/configuration evidence is not a launch sign-off.
+- Learn/Practice separation implemented: Learn is read-only with 40 original source-linked readings and 20 company-inspired reference studies. HLD and LLD have separate indexes; Uber has deeper ownership/failure reasoning and limited dated documented context. Five book-source drafts remain unverified. New TypeScript references are a local review edition; the old publication validator does not clear them. Accuracy, claim mapping, original-expression/attribution and named editorial review remain open before public release.
+- Studio is unlocked as a six-artifact browser-local workspace with capacity assumptions, detached graph capture, coverage review and JSON export. Semantic consistency checks, Java execution, account sync and multi-tab merge are not implemented. Export is necessary to preserve work when browser storage is cleared.
+- Intro tutorial is actual self-hosted MP4 with original animation, offline synthetic narration, captions, chapters and transcript. It is a workflow guide, not recorded telemetry, cloud operation evidence or a company blueprint.
+- Initial updated build passes (JS 1,022.28 kB / 317.14 kB gzip); 95 unit tests pass. Final browser/visual/video/security checks are recorded in [current verification](docs/evidence/library-studio-verification.md); do not infer them from implementation. Bundle-size warning remains open. Backend engine/security historical evidence is unchanged; no backend changes in this slice.
+
+Final slice verification: 95 unit tests, 64 fixture browser cases, separate actual API/worker/replay/native-export flow pass. Twelve image baselines match after explicit async-preview readiness fixed 1024/390 screenshot stabilization; failed comparison evidence retained. Forty-four axe scans in the full run have zero violations (not 44 distinct states). Final JS 1,023.05/317.33 kB gzip; warning remains. Fifteen local evidence/hygiene checks and documentation validation pass. Public security/publication gates deliberately remain blocked. See the dated verification report for scoped evidence and unfinished original-prompt exits.

@@ -220,3 +220,12 @@ The coach receives a graph and only a result matching the current canonical expe
 The bounded virtual engine now supports nine component types, bounded retry attempts/deadlines, dependency holding/cascading pressure, circuit breakers, delayed service scale-out, synthetic shared-record lag/fresh reads and sampled node telemetry. Results travel through the same persisted DB queue and separate worker. The runtime is now Java 21 / Spring Boot 4.0.9 after dependency remediation; historical Boot 3 diagrams/plans remain planning history. Persistence is still JDBC, not JPA/Hibernate.
 
 See [simulation scope](docs/simulation-v2.md), [engine decision](docs/adr/engine-002-bounded-resilience.md), [runtime migration](docs/adr/security-001-runtime-upgrade.md) and [twenty security checks](docs/security-review.md). A single local owner/proxy token is not public multi-user authentication. No cloud or public deployment is claimed.
+
+
+## Latest read-only library and unlocked Studio (November 19)
+
+This supersedes the earlier LearningRoute/locked-Studio description. LearnLibrary serves original, read-only HLD/LLD/company references and an introduction video. It does not render the editable graph or issue analytic-preview POSTs. Practice is the sole simulator playground; five concept experiments retain prediction/checkpoint behavior alongside company worksheets. Company reference pages navigate into an editable minimal starter, not a pre-solved system.
+
+DesignStudio is an unlocked six-artifact authoring workspace with browser-local storage and JSON export. It explicitly captures a detached snapshot of the current Practice graph; it does not synchronize later graph edits or implement semantic consistency validation. The capacity calculator is an assumption worksheet, not simulator traffic configuration. Learn/Studio remain usable without the API; backend operations in Practice require the API and separate worker.
+
+See [phase audit](docs/PHASE-AUDIT.md), [reference provenance](docs/knowledge/local-reference-edition.md) and [current verification](docs/evidence/library-studio-verification.md). Public identity/isolation, session/CSRF, PostgreSQL RLS and deployment gates remain open.

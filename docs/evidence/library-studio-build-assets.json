@@ -1,0 +1,72 @@
+{
+  "assets": [
+    {
+      "path": "assets/ibm-plex-mono-latin-400-normal-DMJ8VG8y.woff2",
+      "bytes": 14708,
+      "gzipBytes": 14731,
+      "sha256": "08949f728dc52d528e69b1667d15c89a5686a4ee9a296ff90983985f99c380f7"
+    },
+    {
+      "path": "assets/index-BSUiGyJk.js",
+      "bytes": 1023053,
+      "gzipBytes": 315793,
+      "sha256": "97be485ecd8c085ec467fd141a3bdad313c0b5dcc667377fbd8af0d240fa420b"
+    },
+    {
+      "path": "assets/index-DmdGs9_p.css",
+      "bytes": 52800,
+      "gzipBytes": 9811,
+      "sha256": "472236194f2df05d38e6c1855889620a953072de3a7e7baa4739b2fece4cd276"
+    },
+    {
+      "path": "assets/sora-latin-wght-normal-DdqRvwsR.woff2",
+      "bytes": 33652,
+      "gzipBytes": 33685,
+      "sha256": "fa26406eeda9a3c6ec3d9ea8813c3045d6dc755e30c716d5c094e8ef43be5a7f"
+    },
+    {
+      "path": "index.html",
+      "bytes": 619,
+      "gzipBytes": 384,
+      "sha256": "ee0af2b23203b347954fc4b35c7a6f72ae70332cf4dae90ef78dee272238dff2"
+    },
+    {
+      "path": "licenses/ibm-plex-mono-OFL.txt",
+      "bytes": 5299,
+      "gzipBytes": 2014,
+      "sha256": "23b0a9d0c6d3f140a0b77e483c5cfa6bba574325ef5cb189ed9f2fec4884533f"
+    },
+    {
+      "path": "licenses/sora-OFL.txt",
+      "bytes": 4382,
+      "gzipBytes": 1953,
+      "sha256": "1ec9623d38c445eb4dfe5fcc783e0f0ee728cc97ca157ce1f8cb2b3bf9d9b0d9"
+    },
+    {
+      "path": "media/archarena-intro-poster.jpg",
+      "bytes": 76742,
+      "gzipBytes": 55768,
+      "sha256": "2acc3e63615011a08a2f744e522dd2a812e9db6cbbe5a5dd3778da3a7df38f07"
+    },
+    {
+      "path": "media/archarena-intro-transcript.md",
+      "bytes": 1290,
+      "gzipBytes": 741,
+      "sha256": "3cfa854fe727a2b5c89efa8b1e4193edbdb8b6dcdb31e91017892d14c9e14556"
+    },
+    {
+      "path": "media/archarena-intro.mp4",
+      "bytes": 940680,
+      "gzipBytes": 900590,
+      "sha256": "9e1fce9d48290bee5788983933cb205f247c28db5184edf48155446409b72941"
+    },
+    {
+      "path": "media/archarena-intro.vtt",
+      "bytes": 1591,
+      "gzipBytes": 836,
+      "sha256": "132079f440bd1b9ccbfd869bbc3cf0a18e537868a0b9039bb14bdb9c0b9c88cb"
+    }
+  ],
+  "sourceMaps": [],
+  "warning": "JavaScript chunk exceeds 500 kB; no Lighthouse or frame-time claim"
+}

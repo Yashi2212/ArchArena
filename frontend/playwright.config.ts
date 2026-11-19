@@ -24,5 +24,5 @@ export default defineConfig({
     reuseExistingServer: !process.env.CI,
     timeout: 120000,
   },
-  reporter: [['list'],['json',{outputFile:'../docs/evidence/engine-v2-browser-results.json'}]],
+  reporter: [['list'],['json',{outputFile:process.env.ARCHARENA_BROWSER_REPORT||'../docs/evidence/library-studio-browser-results.json'}]],
 });

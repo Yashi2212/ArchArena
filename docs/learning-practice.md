@@ -1,6 +1,6 @@
 # Learn and Practice: system-design vertical slice
 
-The product now concentrates on learning system design and practicing interview decisions. HLD and LLD are related artifacts with different views: HLD is a system map; LLD is a Java contract/responsibility blueprint. Design Studio remains locked.
+The product concentrates on learning system design and practicing interview decisions. **November 19 update:** Learn is now a read-only library with forty original source-linked reference readings and twenty company studies; Practice owns all editable worksheets, graphs and simulation controls. Studio is unlocked as a six-artifact browser-local workspace. The details below about exercise-only Learn and locked Studio describe the previous slice and are superseded by [the phase audit](PHASE-AUDIT.md) and [reference edition](knowledge/local-reference-edition.md).
 
 ## What is available
 

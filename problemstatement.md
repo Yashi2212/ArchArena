@@ -51,3 +51,10 @@ The current slice supplies forty original exercise briefs and twenty company-ins
 Learners need to see why a timeout or retry can make a bad situation worse. Counting only successful throughput hides work still occupying a slow dependency. Engine v2 separates logical outcomes from attempt pressure, permits synchronous upstream holding, and makes breaker recovery, delayed capacity and synthetic staleness visible through sampled telemetry. This helps learners compare assumptions and explain trade-offs; it does not establish actual company behavior, production performance or business correctness.
 
 Security is treated similarly: all twenty requested controls have explicit local evidence, non-applicability or an open deployment gap. A public demo must not expose the current shared local owner merely because model tests or vulnerability scans pass.
+
+
+## Why reference learning and practice are separate
+
+A learner needs trustworthy explanations before editing a design. Learn now provides a read-only concept path and company-wise reference proposals, with sources and limits visible. Uber connects spatial discovery to ownership: finding a nearby driver is a different problem from atomically assigning that driver once. Practice lets the learner propose, test and explain a design without modifying the reference. Studio records the chain from requirements to contracts. The tutorial demonstrates this journey with original illustrations.
+
+This addresses the gap between memorizing a diagram and defending a choice; it does not demonstrate improved interview outcomes yet. Twenty studies are proposed exercises, not twenty verified company implementations. The local reference edition needs editorial review, and the original public launch requirements remain incomplete. See [phase audit](docs/PHASE-AUDIT.md).

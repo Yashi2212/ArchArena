@@ -5,5 +5,6 @@ import '@xyflow/react/dist/style.css';
 import './styles/fonts.css';
 import './styles/tokens.css';
 import './styles/workbench.css';
+import './styles/library.css';
 
 createRoot(document.getElementById('root')!).render(<React.StrictMode><App /></React.StrictMode>);

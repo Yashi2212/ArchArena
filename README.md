@@ -2,9 +2,9 @@
 
 Learn system design by changing an architecture, running a model, and explaining what happened.
 
-ArchArena is a planned portfolio application for Java backend developers preparing for system design interviews. The first release combines interactive Learn lessons with a basic Practice workflow. Both use the same server-side simulation engine. Design Studio is a later milestone.
+ArchArena is a local portfolio application for Java backend developers preparing for system design interviews. Learn is a read-only reference library; Practice is the editable graph/worksheet playground backed by a bounded Java simulation engine. Design Studio is now an unlocked workspace for six design artifacts.
 
-**Current:** Bounded resilience engine v2 on Java 21 / Boot 4.0.9, sampled replay, distinct HLD/LLD views, forty exercise briefs, five existing labs and twenty company-inspired scenarios. See [simulation scope](docs/simulation-v2.md) and [twenty security checks](docs/security-review.md). Full theory lessons, domain correctness and live AI remain pending. Read [prompt.md](prompt.md), [docs/STATUS.md](docs/STATUS.md), [the walkthrough](docs/learning-practice.md) and [engine/security verification](docs/evidence/engine-v2-verification.md). [Step 2 evidence](docs/evidence/step-02-verification.md) is historical.
+**Current:** Bounded engine v2 on Java 21 / Boot 4.0.9, sampled replay, forty original HLD/LLD readings, twenty company-inspired reference studies, five concept experiments in Practice, local Studio bundle export and a 72-second captioned introduction video. The reference edition is editorial-review-pending; company proposals are not verified internal architectures. AI and domain-correctness grading remain unimplemented. Public deployment is **not ready**: see the [original-prompt phase audit](docs/PHASE-AUDIT.md), [twenty security checks](docs/security-review.md), [current status](docs/STATUS.md) and [latest verification](docs/evidence/library-studio-verification.md). Earlier reports remain historical evidence.
 
 ## Your agreed direction
 

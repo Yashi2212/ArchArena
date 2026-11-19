@@ -9,7 +9,7 @@ test('resilience controls, synthetic components and sampled replay work together
   await mockApi(page);let input:Experiment;
   await page.route('**/api/runs',route=>{input=route.request().postDataJSON();return route.fulfill({status:202,json:{id:fixtureId,status:'QUEUED',request:input}});});
   await page.route(`**/api/runs/${fixtureId}`,route=>{const result=fixtureResult(input,true);return route.fulfill({json:{id:fixtureId,status:'DONE',request:input,result:{...result,telemetry:{attempts:1300,retries:100,timeouts:20,circuitRejections:10,staleReads:4,processedEvents:9000,peakPendingEvents:3000,nodeTimeline:result.timeline.flatMap(s=>input.graph.nodes.map(n=>({timeSeconds:s.timeSeconds,nodeId:n.id,busy:1,capacity:4,queueDepth:2,replicas:s.timeSeconds<5?1:2,completed:10,failures:0,circuitOpen:false,staleReads:0}))),traces:[{requestId:1,attempt:0,timeSeconds:0.1,nodeId:'n0',event:'arrive'}]}}}});});
-  await page.goto('/',{waitUntil:'domcontentloaded'});await expect(page.getByText('Engine connected',{exact:true})).toBeVisible({timeout:30000});
+  await page.goto('/',{waitUntil:'domcontentloaded'});await page.getByRole('button',{name:/^Practice/}).click();await page.getByRole('button',{name:'Load balancing',exact:true}).click();await expect(page.getByText('Engine connected',{exact:true})).toBeVisible({timeout:30000});
   await page.getByText('Resilience settings · bounded virtual model',{exact:true}).click();
   await page.getByLabel('Maximum retries',{exact:true}).fill('2');
   await page.getByLabel('Attempt timeout (ms)',{exact:true}).fill('500');
@@ -21,7 +21,7 @@ test('resilience controls, synthetic components and sampled replay work together
   await page.getByLabel('Virtual time',{exact:true}).focus();await page.keyboard.press('End');
   await expect(page.getByText('32.0 virtual seconds',{exact:true})).toBeVisible();
   await page.getByRole('button',{name:'Play replay',exact:true}).click();await expect(page.getByRole('button',{name:'Pause replay',exact:true})).toBeVisible();await page.getByRole('button',{name:'Pause replay',exact:true}).click();
-  if(['width-1440','width-390'].includes(info.project.name))await page.screenshot({path:resolve(`../docs/evidence/engine-v2-replay-${info.project.name}.png`),fullPage:true});
+  if(['width-1440','width-390'].includes(info.project.name))await page.screenshot({path:resolve(`../docs/evidence/library-studio-replay-${info.project.name}.png`),fullPage:true});
   await page.addScriptTag({content:readFileSync(resolve('node_modules/axe-core/axe.min.js'),'utf8')});
   const scan=await page.evaluate(async()=>await (window as unknown as {axe:{run:()=>Promise<{violations:unknown[]}>}}).axe.run());expect(scan.violations).toEqual([]);
   await page.getByLabel('Add architecture component').selectOption('CDN');

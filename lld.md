@@ -121,3 +121,12 @@ Backend DTOs, persistence and grading endpoints are unchanged. Backend saved gra
 `Telemetry` adds attempt/retry/timeout/breaker/staleness counters, resource counters, exact per-node sample records and first-sixteen-request bounded traces. Result constructors preserve legacy stored results. Retention removes raw timeline/trace data while preserving counters. Node residence now means isolated queue/service/dependency-hold time, rather than cumulative time since client entry. Whole-run occupancy is labeled separately from analytic demand.
 
 The repository canonicalizes option key order and normalizes old stored requests when checking legacy idempotency hashes. Stored JSON uses the supported Jackson 2 compatibility module on Boot 4 while HTTP uses Jackson 3 compatibility defaults. See [the runtime ADR](docs/adr/security-001-runtime-upgrade.md).
+
+
+## Latest library and Studio contracts (November 19)
+
+LearnLibrary renders Topic + Reading + CompanyReading records as React text and original flow lists. Reading includes story/simple/pro, example, tradeoff, pitfall, source keys and explicit ownerVerified:false/status metadata. Forty catalog identifiers and twenty scenario identifiers have matching reference records; source keys must resolve. No Markdown/HTML execution or company blueprint assertion. HLD and LLD have separate heading indexes and different teaching emphasis.
+
+DesignStudio bundle schema v1 contains six bounded strings (12,000 characters each), daily operations, peak multiplier and optional detached Graph snapshot. Restore rejects malformed JSON/version and bounds numerical/text fields. Autosave is browser-local; storage failure is visible. Coverage review means missing/present-for-human-review, never semantic pass. Export is a generated JSON download with a provenance kind and timestamp. There is no import, cloud synchronization, Java execution or AI dependency.
+
+The existing PracticeGuide worksheet schema and simulation API are unchanged. Concept experiments are now in Practice. Learn does not submit previews; a reading-to-lab action explicitly enters Practice. The native video element uses local MP4, poster, VTT, no autoplay, controls, chapter seek buttons and transcript. Rebuild scripts generate original Pillow frames plus offline synthetic narration. See [media and content provenance](docs/knowledge/local-reference-edition.md).

@@ -100,3 +100,16 @@ In the UI, expand Resilience settings for retry/deadline options. Select a node 
 Run `python scripts/smoke_simulation.py` for one real API → queue → worker → telemetry/export check (it submits a synthetic job, using a fixed idempotency key). For an opt-in real-browser check, set `ARCHARENA_LIVE_TEST=1` only for `npm.cmd run test:e2e -- tests/live-simulation.spec.ts --project=width-1440 --reporter=list`; it submits one experiment through the normal preview. Default browser runs remain fixtures and skip this opt-in test.
 
 Security reproduction and public blockers: [security review](docs/security-review.md). Model assumptions/limits: [simulation v2](docs/simulation-v2.md). Public hosting is not enabled by these commands.
+
+
+## Read-only Learn, Practice, Studio and tutorial
+
+Open the local React preview at http://127.0.0.1:5173. Learn opens to Start here with the 72-second captioned tutorial. Use HLD for 24 topic headings, LLD for 16, or Companies for twenty proposed designs. Uber has documented historical context, a separate reference proposal and linked concepts. Learn content is not editable. Its source-linked local review edition still needs editorial clearance before public publication.
+
+Open Practice to edit worksheets/graphs and run the bounded simulator. Five concept-lab buttons retain the original lesson controls and checkpoint flow. Predict, run a baseline, pin it, change one variable and rerun with matching seed/profile/incident. Use the LLD view for contracts and tests; the HLD view contains the graph and simulation. A successful run is not proof of business invariants.
+
+Design Studio is unlocked: draft Requirements, Capacity, HLD, API, Data model and LLD; capture the current Practice graph in HLD; export the JSON bundle. Browser-local artifacts have no cloud sync. Graph backend saves, worksheets and Studio bundles are separate. The tutorial can also be opened directly at /media/archarena-intro.mp4; captions and a transcript are served alongside it.
+
+Rebuild media with Windows PowerShell scripts/narrate-intro.ps1, then python scripts/create-intro-video.py. Requires Pillow and imageio-ffmpeg 0.6.0 installed privately under .tools/video-libs. Product media is versioned; private intermediates are ignored. Do not regenerate merely to run the app.
+
+Current Windows sandbox cannot launch packaged MSIX PowerShell; use C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe with login:false. Browser tests use the existing reviewed local-server/browser workflow. Check [phase audit](docs/PHASE-AUDIT.md) before any deployment: public readiness is still blocked.

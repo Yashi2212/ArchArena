@@ -1,0 +1,821 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "library-studio.spec.ts",
+      "system-design.spec.ts",
+      "foundations.spec.ts",
+      "simulation.spec.ts",
+      "--project=width-1440",
+      "--update-snapshots"
+    ],
+    "configFile": "C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\playwright.config.ts",
+    "rootDir": "C:/Users/abhis/OneDrive/Documents/ChatGPT/Placementprep/ArchArena/frontend/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/abhis/OneDrive/Documents/ChatGPT/Placementprep/ArchArena/frontend/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "width-1440",
+        "name": "width-1440",
+        "testDir": "C:/Users/abhis/OneDrive/Documents/ChatGPT/Placementprep/ArchArena/frontend/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "C:/Users/abhis/OneDrive/Documents/ChatGPT/Placementprep/ArchArena/frontend/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "width-1024",
+        "name": "width-1024",
+        "testDir": "C:/Users/abhis/OneDrive/Documents/ChatGPT/Placementprep/ArchArena/frontend/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "C:/Users/abhis/OneDrive/Documents/ChatGPT/Placementprep/ArchArena/frontend/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "width-768",
+        "name": "width-768",
+        "testDir": "C:/Users/abhis/OneDrive/Documents/ChatGPT/Placementprep/ArchArena/frontend/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "C:/Users/abhis/OneDrive/Documents/ChatGPT/Placementprep/ArchArena/frontend/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "width-390",
+        "name": "width-390",
+        "testDir": "C:/Users/abhis/OneDrive/Documents/ChatGPT/Placementprep/ArchArena/frontend/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "width-1440",
+        "testDir": "C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\tests",
+        "snapshotDir": "C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\tests",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 30000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5174",
+          "browserName": "chromium",
+          "channel": "msedge",
+          "headless": true,
+          "locale": "en-US",
+          "timezoneId": "Asia/Calcutta",
+          "reducedMotion": "reduce",
+          "colorScheme": "dark",
+          "trace": "retain-on-failure",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "width-1440"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "../docs/evidence/library-studio-browser-results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "changed",
+    "updateSourceMethod": "patch",
+    "version": "1.65.1",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run dev:test",
+      "url": "http://127.0.0.1:5174",
+      "reuseExistingServer": true,
+      "timeout": 120000
+    }
+  },
+  "suites": [
+    {
+      "title": "foundations.spec.ts",
+      "file": "foundations.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Learn foundation screenshot and responsive access",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-1440",
+              "projectName": "width-1440",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 16435,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\tests\\foundations.spec.ts-snapshots\\learn-foundations-width-1440-win32.png is re-generated, writing actual.\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T12:40:33.309Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e9452e6bc82fb17bc776-79e66c41d1602d8a7483",
+          "file": "foundations.spec.ts",
+          "line": 14,
+          "column": 1
+        },
+        {
+          "title": "all five lessons remain reachable",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-1440",
+              "projectName": "width-1440",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6006,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T12:40:53.773Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e9452e6bc82fb17bc776-0ba9046edaa62b2facd6",
+          "file": "foundations.spec.ts",
+          "line": 31,
+          "column": 1
+        },
+        {
+          "title": "Practice and unlocked Studio preserve the model notice",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-1440",
+              "projectName": "width-1440",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 19491,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\tests\\foundations.spec.ts-snapshots\\practice-foundations-width-1440-win32.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\tests\\foundations.spec.ts-snapshots\\studio-foundations-width-1440-win32.png is re-generated, writing actual.\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T12:40:59.891Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e9452e6bc82fb17bc776-c49d09bd0cd50d7d945e",
+          "file": "foundations.spec.ts",
+          "line": 39,
+          "column": 1
+        },
+        {
+          "title": "save and open existing design actions survive the theme",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-1440",
+              "projectName": "width-1440",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4563,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T12:41:19.523Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e9452e6bc82fb17bc776-854edbf343252c87882b",
+          "file": "foundations.spec.ts",
+          "line": 51,
+          "column": 1
+        },
+        {
+          "title": "backend error is visible and disclosure remains present",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-1440",
+              "projectName": "width-1440",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2968,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T12:41:24.180Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e9452e6bc82fb17bc776-3b91eb2574269c3059d5",
+          "file": "foundations.spec.ts",
+          "line": 64,
+          "column": 1
+        },
+        {
+          "title": "reduced motion replaces animated edge motion with a static state",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-1440",
+              "projectName": "width-1440",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4139,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T12:41:27.207Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e9452e6bc82fb17bc776-88809065af3e0e5f331a",
+          "file": "foundations.spec.ts",
+          "line": 74,
+          "column": 1
+        },
+        {
+          "title": "keyboard-only existing prediction run checkpoint and export flow",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-1440",
+              "projectName": "width-1440",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 32812,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T12:41:31.442Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e9452e6bc82fb17bc776-76a7478820daa3f7a5f7",
+          "file": "foundations.spec.ts",
+          "line": 90,
+          "column": 1
+        },
+        {
+          "title": "real-browser axe checks Learn, saved dialog, Practice and unlocked Studio",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-1440",
+              "projectName": "width-1440",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 9844,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T12:42:04.466Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e9452e6bc82fb17bc776-702af36ae4b9dfbbb99c",
+          "file": "foundations.spec.ts",
+          "line": 115,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "library-studio.spec.ts",
+      "file": "library-studio.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "company study separates context, proposals and practice",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-1440",
+              "projectName": "width-1440",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3961,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T12:42:14.851Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2d9d59eb42d8c8dd6819-163b93022e0a961dad0e",
+          "file": "library-studio.spec.ts",
+          "line": 6,
+          "column": 1
+        },
+        {
+          "title": "Studio persists artifacts, captures a graph and exports a bundle",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-1440",
+              "projectName": "width-1440",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7494,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T12:42:18.923Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2d9d59eb42d8c8dd6819-292f9aef148fe91b7c66",
+          "file": "library-studio.spec.ts",
+          "line": 19,
+          "column": 1
+        },
+        {
+          "title": "self-hosted tutorial decodes, plays and exposes captions and chapters",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-1440",
+              "projectName": "width-1440",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7539,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T12:42:26.497Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2d9d59eb42d8c8dd6819-b0f8ad66d184ef52e6e7",
+          "file": "library-studio.spec.ts",
+          "line": 38,
+          "column": 1
+        },
+        {
+          "title": "company library and Studio have no axe violations or horizontal overflow",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-1440",
+              "projectName": "width-1440",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7478,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T12:42:34.183Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2d9d59eb42d8c8dd6819-f0c4dde6a58c25dd2bb0",
+          "file": "library-studio.spec.ts",
+          "line": 53,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "live-simulation.spec.ts",
+      "file": "live-simulation.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "actual local API and worker produce replayable v2 evidence",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "Opt-in: requires the real local API, worker and frontend; submits one synthetic experiment.",
+                  "location": {
+                    "file": "C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\tests\\live-simulation.spec.ts",
+                    "line": 6,
+                    "column": 8
+                  }
+                }
+              ],
+              "expectedStatus": "skipped",
+              "projectId": "width-1440",
+              "projectName": "width-1440",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "skipped",
+                  "duration": 515,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T12:42:41.870Z",
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "Opt-in: requires the real local API, worker and frontend; submits one synthetic experiment.",
+                      "location": {
+                        "file": "C:\\Users\\abhis\\OneDrive\\Documents\\ChatGPT\\Placementprep\\ArchArena\\frontend\\tests\\live-simulation.spec.ts",
+                        "line": 6,
+                        "column": 8
+                      }
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "skipped"
+            }
+          ],
+          "id": "90290a3a0256a4229e2d-0f8a8abbffec907b3cb9",
+          "file": "live-simulation.spec.ts",
+          "line": 5,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "simulation.spec.ts",
+      "file": "simulation.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "resilience controls, synthetic components and sampled replay work together",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-1440",
+              "projectName": "width-1440",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 9399,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T12:42:42.485Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8812daf840a2e145bc16-8a545e44d62bbb3330cf",
+          "file": "simulation.spec.ts",
+          "line": 6,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "system-design.spec.ts",
+      "file": "system-design.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "learning contains full HLD and LLD headings and opens experiments only in Practice",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-1440",
+              "projectName": "width-1440",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3071,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T12:42:51.983Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d8160f1742561d8929d6-8a9feab111aea80d766d",
+          "file": "system-design.spec.ts",
+          "line": 6,
+          "column": 1
+        },
+        {
+          "title": "Uber practice keeps worksheets separate and gives actionable honest feedback",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-1440",
+              "projectName": "width-1440",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7239,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T12:42:55.093Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d8160f1742561d8929d6-df2ee6e073599e73a8ef",
+          "file": "system-design.spec.ts",
+          "line": 27,
+          "column": 1
+        },
+        {
+          "title": "both new design views remain accessible and fit the viewport",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-1440",
+              "projectName": "width-1440",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8019,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-19T12:43:02.382Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d8160f1742561d8929d6-0c158ace2280dd3374c8",
+          "file": "system-design.spec.ts",
+          "line": 61,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-19T12:40:19.167Z",
+    "duration": 172879.594,
+    "expected": 16,
+    "skipped": 1,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

@@ -1,0 +1,3744 @@
+{
+  "id": "678bc962-d951-4bfb-9b0b-323027ce6e23",
+  "status": "DONE",
+  "attempt": 1,
+  "request": {
+    "graph": {
+      "nodes": [
+        {
+          "id": "n0",
+          "type": "CLIENT",
+          "label": "Client",
+          "config": {
+            "burst": 10,
+            "concurrency": 1,
+            "hitRatio": 0,
+            "queueLimit": 200,
+            "rate": 25,
+            "readRatio": 0.9,
+            "replicas": 1,
+            "serviceMs": 0.5
+          }
+        },
+        {
+          "id": "n1",
+          "type": "LOAD_BALANCER",
+          "label": "Load balancer",
+          "config": {
+            "burst": 10,
+            "concurrency": 1,
+            "hitRatio": 0,
+            "queueLimit": 200,
+            "rate": 25,
+            "readRatio": 0.9,
+            "replicas": 1,
+            "serviceMs": 0.5
+          }
+        },
+        {
+          "id": "n2",
+          "type": "SERVICE",
+          "label": "Java service",
+          "config": {
+            "burst": 10,
+            "concurrency": 1,
+            "hitRatio": 0,
+            "queueLimit": 200,
+            "rate": 25,
+            "readRatio": 0.9,
+            "replicas": 1,
+            "serviceMs": 60
+          }
+        },
+        {
+          "id": "n3",
+          "type": "DATABASE",
+          "label": "Database",
+          "config": {
+            "burst": 10,
+            "concurrency": 1,
+            "hitRatio": 0,
+            "queueLimit": 200,
+            "rate": 25,
+            "readRatio": 0.9,
+            "replicas": 1,
+            "serviceMs": 35
+          }
+        }
+      ],
+      "edges": [
+        {
+          "id": "e0",
+          "source": "n0",
+          "target": "n1"
+        },
+        {
+          "id": "e1",
+          "source": "n1",
+          "target": "n2"
+        },
+        {
+          "id": "e2",
+          "source": "n2",
+          "target": "n3"
+        }
+      ]
+    },
+    "arrivalRate": 40,
+    "durationSeconds": 30,
+    "seed": 42,
+    "profile": "steady",
+    "failure": "service-kill",
+    "options": {
+      "attemptTimeoutMs": 500,
+      "deadlineMs": 2000,
+      "retries": 1,
+      "retryBackoffMs": 100,
+      "retryJitter": 1
+    }
+  },
+  "result": {
+    "engineVersion": "2.0.0",
+    "assumptionsVersion": "2.0.0",
+    "mode": "discrete-event",
+    "seed": 42,
+    "requests": 1192,
+    "successful": 43,
+    "errors": 1149,
+    "rejected": 0,
+    "throughputRps": 1.4333333333333333,
+    "p50Ms": 479.60661901169544,
+    "p95Ms": 1080.2071663269714,
+    "p99Ms": 1090.1601177801758,
+    "nodes": {
+      "n0": {
+        "id": "n0",
+        "label": "Client",
+        "arrivalRate": 78.5,
+        "utilization": 0.036268397751565505,
+        "meanLatencyMs": 0.5125219929920748,
+        "maxQueueDepth": 2,
+        "visits": 2355,
+        "dropped": 0
+      },
+      "n1": {
+        "id": "n1",
+        "label": "Load balancer",
+        "arrivalRate": 78.5,
+        "utilization": 0.0378983745212836,
+        "meanLatencyMs": 0.5460515716184797,
+        "maxQueueDepth": 3,
+        "visits": 2355,
+        "dropped": 0
+      },
+      "n2": {
+        "id": "n2",
+        "label": "Java service",
+        "arrivalRate": 78.5,
+        "utilization": 0.8321406459207576,
+        "meanLatencyMs": 532.2720848655084,
+        "maxQueueDepth": 57,
+        "visits": 2355,
+        "dropped": 2259
+      },
+      "n3": {
+        "id": "n3",
+        "label": "Database",
+        "arrivalRate": 3.2,
+        "utilization": 0.041015046087454626,
+        "meanLatencyMs": 31.63577332629794,
+        "maxQueueDepth": 2,
+        "visits": 96,
+        "dropped": 53
+      }
+    },
+    "timeline": [
+      {
+        "timeSeconds": 1,
+        "throughputRps": 4,
+        "errorRate": 0,
+        "queueDepth": 37
+      },
+      {
+        "timeSeconds": 2,
+        "throughputRps": 2,
+        "errorRate": 0.9459459459459459,
+        "queueDepth": 36
+      },
+      {
+        "timeSeconds": 3,
+        "throughputRps": 4,
+        "errorRate": 0.8918918918918919,
+        "queueDepth": 36
+      },
+      {
+        "timeSeconds": 4,
+        "throughputRps": 1,
+        "errorRate": 0.972972972972973,
+        "queueDepth": 26
+      },
+      {
+        "timeSeconds": 5,
+        "throughputRps": 0,
+        "errorRate": 1,
+        "queueDepth": 44
+      },
+      {
+        "timeSeconds": 6,
+        "throughputRps": 0,
+        "errorRate": 1,
+        "queueDepth": 38
+      },
+      {
+        "timeSeconds": 7,
+        "throughputRps": 3,
+        "errorRate": 0.9285714285714286,
+        "queueDepth": 41
+      },
+      {
+        "timeSeconds": 8,
+        "throughputRps": 0,
+        "errorRate": 1,
+        "queueDepth": 50
+      },
+      {
+        "timeSeconds": 9,
+        "throughputRps": 2,
+        "errorRate": 0.9583333333333334,
+        "queueDepth": 46
+      },
+      {
+        "timeSeconds": 10,
+        "throughputRps": 0,
+        "errorRate": 1,
+        "queueDepth": 52
+      },
+      {
+        "timeSeconds": 11,
+        "throughputRps": 0,
+        "errorRate": 1,
+        "queueDepth": 35
+      },
+      {
+        "timeSeconds": 12,
+        "throughputRps": 2,
+        "errorRate": 0.9393939393939394,
+        "queueDepth": 43
+      },
+      {
+        "timeSeconds": 13,
+        "throughputRps": 2,
+        "errorRate": 0.9565217391304348,
+        "queueDepth": 42
+      },
+      {
+        "timeSeconds": 14,
+        "throughputRps": 0,
+        "errorRate": 1,
+        "queueDepth": 42
+      },
+      {
+        "timeSeconds": 15,
+        "throughputRps": 1,
+        "errorRate": 0.9772727272727273,
+        "queueDepth": 39
+      },
+      {
+        "timeSeconds": 16,
+        "throughputRps": 0,
+        "errorRate": 1,
+        "queueDepth": 0
+      },
+      {
+        "timeSeconds": 17,
+        "throughputRps": 0,
+        "errorRate": 1,
+        "queueDepth": 0
+      },
+      {
+        "timeSeconds": 18,
+        "throughputRps": 0,
+        "errorRate": 1,
+        "queueDepth": 0
+      },
+      {
+        "timeSeconds": 19,
+        "throughputRps": 0,
+        "errorRate": 1,
+        "queueDepth": 0
+      },
+      {
+        "timeSeconds": 20,
+        "throughputRps": 0,
+        "errorRate": 1,
+        "queueDepth": 0
+      },
+      {
+        "timeSeconds": 21,
+        "throughputRps": 16,
+        "errorRate": 0,
+        "queueDepth": 26
+      },
+      {
+        "timeSeconds": 22,
+        "throughputRps": 0,
+        "errorRate": 1,
+        "queueDepth": 35
+      },
+      {
+        "timeSeconds": 23,
+        "throughputRps": 0,
+        "errorRate": 1,
+        "queueDepth": 44
+      },
+      {
+        "timeSeconds": 24,
+        "throughputRps": 1,
+        "errorRate": 0.9772727272727273,
+        "queueDepth": 32
+      },
+      {
+        "timeSeconds": 25,
+        "throughputRps": 2,
+        "errorRate": 0.9393939393939394,
+        "queueDepth": 39
+      },
+      {
+        "timeSeconds": 26,
+        "throughputRps": 0,
+        "errorRate": 1,
+        "queueDepth": 43
+      },
+      {
+        "timeSeconds": 27,
+        "throughputRps": 1,
+        "errorRate": 0.9772727272727273,
+        "queueDepth": 44
+      },
+      {
+        "timeSeconds": 28,
+        "throughputRps": 0,
+        "errorRate": 1,
+        "queueDepth": 36
+      },
+      {
+        "timeSeconds": 29,
+        "throughputRps": 0,
+        "errorRate": 1,
+        "queueDepth": 37
+      },
+      {
+        "timeSeconds": 30,
+        "throughputRps": 0,
+        "errorRate": 1,
+        "queueDepth": 40
+      },
+      {
+        "timeSeconds": 31,
+        "throughputRps": 2,
+        "errorRate": 0.95,
+        "queueDepth": 1
+      },
+      {
+        "timeSeconds": 32,
+        "throughputRps": 0,
+        "errorRate": 1,
+        "queueDepth": 0
+      }
+    ],
+    "findings": [
+      {
+        "severity": "critical",
+        "title": "Java service needs attention",
+        "detail": "Maximum queue 57; attempt-level failures/rejections 2259. Inspect node timeline and bounded request traces.",
+        "metric": "nodes.n2.dropped"
+      },
+      {
+        "severity": "critical",
+        "title": "Database needs attention",
+        "detail": "Maximum queue 2; attempt-level failures/rejections 53. Inspect node timeline and bounded request traces.",
+        "metric": "nodes.n3.dropped"
+      },
+      {
+        "severity": "warning",
+        "title": "Retries amplify work",
+        "detail": "2355 attempts for 1192 logical requests; 1163 retries. Retries can continue while timed-out downstream work occupies slots.",
+        "metric": "telemetry.retries"
+      },
+      {
+        "severity": "critical",
+        "title": "Some logical requests failed",
+        "detail": "1149 errors after bounded attempts/deadlines; policy rejections are separate.",
+        "metric": "errors"
+      }
+    ],
+    "assumptions": [
+      "Educational model, not a benchmark or prediction of deployed AWS performance.",
+      "Poisson arrivals; exponential independent service times; FIFO finite queues; no real network or TLS. Event mode optionally adds fixed node network delay; analytic mode omits it.",
+      "Cache hits complete at the cache. Misses continue downstream; hit ratio is an input, not a learned cache state.",
+      "Database writes use a separate primary pool; replicas add read capacity. Event mode models one synthetic shared-record replication lag, not a real database.",
+      "Load balancers split routes uniformly; acyclic paths end at a database or synthetic external API. No actual external network calls occur.",
+      "Queue nodes process work before downstream stages; event mode supports bounded retries, circuit breakers, dependency holding, delayed service scale-out and synthetic failures.",
+      "Costs use illustrative per-node weights, not live AWS pricing or a billing estimate.",
+      "Event quantiles include successful logical end-to-end requests including retry backoff; overall deadlines and attempt timeouts are explicit inputs. Empty-success quantiles are zero, not evidence of fast responses.",
+      "Node latency is isolated stage residence including queue and optional synchronous dependency holding; whole-run utilization integrates occupied/capacity slots through the drain horizon. Timed-out local work continues occupying its slot until completion or horizon.",
+      "Retries restart the full acyclic path, retain request identity/read-write type and share one overall deadline. Writes are synthetic and not idempotent: do not infer business correctness from retries.",
+      "Circuit breakers use consecutive modeled node/held-dependency failures, a reset interval and one half-open probe. Scale-out adds one service replica after each observed-pressure delay; no scale-in or infrastructure provisioning is modeled.",
+      "Replication tracks one synthetic shared record: a follower lags write commits by a fixed input delay; fresh-read mode uses the primary read pool. Independent read/write pools do not model database locking, consensus or data loss.",
+      "Service-kill rejects new arrivals; dependency-outage rejects arrivals/completions at one selected synthetic dependency; slow-dependency multiplies newly started work by ten; AZ-outage removes one service replica for five seconds without killing in-flight work.",
+      "Per-node samples are actual virtual-clock snapshots, not per-sample p95. Traces cover only the first sixteen logical requests, capped at 1500 events; absence is not proof that an event never occurred.",
+      "Bounds: 30 nodes, 60 edges, 10000 logical arrivals, 200000 processed events, 40000 pending events, 5-second engine wall limit, <=130 virtual seconds. Worker process heap is configured separately; container memory enforcement requires deployment verification."
+    ],
+    "roughCostPerHour": 0.06,
+    "telemetry": {
+      "attempts": 2355,
+      "retries": 1163,
+      "timeouts": 1935,
+      "circuitRejections": 0,
+      "staleReads": 0,
+      "processedEvents": 18318,
+      "peakPendingEvents": 2419,
+      "nodeTimeline": [
+        {
+          "timeSeconds": 1,
+          "nodeId": "n0",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 59,
+          "failures": 0,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 1,
+          "nodeId": "n1",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 59,
+          "failures": 0,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 1,
+          "nodeId": "n2",
+          "busy": 1,
+          "queueDepth": 37,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 11,
+          "failures": 18,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 1,
+          "nodeId": "n3",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 2,
+          "replicas": 1,
+          "completed": 4,
+          "failures": 0,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 2,
+          "nodeId": "n0",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 138,
+          "failures": 0,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 2,
+          "nodeId": "n1",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 138,
+          "failures": 0,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 2,
+          "nodeId": "n2",
+          "busy": 1,
+          "queueDepth": 36,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 31,
+          "failures": 96,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 2,
+          "nodeId": "n3",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 2,
+          "replicas": 1,
+          "completed": 6,
+          "failures": 0,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 3,
+          "nodeId": "n0",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 205,
+          "failures": 0,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 3,
+          "nodeId": "n1",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 205,
+          "failures": 0,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 3,
+          "nodeId": "n2",
+          "busy": 1,
+          "queueDepth": 36,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 50,
+          "failures": 157,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 3,
+          "nodeId": "n3",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 2,
+          "replicas": 1,
+          "completed": 12,
+          "failures": 2,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 4,
+          "nodeId": "n0",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 259,
+          "failures": 0,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 4,
+          "nodeId": "n1",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 259,
+          "failures": 0,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 4,
+          "nodeId": "n2",
+          "busy": 1,
+          "queueDepth": 26,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 65,
+          "failures": 218,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 4,
+          "nodeId": "n3",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 2,
+          "replicas": 1,
+          "completed": 14,
+          "failures": 4,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 5,
+          "nodeId": "n0",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 343,
+          "failures": 0,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 5,
+          "nodeId": "n1",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 343,
+          "failures": 0,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 5,
+          "nodeId": "n2",
+          "busy": 1,
+          "queueDepth": 44,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 78,
+          "failures": 284,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 5,
+          "nodeId": "n3",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 2,
+          "replicas": 1,
+          "completed": 14,
+          "failures": 4,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 6,
+          "nodeId": "n0",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 433,
+          "failures": 0,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 6,
+          "nodeId": "n1",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 433,
+          "failures": 0,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 6,
+          "nodeId": "n2",
+          "busy": 1,
+          "queueDepth": 38,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 98,
+          "failures": 375,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 6,
+          "nodeId": "n3",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 2,
+          "replicas": 1,
+          "completed": 18,
+          "failures": 8,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 7,
+          "nodeId": "n0",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 512,
+          "failures": 0,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 7,
+          "nodeId": "n1",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 512,
+          "failures": 0,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 7,
+          "nodeId": "n2",
+          "busy": 1,
+          "queueDepth": 41,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 120,
+          "failures": 446,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 7,
+          "nodeId": "n3",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 2,
+          "replicas": 1,
+          "completed": 24,
+          "failures": 11,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 8,
+          "nodeId": "n0",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 613,
+          "failures": 0,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 8,
+          "nodeId": "n1",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 613,
+          "failures": 0,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 8,
+          "nodeId": "n2",
+          "busy": 1,
+          "queueDepth": 50,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 136,
+          "failures": 536,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 8,
+          "nodeId": "n3",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 2,
+          "replicas": 1,
+          "completed": 26,
+          "failures": 13,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 9,
+          "nodeId": "n0",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 700,
+          "failures": 0,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 9,
+          "nodeId": "n1",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 700,
+          "failures": 0,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 9,
+          "nodeId": "n2",
+          "busy": 1,
+          "queueDepth": 46,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 153,
+          "failures": 623,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 9,
+          "nodeId": "n3",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 2,
+          "replicas": 1,
+          "completed": 30,
+          "failures": 15,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 10,
+          "nodeId": "n0",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 799,
+          "failures": 0,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 10,
+          "nodeId": "n1",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 799,
+          "failures": 0,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 10,
+          "nodeId": "n2",
+          "busy": 1,
+          "queueDepth": 52,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 166,
+          "failures": 716,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 10,
+          "nodeId": "n3",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 2,
+          "replicas": 1,
+          "completed": 30,
+          "failures": 15,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 11,
+          "nodeId": "n0",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 870,
+          "failures": 0,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 11,
+          "nodeId": "n1",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 870,
+          "failures": 0,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 11,
+          "nodeId": "n2",
+          "busy": 1,
+          "queueDepth": 35,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 189,
+          "failures": 802,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 11,
+          "nodeId": "n3",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 2,
+          "replicas": 1,
+          "completed": 32,
+          "failures": 17,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 12,
+          "nodeId": "n0",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 954,
+          "failures": 0,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 12,
+          "nodeId": "n1",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 954,
+          "failures": 0,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 12,
+          "nodeId": "n2",
+          "busy": 1,
+          "queueDepth": 43,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 207,
+          "failures": 873,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 12,
+          "nodeId": "n3",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 2,
+          "replicas": 1,
+          "completed": 35,
+          "failures": 20,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 13,
+          "nodeId": "n0",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 1038,
+          "failures": 0,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 13,
+          "nodeId": "n1",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 1038,
+          "failures": 0,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 13,
+          "nodeId": "n2",
+          "busy": 1,
+          "queueDepth": 42,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 227,
+          "failures": 952,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 13,
+          "nodeId": "n3",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 2,
+          "replicas": 1,
+          "completed": 40,
+          "failures": 23,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 14,
+          "nodeId": "n0",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 1128,
+          "failures": 0,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 14,
+          "nodeId": "n1",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 1128,
+          "failures": 0,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 14,
+          "nodeId": "n2",
+          "busy": 1,
+          "queueDepth": 42,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 238,
+          "failures": 1043,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 14,
+          "nodeId": "n3",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 2,
+          "replicas": 1,
+          "completed": 40,
+          "failures": 23,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 15,
+          "nodeId": "n0",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 1210,
+          "failures": 0,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 15,
+          "nodeId": "n1",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 1210,
+          "failures": 0,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 15,
+          "nodeId": "n2",
+          "busy": 1,
+          "queueDepth": 39,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 253,
+          "failures": 1123,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 15,
+          "nodeId": "n3",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 2,
+          "replicas": 1,
+          "completed": 45,
+          "failures": 27,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 16,
+          "nodeId": "n0",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 1292,
+          "failures": 0,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 16,
+          "nodeId": "n1",
+          "busy": 1,
+          "queueDepth": 0,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 1291,
+          "failures": 0,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 16,
+          "nodeId": "n2",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 260,
+          "failures": 1243,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 16,
+          "nodeId": "n3",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 2,
+          "replicas": 1,
+          "completed": 45,
+          "failures": 27,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 17,
+          "nodeId": "n0",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 1372,
+          "failures": 0,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 17,
+          "nodeId": "n1",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 1372,
+          "failures": 0,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 17,
+          "nodeId": "n2",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 260,
+          "failures": 1324,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 17,
+          "nodeId": "n3",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 2,
+          "replicas": 1,
+          "completed": 45,
+          "failures": 27,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 18,
+          "nodeId": "n0",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 1451,
+          "failures": 0,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 18,
+          "nodeId": "n1",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 1451,
+          "failures": 0,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 18,
+          "nodeId": "n2",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 260,
+          "failures": 1403,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 18,
+          "nodeId": "n3",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 2,
+          "replicas": 1,
+          "completed": 45,
+          "failures": 27,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 19,
+          "nodeId": "n0",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 1520,
+          "failures": 0,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 19,
+          "nodeId": "n1",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 1520,
+          "failures": 0,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 19,
+          "nodeId": "n2",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 260,
+          "failures": 1472,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 19,
+          "nodeId": "n3",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 2,
+          "replicas": 1,
+          "completed": 45,
+          "failures": 27,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 20,
+          "nodeId": "n0",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 1587,
+          "failures": 0,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 20,
+          "nodeId": "n1",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 1587,
+          "failures": 0,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 20,
+          "nodeId": "n2",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 260,
+          "failures": 1539,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 20,
+          "nodeId": "n3",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 2,
+          "replicas": 1,
+          "completed": 45,
+          "failures": 27,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 21,
+          "nodeId": "n0",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 1635,
+          "failures": 0,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 21,
+          "nodeId": "n1",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 1635,
+          "failures": 0,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 21,
+          "nodeId": "n2",
+          "busy": 1,
+          "queueDepth": 26,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 277,
+          "failures": 1544,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 21,
+          "nodeId": "n3",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 2,
+          "replicas": 1,
+          "completed": 62,
+          "failures": 28,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 22,
+          "nodeId": "n0",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 1707,
+          "failures": 0,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 22,
+          "nodeId": "n1",
+          "busy": 1,
+          "queueDepth": 0,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 1706,
+          "failures": 0,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 22,
+          "nodeId": "n2",
+          "busy": 1,
+          "queueDepth": 35,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 292,
+          "failures": 1603,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 22,
+          "nodeId": "n3",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 2,
+          "replicas": 1,
+          "completed": 65,
+          "failures": 31,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 23,
+          "nodeId": "n0",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 1787,
+          "failures": 0,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 23,
+          "nodeId": "n1",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 1787,
+          "failures": 0,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 23,
+          "nodeId": "n2",
+          "busy": 1,
+          "queueDepth": 44,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 311,
+          "failures": 1669,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 23,
+          "nodeId": "n3",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 2,
+          "replicas": 1,
+          "completed": 70,
+          "failures": 37,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 24,
+          "nodeId": "n0",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 1855,
+          "failures": 0,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 24,
+          "nodeId": "n1",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 1855,
+          "failures": 0,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 24,
+          "nodeId": "n2",
+          "busy": 1,
+          "queueDepth": 32,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 324,
+          "failures": 1744,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 24,
+          "nodeId": "n3",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 2,
+          "replicas": 1,
+          "completed": 74,
+          "failures": 41,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 25,
+          "nodeId": "n0",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 1927,
+          "failures": 0,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 25,
+          "nodeId": "n1",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 1927,
+          "failures": 0,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 25,
+          "nodeId": "n2",
+          "busy": 1,
+          "queueDepth": 39,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 340,
+          "failures": 1807,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 25,
+          "nodeId": "n3",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 2,
+          "replicas": 1,
+          "completed": 76,
+          "failures": 41,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 26,
+          "nodeId": "n0",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 2014,
+          "failures": 0,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 26,
+          "nodeId": "n1",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 2014,
+          "failures": 0,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 26,
+          "nodeId": "n2",
+          "busy": 1,
+          "queueDepth": 43,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 351,
+          "failures": 1890,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 26,
+          "nodeId": "n3",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 2,
+          "replicas": 1,
+          "completed": 76,
+          "failures": 41,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 27,
+          "nodeId": "n0",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 2096,
+          "failures": 0,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 27,
+          "nodeId": "n1",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 2096,
+          "failures": 0,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 27,
+          "nodeId": "n2",
+          "busy": 1,
+          "queueDepth": 44,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 372,
+          "failures": 1968,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 27,
+          "nodeId": "n3",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 2,
+          "replicas": 1,
+          "completed": 78,
+          "failures": 43,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 28,
+          "nodeId": "n0",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 2179,
+          "failures": 0,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 28,
+          "nodeId": "n1",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 2179,
+          "failures": 0,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 28,
+          "nodeId": "n2",
+          "busy": 1,
+          "queueDepth": 36,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 389,
+          "failures": 2057,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 28,
+          "nodeId": "n3",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 2,
+          "replicas": 1,
+          "completed": 80,
+          "failures": 45,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 29,
+          "nodeId": "n0",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 2255,
+          "failures": 0,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 29,
+          "nodeId": "n1",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 2255,
+          "failures": 0,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 29,
+          "nodeId": "n2",
+          "busy": 1,
+          "queueDepth": 37,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 402,
+          "failures": 2128,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 29,
+          "nodeId": "n3",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 2,
+          "replicas": 1,
+          "completed": 83,
+          "failures": 49,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 30,
+          "nodeId": "n0",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 2332,
+          "failures": 0,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 30,
+          "nodeId": "n1",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 2332,
+          "failures": 0,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 30,
+          "nodeId": "n2",
+          "busy": 1,
+          "queueDepth": 40,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 412,
+          "failures": 2199,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 30,
+          "nodeId": "n3",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 2,
+          "replicas": 1,
+          "completed": 85,
+          "failures": 52,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 31,
+          "nodeId": "n0",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 2355,
+          "failures": 0,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 31,
+          "nodeId": "n1",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 2355,
+          "failures": 0,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 31,
+          "nodeId": "n2",
+          "busy": 1,
+          "queueDepth": 1,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 423,
+          "failures": 2258,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 31,
+          "nodeId": "n3",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 2,
+          "replicas": 1,
+          "completed": 88,
+          "failures": 53,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 32,
+          "nodeId": "n0",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 2355,
+          "failures": 0,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 32,
+          "nodeId": "n1",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 2355,
+          "failures": 0,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 32,
+          "nodeId": "n2",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 1,
+          "replicas": 1,
+          "completed": 425,
+          "failures": 2259,
+          "circuitOpen": false,
+          "staleReads": 0
+        },
+        {
+          "timeSeconds": 32,
+          "nodeId": "n3",
+          "busy": 0,
+          "queueDepth": 0,
+          "capacity": 2,
+          "replicas": 1,
+          "completed": 88,
+          "failures": 53,
+          "circuitOpen": false,
+          "staleReads": 0
+        }
+      ],
+      "traces": [
+        {
+          "requestId": 1,
+          "attempt": 0,
+          "timeSeconds": 0.03382776495610036,
+          "nodeId": "n0",
+          "event": "attempt-start"
+        },
+        {
+          "requestId": 1,
+          "attempt": 0,
+          "timeSeconds": 0.03382776495610036,
+          "nodeId": "n0",
+          "event": "arrive"
+        },
+        {
+          "requestId": 1,
+          "attempt": 0,
+          "timeSeconds": 0.03382776495610036,
+          "nodeId": "n0",
+          "event": "service-start"
+        },
+        {
+          "requestId": 1,
+          "attempt": 0,
+          "timeSeconds": 0.03425748975201372,
+          "nodeId": "n1",
+          "event": "arrive"
+        },
+        {
+          "requestId": 1,
+          "attempt": 0,
+          "timeSeconds": 0.03425748975201372,
+          "nodeId": "n1",
+          "event": "service-start"
+        },
+        {
+          "requestId": 1,
+          "attempt": 0,
+          "timeSeconds": 0.03508770779254518,
+          "nodeId": "n2",
+          "event": "arrive"
+        },
+        {
+          "requestId": 1,
+          "attempt": 0,
+          "timeSeconds": 0.03508770779254518,
+          "nodeId": "n2",
+          "event": "service-start"
+        },
+        {
+          "requestId": 2,
+          "attempt": 0,
+          "timeSeconds": 0.04199184188775703,
+          "nodeId": "n0",
+          "event": "attempt-start"
+        },
+        {
+          "requestId": 2,
+          "attempt": 0,
+          "timeSeconds": 0.04199184188775703,
+          "nodeId": "n0",
+          "event": "arrive"
+        },
+        {
+          "requestId": 2,
+          "attempt": 0,
+          "timeSeconds": 0.04199184188775703,
+          "nodeId": "n0",
+          "event": "service-start"
+        },
+        {
+          "requestId": 2,
+          "attempt": 0,
+          "timeSeconds": 0.042924066779621045,
+          "nodeId": "n1",
+          "event": "arrive"
+        },
+        {
+          "requestId": 2,
+          "attempt": 0,
+          "timeSeconds": 0.042924066779621045,
+          "nodeId": "n1",
+          "event": "service-start"
+        },
+        {
+          "requestId": 3,
+          "attempt": 0,
+          "timeSeconds": 0.042961146613685004,
+          "nodeId": "n0",
+          "event": "attempt-start"
+        },
+        {
+          "requestId": 3,
+          "attempt": 0,
+          "timeSeconds": 0.042961146613685004,
+          "nodeId": "n0",
+          "event": "arrive"
+        },
+        {
+          "requestId": 3,
+          "attempt": 0,
+          "timeSeconds": 0.042961146613685004,
+          "nodeId": "n0",
+          "event": "service-start"
+        },
+        {
+          "requestId": 3,
+          "attempt": 0,
+          "timeSeconds": 0.04304632432964509,
+          "nodeId": "n1",
+          "event": "arrive"
+        },
+        {
+          "requestId": 3,
+          "attempt": 0,
+          "timeSeconds": 0.04304632432964509,
+          "nodeId": "n1",
+          "event": "enqueue"
+        },
+        {
+          "requestId": 3,
+          "attempt": 0,
+          "timeSeconds": 0.04401633210740564,
+          "nodeId": "n1",
+          "event": "service-start"
+        },
+        {
+          "requestId": 2,
+          "attempt": 0,
+          "timeSeconds": 0.04401633210740564,
+          "nodeId": "n2",
+          "event": "arrive"
+        },
+        {
+          "requestId": 2,
+          "attempt": 0,
+          "timeSeconds": 0.04401633210740564,
+          "nodeId": "n2",
+          "event": "enqueue"
+        },
+        {
+          "requestId": 3,
+          "attempt": 0,
+          "timeSeconds": 0.045616951066629656,
+          "nodeId": "n2",
+          "event": "arrive"
+        },
+        {
+          "requestId": 3,
+          "attempt": 0,
+          "timeSeconds": 0.045616951066629656,
+          "nodeId": "n2",
+          "event": "enqueue"
+        },
+        {
+          "requestId": 4,
+          "attempt": 0,
+          "timeSeconds": 0.049121617194942235,
+          "nodeId": "n0",
+          "event": "attempt-start"
+        },
+        {
+          "requestId": 4,
+          "attempt": 0,
+          "timeSeconds": 0.049121617194942235,
+          "nodeId": "n0",
+          "event": "arrive"
+        },
+        {
+          "requestId": 4,
+          "attempt": 0,
+          "timeSeconds": 0.049121617194942235,
+          "nodeId": "n0",
+          "event": "service-start"
+        },
+        {
+          "requestId": 4,
+          "attempt": 0,
+          "timeSeconds": 0.04925736288695024,
+          "nodeId": "n1",
+          "event": "arrive"
+        },
+        {
+          "requestId": 4,
+          "attempt": 0,
+          "timeSeconds": 0.04925736288695024,
+          "nodeId": "n1",
+          "event": "service-start"
+        },
+        {
+          "requestId": 4,
+          "attempt": 0,
+          "timeSeconds": 0.05041050843618319,
+          "nodeId": "n2",
+          "event": "arrive"
+        },
+        {
+          "requestId": 4,
+          "attempt": 0,
+          "timeSeconds": 0.05041050843618319,
+          "nodeId": "n2",
+          "event": "enqueue"
+        },
+        {
+          "requestId": 5,
+          "attempt": 0,
+          "timeSeconds": 0.05950689126820814,
+          "nodeId": "n0",
+          "event": "attempt-start"
+        },
+        {
+          "requestId": 5,
+          "attempt": 0,
+          "timeSeconds": 0.05950689126820814,
+          "nodeId": "n0",
+          "event": "arrive"
+        },
+        {
+          "requestId": 5,
+          "attempt": 0,
+          "timeSeconds": 0.05950689126820814,
+          "nodeId": "n0",
+          "event": "service-start"
+        },
+        {
+          "requestId": 5,
+          "attempt": 0,
+          "timeSeconds": 0.05970346378265979,
+          "nodeId": "n1",
+          "event": "arrive"
+        },
+        {
+          "requestId": 5,
+          "attempt": 0,
+          "timeSeconds": 0.05970346378265979,
+          "nodeId": "n1",
+          "event": "service-start"
+        },
+        {
+          "requestId": 5,
+          "attempt": 0,
+          "timeSeconds": 0.05973057655112751,
+          "nodeId": "n2",
+          "event": "arrive"
+        },
+        {
+          "requestId": 5,
+          "attempt": 0,
+          "timeSeconds": 0.05973057655112751,
+          "nodeId": "n2",
+          "event": "enqueue"
+        },
+        {
+          "requestId": 6,
+          "attempt": 0,
+          "timeSeconds": 0.06523913351663221,
+          "nodeId": "n0",
+          "event": "attempt-start"
+        },
+        {
+          "requestId": 6,
+          "attempt": 0,
+          "timeSeconds": 0.06523913351663221,
+          "nodeId": "n0",
+          "event": "arrive"
+        },
+        {
+          "requestId": 6,
+          "attempt": 0,
+          "timeSeconds": 0.06523913351663221,
+          "nodeId": "n0",
+          "event": "service-start"
+        },
+        {
+          "requestId": 6,
+          "attempt": 0,
+          "timeSeconds": 0.0654929522611499,
+          "nodeId": "n1",
+          "event": "arrive"
+        },
+        {
+          "requestId": 6,
+          "attempt": 0,
+          "timeSeconds": 0.0654929522611499,
+          "nodeId": "n1",
+          "event": "service-start"
+        },
+        {
+          "requestId": 6,
+          "attempt": 0,
+          "timeSeconds": 0.06613219894231936,
+          "nodeId": "n2",
+          "event": "arrive"
+        },
+        {
+          "requestId": 6,
+          "attempt": 0,
+          "timeSeconds": 0.06613219894231936,
+          "nodeId": "n2",
+          "event": "enqueue"
+        },
+        {
+          "requestId": 2,
+          "attempt": 0,
+          "timeSeconds": 0.07308658762616035,
+          "nodeId": "n2",
+          "event": "service-start"
+        },
+        {
+          "requestId": 1,
+          "attempt": 0,
+          "timeSeconds": 0.07308658762616035,
+          "nodeId": "n3",
+          "event": "arrive"
+        },
+        {
+          "requestId": 1,
+          "attempt": 0,
+          "timeSeconds": 0.07308658762616035,
+          "nodeId": "n3",
+          "event": "service-start"
+        },
+        {
+          "requestId": 7,
+          "attempt": 0,
+          "timeSeconds": 0.0832467552019141,
+          "nodeId": "n0",
+          "event": "attempt-start"
+        },
+        {
+          "requestId": 7,
+          "attempt": 0,
+          "timeSeconds": 0.0832467552019141,
+          "nodeId": "n0",
+          "event": "arrive"
+        },
+        {
+          "requestId": 7,
+          "attempt": 0,
+          "timeSeconds": 0.0832467552019141,
+          "nodeId": "n0",
+          "event": "service-start"
+        },
+        {
+          "requestId": 7,
+          "attempt": 0,
+          "timeSeconds": 0.08331450623621328,
+          "nodeId": "n1",
+          "event": "arrive"
+        },
+        {
+          "requestId": 7,
+          "attempt": 0,
+          "timeSeconds": 0.08331450623621328,
+          "nodeId": "n1",
+          "event": "service-start"
+        },
+        {
+          "requestId": 7,
+          "attempt": 0,
+          "timeSeconds": 0.08345364078071255,
+          "nodeId": "n2",
+          "event": "arrive"
+        },
+        {
+          "requestId": 7,
+          "attempt": 0,
+          "timeSeconds": 0.08345364078071255,
+          "nodeId": "n2",
+          "event": "enqueue"
+        },
+        {
+          "requestId": 8,
+          "attempt": 0,
+          "timeSeconds": 0.11059927304052757,
+          "nodeId": "n0",
+          "event": "attempt-start"
+        },
+        {
+          "requestId": 8,
+          "attempt": 0,
+          "timeSeconds": 0.11059927304052757,
+          "nodeId": "n0",
+          "event": "arrive"
+        },
+        {
+          "requestId": 8,
+          "attempt": 0,
+          "timeSeconds": 0.11059927304052757,
+          "nodeId": "n0",
+          "event": "service-start"
+        },
+        {
+          "requestId": 8,
+          "attempt": 0,
+          "timeSeconds": 0.11159532322403184,
+          "nodeId": "n1",
+          "event": "arrive"
+        },
+        {
+          "requestId": 8,
+          "attempt": 0,
+          "timeSeconds": 0.11159532322403184,
+          "nodeId": "n1",
+          "event": "service-start"
+        },
+        {
+          "requestId": 8,
+          "attempt": 0,
+          "timeSeconds": 0.11178151140660385,
+          "nodeId": "n2",
+          "event": "arrive"
+        },
+        {
+          "requestId": 8,
+          "attempt": 0,
+          "timeSeconds": 0.11178151140660385,
+          "nodeId": "n2",
+          "event": "enqueue"
+        },
+        {
+          "requestId": 9,
+          "attempt": 0,
+          "timeSeconds": 0.11333276792746286,
+          "nodeId": "n0",
+          "event": "attempt-start"
+        },
+        {
+          "requestId": 9,
+          "attempt": 0,
+          "timeSeconds": 0.11333276792746286,
+          "nodeId": "n0",
+          "event": "arrive"
+        },
+        {
+          "requestId": 9,
+          "attempt": 0,
+          "timeSeconds": 0.11333276792746286,
+          "nodeId": "n0",
+          "event": "service-start"
+        },
+        {
+          "requestId": 9,
+          "attempt": 0,
+          "timeSeconds": 0.11380329249676994,
+          "nodeId": "n1",
+          "event": "arrive"
+        },
+        {
+          "requestId": 9,
+          "attempt": 0,
+          "timeSeconds": 0.11380329249676994,
+          "nodeId": "n1",
+          "event": "service-start"
+        },
+        {
+          "requestId": 9,
+          "attempt": 0,
+          "timeSeconds": 0.11405595234613247,
+          "nodeId": "n2",
+          "event": "arrive"
+        },
+        {
+          "requestId": 9,
+          "attempt": 0,
+          "timeSeconds": 0.11405595234613247,
+          "nodeId": "n2",
+          "event": "enqueue"
+        },
+        {
+          "requestId": 10,
+          "attempt": 0,
+          "timeSeconds": 0.11578487906274772,
+          "nodeId": "n0",
+          "event": "attempt-start"
+        },
+        {
+          "requestId": 10,
+          "attempt": 0,
+          "timeSeconds": 0.11578487906274772,
+          "nodeId": "n0",
+          "event": "arrive"
+        },
+        {
+          "requestId": 10,
+          "attempt": 0,
+          "timeSeconds": 0.11578487906274772,
+          "nodeId": "n0",
+          "event": "service-start"
+        },
+        {
+          "requestId": 10,
+          "attempt": 0,
+          "timeSeconds": 0.11619347400329953,
+          "nodeId": "n1",
+          "event": "arrive"
+        },
+        {
+          "requestId": 10,
+          "attempt": 0,
+          "timeSeconds": 0.11619347400329953,
+          "nodeId": "n1",
+          "event": "service-start"
+        },
+        {
+          "requestId": 10,
+          "attempt": 0,
+          "timeSeconds": 0.11620692838359165,
+          "nodeId": "n2",
+          "event": "arrive"
+        },
+        {
+          "requestId": 10,
+          "attempt": 0,
+          "timeSeconds": 0.11620692838359165,
+          "nodeId": "n2",
+          "event": "enqueue"
+        },
+        {
+          "requestId": 1,
+          "attempt": 0,
+          "timeSeconds": 0.11760945185502528,
+          "nodeId": "n3",
+          "event": "response"
+        },
+        {
+          "requestId": 11,
+          "attempt": 0,
+          "timeSeconds": 0.1946385685483178,
+          "nodeId": "n0",
+          "event": "attempt-start"
+        },
+        {
+          "requestId": 11,
+          "attempt": 0,
+          "timeSeconds": 0.1946385685483178,
+          "nodeId": "n0",
+          "event": "arrive"
+        },
+        {
+          "requestId": 11,
+          "attempt": 0,
+          "timeSeconds": 0.1946385685483178,
+          "nodeId": "n0",
+          "event": "service-start"
+        },
+        {
+          "requestId": 11,
+          "attempt": 0,
+          "timeSeconds": 0.19533872735230987,
+          "nodeId": "n1",
+          "event": "arrive"
+        },
+        {
+          "requestId": 11,
+          "attempt": 0,
+          "timeSeconds": 0.19533872735230987,
+          "nodeId": "n1",
+          "event": "service-start"
+        },
+        {
+          "requestId": 11,
+          "attempt": 0,
+          "timeSeconds": 0.19555815202061194,
+          "nodeId": "n2",
+          "event": "arrive"
+        },
+        {
+          "requestId": 11,
+          "attempt": 0,
+          "timeSeconds": 0.19555815202061194,
+          "nodeId": "n2",
+          "event": "enqueue"
+        },
+        {
+          "requestId": 12,
+          "attempt": 0,
+          "timeSeconds": 0.21753435847649377,
+          "nodeId": "n0",
+          "event": "attempt-start"
+        },
+        {
+          "requestId": 12,
+          "attempt": 0,
+          "timeSeconds": 0.21753435847649377,
+          "nodeId": "n0",
+          "event": "arrive"
+        },
+        {
+          "requestId": 12,
+          "attempt": 0,
+          "timeSeconds": 0.21753435847649377,
+          "nodeId": "n0",
+          "event": "service-start"
+        },
+        {
+          "requestId": 12,
+          "attempt": 0,
+          "timeSeconds": 0.21774179301006355,
+          "nodeId": "n1",
+          "event": "arrive"
+        },
+        {
+          "requestId": 12,
+          "attempt": 0,
+          "timeSeconds": 0.21774179301006355,
+          "nodeId": "n1",
+          "event": "service-start"
+        },
+        {
+          "requestId": 12,
+          "attempt": 0,
+          "timeSeconds": 0.21824722397827107,
+          "nodeId": "n2",
+          "event": "arrive"
+        },
+        {
+          "requestId": 12,
+          "attempt": 0,
+          "timeSeconds": 0.21824722397827107,
+          "nodeId": "n2",
+          "event": "enqueue"
+        },
+        {
+          "requestId": 13,
+          "attempt": 0,
+          "timeSeconds": 0.21946072651331058,
+          "nodeId": "n0",
+          "event": "attempt-start"
+        },
+        {
+          "requestId": 13,
+          "attempt": 0,
+          "timeSeconds": 0.21946072651331058,
+          "nodeId": "n0",
+          "event": "arrive"
+        },
+        {
+          "requestId": 13,
+          "attempt": 0,
+          "timeSeconds": 0.21946072651331058,
+          "nodeId": "n0",
+          "event": "service-start"
+        },
+        {
+          "requestId": 13,
+          "attempt": 0,
+          "timeSeconds": 0.21986412408161027,
+          "nodeId": "n1",
+          "event": "arrive"
+        },
+        {
+          "requestId": 13,
+          "attempt": 0,
+          "timeSeconds": 0.21986412408161027,
+          "nodeId": "n1",
+          "event": "service-start"
+        },
+        {
+          "requestId": 13,
+          "attempt": 0,
+          "timeSeconds": 0.22018369607149266,
+          "nodeId": "n2",
+          "event": "arrive"
+        },
+        {
+          "requestId": 13,
+          "attempt": 0,
+          "timeSeconds": 0.22018369607149266,
+          "nodeId": "n2",
+          "event": "enqueue"
+        },
+        {
+          "requestId": 14,
+          "attempt": 0,
+          "timeSeconds": 0.25332861370016346,
+          "nodeId": "n0",
+          "event": "attempt-start"
+        },
+        {
+          "requestId": 14,
+          "attempt": 0,
+          "timeSeconds": 0.25332861370016346,
+          "nodeId": "n0",
+          "event": "arrive"
+        },
+        {
+          "requestId": 14,
+          "attempt": 0,
+          "timeSeconds": 0.25332861370016346,
+          "nodeId": "n0",
+          "event": "service-start"
+        },
+        {
+          "requestId": 14,
+          "attempt": 0,
+          "timeSeconds": 0.25602473046723967,
+          "nodeId": "n1",
+          "event": "arrive"
+        },
+        {
+          "requestId": 14,
+          "attempt": 0,
+          "timeSeconds": 0.25602473046723967,
+          "nodeId": "n1",
+          "event": "service-start"
+        },
+        {
+          "requestId": 14,
+          "attempt": 0,
+          "timeSeconds": 0.25711094960580444,
+          "nodeId": "n2",
+          "event": "arrive"
+        },
+        {
+          "requestId": 14,
+          "attempt": 0,
+          "timeSeconds": 0.25711094960580444,
+          "nodeId": "n2",
+          "event": "enqueue"
+        },
+        {
+          "requestId": 3,
+          "attempt": 0,
+          "timeSeconds": 0.2672369043961746,
+          "nodeId": "n2",
+          "event": "service-start"
+        },
+        {
+          "requestId": 2,
+          "attempt": 0,
+          "timeSeconds": 0.2672369043961746,
+          "nodeId": "n3",
+          "event": "arrive"
+        },
+        {
+          "requestId": 2,
+          "attempt": 0,
+          "timeSeconds": 0.2672369043961746,
+          "nodeId": "n3",
+          "event": "service-start"
+        },
+        {
+          "requestId": 15,
+          "attempt": 0,
+          "timeSeconds": 0.32448011476170313,
+          "nodeId": "n0",
+          "event": "attempt-start"
+        },
+        {
+          "requestId": 15,
+          "attempt": 0,
+          "timeSeconds": 0.32448011476170313,
+          "nodeId": "n0",
+          "event": "arrive"
+        },
+        {
+          "requestId": 15,
+          "attempt": 0,
+          "timeSeconds": 0.32448011476170313,
+          "nodeId": "n0",
+          "event": "service-start"
+        },
+        {
+          "requestId": 15,
+          "attempt": 0,
+          "timeSeconds": 0.32458566746892825,
+          "nodeId": "n1",
+          "event": "arrive"
+        },
+        {
+          "requestId": 15,
+          "attempt": 0,
+          "timeSeconds": 0.32458566746892825,
+          "nodeId": "n1",
+          "event": "service-start"
+        },
+        {
+          "requestId": 15,
+          "attempt": 0,
+          "timeSeconds": 0.32508320944997965,
+          "nodeId": "n2",
+          "event": "arrive"
+        },
+        {
+          "requestId": 15,
+          "attempt": 0,
+          "timeSeconds": 0.32508320944997965,
+          "nodeId": "n2",
+          "event": "enqueue"
+        },
+        {
+          "requestId": 16,
+          "attempt": 0,
+          "timeSeconds": 0.36348539035878696,
+          "nodeId": "n0",
+          "event": "attempt-start"
+        },
+        {
+          "requestId": 16,
+          "attempt": 0,
+          "timeSeconds": 0.36348539035878696,
+          "nodeId": "n0",
+          "event": "arrive"
+        },
+        {
+          "requestId": 16,
+          "attempt": 0,
+          "timeSeconds": 0.36348539035878696,
+          "nodeId": "n0",
+          "event": "service-start"
+        },
+        {
+          "requestId": 16,
+          "attempt": 0,
+          "timeSeconds": 0.36393020135523957,
+          "nodeId": "n1",
+          "event": "arrive"
+        },
+        {
+          "requestId": 16,
+          "attempt": 0,
+          "timeSeconds": 0.36393020135523957,
+          "nodeId": "n1",
+          "event": "service-start"
+        },
+        {
+          "requestId": 16,
+          "attempt": 0,
+          "timeSeconds": 0.3642278416671588,
+          "nodeId": "n2",
+          "event": "arrive"
+        },
+        {
+          "requestId": 16,
+          "attempt": 0,
+          "timeSeconds": 0.3642278416671588,
+          "nodeId": "n2",
+          "event": "enqueue"
+        },
+        {
+          "requestId": 2,
+          "attempt": 0,
+          "timeSeconds": 0.37745914179243995,
+          "nodeId": "n3",
+          "event": "response"
+        },
+        {
+          "requestId": 4,
+          "attempt": 0,
+          "timeSeconds": 0.3956900902690741,
+          "nodeId": "n2",
+          "event": "service-start"
+        },
+        {
+          "requestId": 3,
+          "attempt": 0,
+          "timeSeconds": 0.3956900902690741,
+          "nodeId": "n3",
+          "event": "arrive"
+        },
+        {
+          "requestId": 3,
+          "attempt": 0,
+          "timeSeconds": 0.3956900902690741,
+          "nodeId": "n3",
+          "event": "service-start"
+        },
+        {
+          "requestId": 3,
+          "attempt": 0,
+          "timeSeconds": 0.4182757019969725,
+          "nodeId": "n3",
+          "event": "response"
+        },
+        {
+          "requestId": 5,
+          "attempt": 0,
+          "timeSeconds": 0.4252215257705068,
+          "nodeId": "n2",
+          "event": "service-start"
+        },
+        {
+          "requestId": 4,
+          "attempt": 0,
+          "timeSeconds": 0.4252215257705068,
+          "nodeId": "n3",
+          "event": "arrive"
+        },
+        {
+          "requestId": 4,
+          "attempt": 0,
+          "timeSeconds": 0.4252215257705068,
+          "nodeId": "n3",
+          "event": "service-start"
+        },
+        {
+          "requestId": 4,
+          "attempt": 0,
+          "timeSeconds": 0.4377936154613029,
+          "nodeId": "n3",
+          "event": "response"
+        },
+        {
+          "requestId": 5,
+          "attempt": 0,
+          "timeSeconds": 0.5595068912682082,
+          "nodeId": "n2",
+          "event": "attempt-timeout"
+        },
+        {
+          "requestId": 5,
+          "attempt": 0,
+          "timeSeconds": 0.5595068912682082,
+          "nodeId": "n2",
+          "event": "retry-scheduled"
+        },
+        {
+          "requestId": 6,
+          "attempt": 0,
+          "timeSeconds": 0.5652391335166322,
+          "nodeId": "n2",
+          "event": "attempt-timeout"
+        },
+        {
+          "requestId": 6,
+          "attempt": 0,
+          "timeSeconds": 0.5652391335166322,
+          "nodeId": "n2",
+          "event": "retry-scheduled"
+        },
+        {
+          "requestId": 7,
+          "attempt": 0,
+          "timeSeconds": 0.583246755201914,
+          "nodeId": "n2",
+          "event": "attempt-timeout"
+        },
+        {
+          "requestId": 7,
+          "attempt": 0,
+          "timeSeconds": 0.583246755201914,
+          "nodeId": "n2",
+          "event": "retry-scheduled"
+        },
+        {
+          "requestId": 5,
+          "attempt": 1,
+          "timeSeconds": 0.5987507912008712,
+          "nodeId": "n0",
+          "event": "attempt-start"
+        },
+        {
+          "requestId": 5,
+          "attempt": 1,
+          "timeSeconds": 0.5987507912008712,
+          "nodeId": "n0",
+          "event": "arrive"
+        },
+        {
+          "requestId": 5,
+          "attempt": 1,
+          "timeSeconds": 0.5987507912008712,
+          "nodeId": "n0",
+          "event": "service-start"
+        },
+        {
+          "requestId": 5,
+          "attempt": 1,
+          "timeSeconds": 0.5991295290210515,
+          "nodeId": "n1",
+          "event": "arrive"
+        },
+        {
+          "requestId": 5,
+          "attempt": 1,
+          "timeSeconds": 0.5991295290210515,
+          "nodeId": "n1",
+          "event": "service-start"
+        },
+        {
+          "requestId": 5,
+          "attempt": 1,
+          "timeSeconds": 0.5995116158369654,
+          "nodeId": "n2",
+          "event": "arrive"
+        },
+        {
+          "requestId": 5,
+          "attempt": 1,
+          "timeSeconds": 0.5995116158369654,
+          "nodeId": "n2",
+          "event": "enqueue"
+        },
+        {
+          "requestId": 8,
+          "attempt": 0,
+          "timeSeconds": 0.6105992730405275,
+          "nodeId": "n2",
+          "event": "attempt-timeout"
+        },
+        {
+          "requestId": 8,
+          "attempt": 0,
+          "timeSeconds": 0.6105992730405275,
+          "nodeId": "n2",
+          "event": "retry-scheduled"
+        },
+        {
+          "requestId": 9,
+          "attempt": 0,
+          "timeSeconds": 0.6133327679274628,
+          "nodeId": "n2",
+          "event": "attempt-timeout"
+        },
+        {
+          "requestId": 9,
+          "attempt": 0,
+          "timeSeconds": 0.6133327679274628,
+          "nodeId": "n2",
+          "event": "retry-scheduled"
+        },
+        {
+          "requestId": 10,
+          "attempt": 0,
+          "timeSeconds": 0.6141592166694759,
+          "nodeId": "n2",
+          "event": "service-start"
+        },
+        {
+          "requestId": 10,
+          "attempt": 0,
+          "timeSeconds": 0.6157848790627477,
+          "nodeId": "n2",
+          "event": "attempt-timeout"
+        },
+        {
+          "requestId": 10,
+          "attempt": 0,
+          "timeSeconds": 0.6157848790627477,
+          "nodeId": "n2",
+          "event": "retry-scheduled"
+        },
+        {
+          "requestId": 6,
+          "attempt": 1,
+          "timeSeconds": 0.6163450867460692,
+          "nodeId": "n0",
+          "event": "attempt-start"
+        },
+        {
+          "requestId": 6,
+          "attempt": 1,
+          "timeSeconds": 0.6163450867460692,
+          "nodeId": "n0",
+          "event": "arrive"
+        },
+        {
+          "requestId": 6,
+          "attempt": 1,
+          "timeSeconds": 0.6163450867460692,
+          "nodeId": "n0",
+          "event": "service-start"
+        },
+        {
+          "requestId": 6,
+          "attempt": 1,
+          "timeSeconds": 0.617190333459126,
+          "nodeId": "n1",
+          "event": "arrive"
+        },
+        {
+          "requestId": 6,
+          "attempt": 1,
+          "timeSeconds": 0.617190333459126,
+          "nodeId": "n1",
+          "event": "service-start"
+        },
+        {
+          "requestId": 6,
+          "attempt": 1,
+          "timeSeconds": 0.619263250833354,
+          "nodeId": "n2",
+          "event": "arrive"
+        },
+        {
+          "requestId": 6,
+          "attempt": 1,
+          "timeSeconds": 0.619263250833354,
+          "nodeId": "n2",
+          "event": "enqueue"
+        },
+        {
+          "requestId": 10,
+          "attempt": 1,
+          "timeSeconds": 0.629266844685834,
+          "nodeId": "n0",
+          "event": "attempt-start"
+        },
+        {
+          "requestId": 10,
+          "attempt": 1,
+          "timeSeconds": 0.629266844685834,
+          "nodeId": "n0",
+          "event": "arrive"
+        },
+        {
+          "requestId": 10,
+          "attempt": 1,
+          "timeSeconds": 0.629266844685834,
+          "nodeId": "n0",
+          "event": "service-start"
+        },
+        {
+          "requestId": 10,
+          "attempt": 1,
+          "timeSeconds": 0.6296639482766273,
+          "nodeId": "n1",
+          "event": "arrive"
+        },
+        {
+          "requestId": 10,
+          "attempt": 1,
+          "timeSeconds": 0.6296639482766273,
+          "nodeId": "n1",
+          "event": "service-start"
+        },
+        {
+          "requestId": 10,
+          "attempt": 1,
+          "timeSeconds": 0.6308415014225851,
+          "nodeId": "n2",
+          "event": "arrive"
+        },
+        {
+          "requestId": 10,
+          "attempt": 1,
+          "timeSeconds": 0.6308415014225851,
+          "nodeId": "n2",
+          "event": "enqueue"
+        },
+        {
+          "requestId": 11,
+          "attempt": 0,
+          "timeSeconds": 0.6602099768897949,
+          "nodeId": "n2",
+          "event": "service-start"
+        },
+        {
+          "requestId": 7,
+          "attempt": 1,
+          "timeSeconds": 0.6674710922223667,
+          "nodeId": "n0",
+          "event": "attempt-start"
+        },
+        {
+          "requestId": 7,
+          "attempt": 1,
+          "timeSeconds": 0.6674710922223667,
+          "nodeId": "n0",
+          "event": "arrive"
+        },
+        {
+          "requestId": 7,
+          "attempt": 1,
+          "timeSeconds": 0.6674710922223667,
+          "nodeId": "n0",
+          "event": "service-start"
+        },
+        {
+          "requestId": 7,
+          "attempt": 1,
+          "timeSeconds": 0.6677116022599261,
+          "nodeId": "n1",
+          "event": "arrive"
+        },
+        {
+          "requestId": 7,
+          "attempt": 1,
+          "timeSeconds": 0.6677116022599261,
+          "nodeId": "n1",
+          "event": "service-start"
+        },
+        {
+          "requestId": 7,
+          "attempt": 1,
+          "timeSeconds": 0.6684034647043894,
+          "nodeId": "n2",
+          "event": "arrive"
+        },
+        {
+          "requestId": 7,
+          "attempt": 1,
+          "timeSeconds": 0.6684034647043894,
+          "nodeId": "n2",
+          "event": "enqueue"
+        },
+        {
+          "requestId": 11,
+          "attempt": 0,
+          "timeSeconds": 0.6946385685483178,
+          "nodeId": "n2",
+          "event": "attempt-timeout"
+        },
+        {
+          "requestId": 11,
+          "attempt": 0,
+          "timeSeconds": 0.6946385685483178,
+          "nodeId": "n2",
+          "event": "retry-scheduled"
+        },
+        {
+          "requestId": 8,
+          "attempt": 1,
+          "timeSeconds": 0.6958987407563617,
+          "nodeId": "n0",
+          "event": "attempt-start"
+        },
+        {
+          "requestId": 8,
+          "attempt": 1,
+          "timeSeconds": 0.6958987407563617,
+          "nodeId": "n0",
+          "event": "arrive"
+        },
+        {
+          "requestId": 8,
+          "attempt": 1,
+          "timeSeconds": 0.6958987407563617,
+          "nodeId": "n0",
+          "event": "service-start"
+        },
+        {
+          "requestId": 8,
+          "attempt": 1,
+          "timeSeconds": 0.69611574392449,
+          "nodeId": "n1",
+          "event": "arrive"
+        },
+        {
+          "requestId": 8,
+          "attempt": 1,
+          "timeSeconds": 0.69611574392449,
+          "nodeId": "n1",
+          "event": "service-start"
+        },
+        {
+          "requestId": 8,
+          "attempt": 1,
+          "timeSeconds": 0.6966453587811832,
+          "nodeId": "n2",
+          "event": "arrive"
+        },
+        {
+          "requestId": 8,
+          "attempt": 1,
+          "timeSeconds": 0.6966453587811832,
+          "nodeId": "n2",
+          "event": "enqueue"
+        },
+        {
+          "requestId": 9,
+          "attempt": 1,
+          "timeSeconds": 0.7057665523998762,
+          "nodeId": "n0",
+          "event": "attempt-start"
+        },
+        {
+          "requestId": 9,
+          "attempt": 1,
+          "timeSeconds": 0.7057665523998762,
+          "nodeId": "n0",
+          "event": "arrive"
+        },
+        {
+          "requestId": 9,
+          "attempt": 1,
+          "timeSeconds": 0.7057665523998762,
+          "nodeId": "n0",
+          "event": "service-start"
+        },
+        {
+          "requestId": 9,
+          "attempt": 1,
+          "timeSeconds": 0.7067933756813224,
+          "nodeId": "n1",
+          "event": "arrive"
+        },
+        {
+          "requestId": 9,
+          "attempt": 1,
+          "timeSeconds": 0.7067933756813224,
+          "nodeId": "n1",
+          "event": "service-start"
+        },
+        {
+          "requestId": 9,
+          "attempt": 1,
+          "timeSeconds": 0.7073814062584303,
+          "nodeId": "n2",
+          "event": "arrive"
+        },
+        {
+          "requestId": 9,
+          "attempt": 1,
+          "timeSeconds": 0.7073814062584303,
+          "nodeId": "n2",
+          "event": "enqueue"
+        },
+        {
+          "requestId": 12,
+          "attempt": 0,
+          "timeSeconds": 0.7136614900194744,
+          "nodeId": "n2",
+          "event": "service-start"
+        },
+        {
+          "requestId": 12,
+          "attempt": 0,
+          "timeSeconds": 0.7175343584764937,
+          "nodeId": "n2",
+          "event": "attempt-timeout"
+        },
+        {
+          "requestId": 12,
+          "attempt": 0,
+          "timeSeconds": 0.7175343584764937,
+          "nodeId": "n2",
+          "event": "retry-scheduled"
+        },
+        {
+          "requestId": 13,
+          "attempt": 0,
+          "timeSeconds": 0.7194607265133106,
+          "nodeId": "n2",
+          "event": "attempt-timeout"
+        },
+        {
+          "requestId": 13,
+          "attempt": 0,
+          "timeSeconds": 0.7194607265133106,
+          "nodeId": "n2",
+          "event": "retry-scheduled"
+        },
+        {
+          "requestId": 14,
+          "attempt": 0,
+          "timeSeconds": 0.7270749483056651,
+          "nodeId": "n2",
+          "event": "service-start"
+        },
+        {
+          "requestId": 13,
+          "attempt": 1,
+          "timeSeconds": 0.7272120441034956,
+          "nodeId": "n0",
+          "event": "attempt-start"
+        },
+        {
+          "requestId": 13,
+          "attempt": 1,
+          "timeSeconds": 0.7272120441034956,
+          "nodeId": "n0",
+          "event": "arrive"
+        },
+        {
+          "requestId": 13,
+          "attempt": 1,
+          "timeSeconds": 0.7272120441034956,
+          "nodeId": "n0",
+          "event": "service-start"
+        },
+        {
+          "requestId": 13,
+          "attempt": 1,
+          "timeSeconds": 0.7275681286268358,
+          "nodeId": "n1",
+          "event": "arrive"
+        },
+        {
+          "requestId": 13,
+          "attempt": 1,
+          "timeSeconds": 0.7275681286268358,
+          "nodeId": "n1",
+          "event": "service-start"
+        },
+        {
+          "requestId": 13,
+          "attempt": 1,
+          "timeSeconds": 0.7277594972624484,
+          "nodeId": "n2",
+          "event": "arrive"
+        },
+        {
+          "requestId": 13,
+          "attempt": 1,
+          "timeSeconds": 0.7277594972624484,
+          "nodeId": "n2",
+          "event": "enqueue"
+        },
+        {
+          "requestId": 14,
+          "attempt": 0,
+          "timeSeconds": 0.7533286137001635,
+          "nodeId": "n2",
+          "event": "attempt-timeout"
+        },
+        {
+          "requestId": 14,
+          "attempt": 0,
+          "timeSeconds": 0.7533286137001635,
+          "nodeId": "n2",
+          "event": "retry-scheduled"
+        },
+        {
+          "requestId": 12,
+          "attempt": 1,
+          "timeSeconds": 0.7735150407285849,
+          "nodeId": "n0",
+          "event": "attempt-start"
+        },
+        {
+          "requestId": 12,
+          "attempt": 1,
+          "timeSeconds": 0.7735150407285849,
+          "nodeId": "n0",
+          "event": "arrive"
+        },
+        {
+          "requestId": 12,
+          "attempt": 1,
+          "timeSeconds": 0.7735150407285849,
+          "nodeId": "n0",
+          "event": "service-start"
+        },
+        {
+          "requestId": 12,
+          "attempt": 1,
+          "timeSeconds": 0.7738231784491759,
+          "nodeId": "n1",
+          "event": "arrive"
+        },
+        {
+          "requestId": 12,
+          "attempt": 1,
+          "timeSeconds": 0.7738231784491759,
+          "nodeId": "n1",
+          "event": "service-start"
+        },
+        {
+          "requestId": 12,
+          "attempt": 1,
+          "timeSeconds": 0.7742896694560052,
+          "nodeId": "n2",
+          "event": "arrive"
+        },
+        {
+          "requestId": 12,
+          "attempt": 1,
+          "timeSeconds": 0.7742896694560052,
+          "nodeId": "n2",
+          "event": "enqueue"
+        },
+        {
+          "requestId": 11,
+          "attempt": 1,
+          "timeSeconds": 0.7842783061521301,
+          "nodeId": "n0",
+          "event": "attempt-start"
+        },
+        {
+          "requestId": 11,
+          "attempt": 1,
+          "timeSeconds": 0.7842783061521301,
+          "nodeId": "n0",
+          "event": "arrive"
+        },
+        {
+          "requestId": 11,
+          "attempt": 1,
+          "timeSeconds": 0.7842783061521301,
+          "nodeId": "n0",
+          "event": "service-start"
+        },
+        {
+          "requestId": 11,
+          "attempt": 1,
+          "timeSeconds": 0.7846953420413574,
+          "nodeId": "n1",
+          "event": "arrive"
+        },
+        {
+          "requestId": 11,
+          "attempt": 1,
+          "timeSeconds": 0.7846953420413574,
+          "nodeId": "n1",
+          "event": "service-start"
+        },
+        {
+          "requestId": 11,
+          "attempt": 1,
+          "timeSeconds": 0.7847443624260755,
+          "nodeId": "n2",
+          "event": "arrive"
+        },
+        {
+          "requestId": 11,
+          "attempt": 1,
+          "timeSeconds": 0.7847443624260755,
+          "nodeId": "n2",
+          "event": "enqueue"
+        },
+        {
+          "requestId": 15,
+          "attempt": 0,
+          "timeSeconds": 0.8098969184542485,
+          "nodeId": "n2",
+          "event": "service-start"
+        },
+        {
+          "requestId": 14,
+          "attempt": 1,
+          "timeSeconds": 0.8197014249852569,
+          "nodeId": "n0",
+          "event": "attempt-start"
+        },
+        {
+          "requestId": 14,
+          "attempt": 1,
+          "timeSeconds": 0.8197014249852569,
+          "nodeId": "n0",
+          "event": "arrive"
+        },
+        {
+          "requestId": 14,
+          "attempt": 1,
+          "timeSeconds": 0.8197014249852569,
+          "nodeId": "n0",
+          "event": "service-start"
+        },
+        {
+          "requestId": 14,
+          "attempt": 1,
+          "timeSeconds": 0.820386139856858,
+          "nodeId": "n1",
+          "event": "arrive"
+        },
+        {
+          "requestId": 14,
+          "attempt": 1,
+          "timeSeconds": 0.820386139856858,
+          "nodeId": "n1",
+          "event": "service-start"
+        },
+        {
+          "requestId": 14,
+          "attempt": 1,
+          "timeSeconds": 0.820677813677785,
+          "nodeId": "n2",
+          "event": "arrive"
+        },
+        {
+          "requestId": 14,
+          "attempt": 1,
+          "timeSeconds": 0.820677813677785,
+          "nodeId": "n2",
+          "event": "enqueue"
+        },
+        {
+          "requestId": 15,
+          "attempt": 0,
+          "timeSeconds": 0.8244801147617031,
+          "nodeId": "n2",
+          "event": "attempt-timeout"
+        },
+        {
+          "requestId": 15,
+          "attempt": 0,
+          "timeSeconds": 0.8244801147617031,
+          "nodeId": "n2",
+          "event": "retry-scheduled"
+        },
+        {
+          "requestId": 15,
+          "attempt": 1,
+          "timeSeconds": 0.8566270920827521,
+          "nodeId": "n0",
+          "event": "attempt-start"
+        },
+        {
+          "requestId": 15,
+          "attempt": 1,
+          "timeSeconds": 0.8566270920827521,
+          "nodeId": "n0",
+          "event": "arrive"
+        },
+        {
+          "requestId": 15,
+          "attempt": 1,
+          "timeSeconds": 0.8566270920827521,
+          "nodeId": "n0",
+          "event": "service-start"
+        },
+        {
+          "requestId": 15,
+          "attempt": 1,
+          "timeSeconds": 0.8571725134949242,
+          "nodeId": "n1",
+          "event": "arrive"
+        },
+        {
+          "requestId": 15,
+          "attempt": 1,
+          "timeSeconds": 0.8571725134949242,
+          "nodeId": "n1",
+          "event": "service-start"
+        },
+        {
+          "requestId": 15,
+          "attempt": 1,
+          "timeSeconds": 0.8574566967804693,
+          "nodeId": "n2",
+          "event": "arrive"
+        },
+        {
+          "requestId": 15,
+          "attempt": 1,
+          "timeSeconds": 0.8574566967804693,
+          "nodeId": "n2",
+          "event": "enqueue"
+        },
+        {
+          "requestId": 16,
+          "attempt": 0,
+          "timeSeconds": 0.8634853903587869,
+          "nodeId": "n2",
+          "event": "attempt-timeout"
+        },
+        {
+          "requestId": 16,
+          "attempt": 0,
+          "timeSeconds": 0.8634853903587869,
+          "nodeId": "n2",
+          "event": "retry-scheduled"
+        },
+        {
+          "requestId": 16,
+          "attempt": 1,
+          "timeSeconds": 0.9330101356531566,
+          "nodeId": "n0",
+          "event": "attempt-start"
+        },
+        {
+          "requestId": 16,
+          "attempt": 1,
+          "timeSeconds": 0.9330101356531566,
+          "nodeId": "n0",
+          "event": "arrive"
+        },
+        {
+          "requestId": 16,
+          "attempt": 1,
+          "timeSeconds": 0.9330101356531566,
+          "nodeId": "n0",
+          "event": "service-start"
+        },
+        {
+          "requestId": 16,
+          "attempt": 1,
+          "timeSeconds": 0.9334483493431754,
+          "nodeId": "n1",
+          "event": "arrive"
+        },
+        {
+          "requestId": 16,
+          "attempt": 1,
+          "timeSeconds": 0.9334483493431754,
+          "nodeId": "n1",
+          "event": "service-start"
+        },
+        {
+          "requestId": 16,
+          "attempt": 1,
+          "timeSeconds": 0.9337360574312185,
+          "nodeId": "n2",
+          "event": "arrive"
+        },
+        {
+          "requestId": 16,
+          "attempt": 1,
+          "timeSeconds": 0.9337360574312185,
+          "nodeId": "n2",
+          "event": "enqueue"
+        },
+        {
+          "requestId": 5,
+          "attempt": 1,
+          "timeSeconds": 1.0987507912008712,
+          "nodeId": "n2",
+          "event": "attempt-timeout"
+        },
+        {
+          "requestId": 6,
+          "attempt": 1,
+          "timeSeconds": 1.1163450867460694,
+          "nodeId": "n2",
+          "event": "attempt-timeout"
+        },
+        {
+          "requestId": 10,
+          "attempt": 1,
+          "timeSeconds": 1.129266844685834,
+          "nodeId": "n2",
+          "event": "attempt-timeout"
+        },
+        {
+          "requestId": 7,
+          "attempt": 1,
+          "timeSeconds": 1.1674710922223666,
+          "nodeId": "n2",
+          "event": "attempt-timeout"
+        },
+        {
+          "requestId": 8,
+          "attempt": 1,
+          "timeSeconds": 1.1902870486316968,
+          "nodeId": "n2",
+          "event": "service-start"
+        },
+        {
+          "requestId": 8,
+          "attempt": 1,
+          "timeSeconds": 1.1958987407563617,
+          "nodeId": "n2",
+          "event": "attempt-timeout"
+        },
+        {
+          "requestId": 9,
+          "attempt": 1,
+          "timeSeconds": 1.1999981854176198,
+          "nodeId": "n2",
+          "event": "service-start"
+        },
+        {
+          "requestId": 9,
+          "attempt": 1,
+          "timeSeconds": 1.2057665523998762,
+          "nodeId": "n2",
+          "event": "attempt-timeout"
+        },
+        {
+          "requestId": 13,
+          "attempt": 1,
+          "timeSeconds": 1.2272120441034957,
+          "nodeId": "n2",
+          "event": "attempt-timeout"
+        },
+        {
+          "requestId": 12,
+          "attempt": 1,
+          "timeSeconds": 1.273515040728585,
+          "nodeId": "n2",
+          "event": "attempt-timeout"
+        },
+        {
+          "requestId": 11,
+          "attempt": 1,
+          "timeSeconds": 1.2842783061521301,
+          "nodeId": "n2",
+          "event": "attempt-timeout"
+        },
+        {
+          "requestId": 14,
+          "attempt": 1,
+          "timeSeconds": 1.304044333252374,
+          "nodeId": "n2",
+          "event": "service-start"
+        },
+        {
+          "requestId": 14,
+          "attempt": 1,
+          "timeSeconds": 1.319701424985257,
+          "nodeId": "n2",
+          "event": "attempt-timeout"
+        },
+        {
+          "requestId": 15,
+          "attempt": 1,
+          "timeSeconds": 1.3566270920827521,
+          "nodeId": "n2",
+          "event": "attempt-timeout"
+        },
+        {
+          "requestId": 16,
+          "attempt": 1,
+          "timeSeconds": 1.4330101356531566,
+          "nodeId": "n2",
+          "event": "attempt-timeout"
+        }
+      ]
+    }
+  },
+  "error": null,
+  "createdAt": "2026-11-19 18:31:32.377603+05:30"
+}
