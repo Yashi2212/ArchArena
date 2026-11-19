@@ -11,7 +11,7 @@ Audited November 19, 2026 against preserved `prompt.md.txt`, current `prompt.md`
 | T4 · Practice and feedback | Partial | Twenty scenario worksheets, separate HLD/LLD playgrounds, deterministic improvement guidance and simulation evidence | Domain-correctness rubrics, optional AI gateway with safe structured outputs and fallback, 30+ golden/evaluation designs, calibrated feedback. Current coach flags omissions and requires manual review; AI disabled |
 | T5 · Security and validation | Partial; public gate fails closed | All twenty requested categories inventoried; fifteen automated local evidence/hygiene checks; npm zero findings and OSV zero matches across 77 runtime artifacts in dated scans | HTTP principal/owner mapping, session/CSRF design, PostgreSQL runtime roles/RLS, admin MFA, deployment TLS/proxy/secrets, STRIDE closure, ZAP/k6, image/OS scans and deployed negative tests |
 | T6 · Operations and AWS | Not complete | Local launcher, private backups, infrastructure/Compose planning and bounded worker | Verified PostgreSQL/Compose deployment, current billing eligibility/cost gate, Terraform/OIDC and selected AWS services, actual monitoring, deployment, restore/teardown drills. No AWS resources created |
-| T7 · Launch and portfolio | Not complete | Local introduction video and reproducible local test evidence | Public readiness gates, remote CI/deploy verification, end-to-end demo of actual deployment/operations, peer feedback and evidence-backed portfolio claims |
+| T7 · Launch and portfolio | Partial | Static GitHub Pages preview is live; detailed README, tutorial, remote quality and Pages workflows pass | Full hosted backend readiness, peer feedback, verified curriculum, actual AWS operations/cost/restore evidence and the remaining original launch goals |
 
 ## Latest scope changes
 
@@ -26,3 +26,5 @@ Continue using loopback preview. Do not expose the current single-owner API publ
 ## Evidence boundaries
 
 Engine results: [engine v2 verification](evidence/engine-v2-verification.md). Current UI/video results: [library and Studio verification](evidence/library-studio-verification.md). Security: [twenty-control review](security-review.md). Source policy: [local reference edition](knowledge/local-reference-edition.md). These reports distinguish current measurements from historical results, fixtures and unrun gates.
+
+November 19 publication update: the latest direct user request authorizes a static GitHub Pages review preview and repository push while AWS remains deferred. The preview is live at https://yashi2212.github.io/ArchArena/ and exposes no Java backend. Remote configured quality checks pass; this does not close unimplemented original tests or public-backend/content-review gates. See [Pages release evidence](evidence/pages-verification.md). Earlier loopback-only deployment language above describes the pre-publication decision.

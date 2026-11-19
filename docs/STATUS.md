@@ -1,27 +1,25 @@
 # ArchArena status
 
-Updated: 2026-11-19, Asia/Calcutta. Read `../prompt.md` section 25.
+Updated: 2026-11-19, Asia/Calcutta. Read `../prompt.md` section 26.
 
-**Current:** Latest product slice complete locally: read-only Learn, editable Practice, unlocked artifact Studio, introduction video and original-prompt audit. Full public Java backend is NOT READY. Static GitHub preview publication is now explicitly authorized.
+**Published source:** https://github.com/Yashi2212/ArchArena on main, with history, detailed README, repository description and topics. Verified publishing account: Yashi2212. No force-push.
 
-**Learn:** 24 HLD + 16 LLD original readings with Story/Simple/Pro, flows/examples/trade-offs/references; twenty proposed company studies. Uber separates dated documented context from proposed ownership/trip design. Local review edition; editorial verification pending. Five book-source drafts remain unpublished.
+**Live static preview:** https://yashi2212.github.io/ArchArena/ . Actual page/video/captions return HTTPS 200. Desktop/phone checks on the live site pass.
 
-**Practice:** Editable graph and worksheets, five concept labs/checkpoints, rule-based coach, bounded simulation/replay/baseline/export. AI disabled; a model run does not prove business invariants.
+**Static boundary:** Learn, tutorial, browser-local graph/worksheet editing, rule-based feedback and Studio export work. Java simulations, analytic previews, server saves/checkpoints/exports require the local backend. Visible banner and API fence prevent fabricated server behavior. AWS remains deferred.
 
-**Studio:** Six browser-local artifacts, capacity assumptions, detached Practice graph snapshot and JSON export. No semantic correctness grading, Java execution or cloud sync.
+**Remote CI:** Release code 53f752b passes all four GitHub jobs: documentation, backend, frontend and browser. Java 40/40 tests; 77 runtime artifacts, zero advisory matches. Frontend 97 tests. Pages build/deploy succeeds. See evidence/pages-remote-ci.json.
 
-**Tutorial:** Actual self-hosted 72-second MP4, original animation, offline synthetic narration, captions, chapters and transcript. Decode and native playback/seek/captions verified.
+**Static QA:** Two local and two actual public browser cases pass at 1440/390, including real video playback, local editing/export and no API requests or script errors. Scanned Studio states have zero axe violations. Existing four-width fixture suite and twelve baselines pass in GitHub CI.
 
-**Verified this slice:** Final build; 95 unit tests; 64 fixture browser cases pass at four widths (four opt-in live cases skipped); separate real browser/API/worker/replay/export case passes. Twelve visual baselines match. Forty-four axe scans in the full run report zero violations (some repeated states).
+**Corrections:** Initial Pages deploy ran before Pages was enabled; enabling workflow-based Pages and retrying fixed it. Initial Java job failed Maven prefix resolution before tests; separate verify plus fully qualified dependency-plugin 3.9.0 inventory and fresh resolution pass. Failed runs retained; no check removed.
 
-**Correction:** Comparison follow-up initially 18/20 due to Practice preview hydration during capture at 1024/390. Settled images exactly matched baselines; explicit preview-readiness wait fixes all four Practice/Studio comparisons, with unchanged tolerance/timeout/baselines. Failure evidence retained.
+**Private outputs:** Owner-action checklist/readiness review and resume Word/PDF files remain outside this Git checkout. Remote tree checked: no resume, DOCX/PDF, source-book or .env file. Personal resume facts are not copied into this public status.
 
-**Existing engine:** Core bounded v2 previously verified with 40 Java tests. No backend code changes or Java-suite rerun this slice. Java21/Boot4/JDBC/H2; PostgreSQL/JPA remains unverified. New real browser run verifies the retained engine integration.
+**Learn/Studio:** 24 HLD + 16 LLD original readings, twenty company proposals, six local Studio artifacts. Editorial review pending; five book-source notes remain unverified. AI and semantic/domain grading remain unimplemented.
 
-**Security:** Fifteen local evidence/hygiene checks pass; twenty categories inventoried. Public gate fails closed: identity/owner mapping, session/CSRF, PostgreSQL roles/RLS, MFA and deployed/dynamic/container checks remain open. Content public review also remains open.
+**Backend gate:** Full public Java hosting is NOT READY. Identity/owner/session/CSRF, PostgreSQL roles/RLS, MFA, deployment/container/dynamic/load checks and content review remain open. Current verified adapter is JDBC/H2, not JPA or certified PostgreSQL.
 
-**Performance/operations:** JS 1,023.05 kB / 317.33 kB gzip; large-chunk warning. Game hero/particles/synchronized playback, mobile graph readability, FPS/Lighthouse, AI evaluation, AWS eligibility/operations/restore and launch evidence remain incomplete. No push/public/AWS deployment.
+**Other gaps:** Large JS chunk, game hero/particles/synchronized visuals, mobile graph readability, FPS/Lighthouse, AI evaluations, AWS eligibility/operations/restore and full launch evidence remain pending. Static build JS 1,025.93 kB / 318.60 kB gzip.
 
-**Preview:** Normal API/worker/React healthy at loopback 8080/5173. Isolated 5174 test server stopped after checks; normal preview retained.
-
-**Next:** Publish the verified static preview to Yashi2212/ArchArena, record the observed URL/CI, then public identity/session design and PostgreSQL isolation before backend hosting. AWS deferred. Private documents remain outside Git. Detail: PHASE-AUDIT.md, evidence/library-studio-verification.md, ../ISSUES.md, session-log.md.
+**Next:** Keep static preview available; continue backend security/isolation and editorial review before full hosting. AWS only after account/cost eligibility and explicit provisioning scope. Detail: PHASE-AUDIT.md, evidence/pages-verification.md, ../ISSUES.md, session-log.md.

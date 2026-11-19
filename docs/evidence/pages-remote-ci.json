@@ -1,0 +1,52 @@
+{
+  "observedOn": "2026-11-19",
+  "repository": "https://github.com/Yashi2212/ArchArena",
+  "site": "https://yashi2212.github.io/ArchArena/",
+  "runs": [
+    {
+      "id": "44550545418",
+      "name": "Local demo quality gates",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/Yashi2212/ArchArena/actions/runs/44550545418",
+      "headSha": "53f752b6da4034a303efd7c3b09cfbcd7dfcde47",
+      "jobs": [
+        {
+          "name": "frontend",
+          "conclusion": "success"
+        },
+        {
+          "name": "backend",
+          "conclusion": "success"
+        },
+        {
+          "name": "browser",
+          "conclusion": "success"
+        },
+        {
+          "name": "documentation",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": "44550545404",
+      "name": "Publish GitHub Pages preview",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/Yashi2212/ArchArena/actions/runs/44550545404",
+      "headSha": "53f752b6da4034a303efd7c3b09cfbcd7dfcde47",
+      "jobs": [
+        {
+          "name": "build",
+          "conclusion": "success"
+        },
+        {
+          "name": "deploy",
+          "conclusion": "success"
+        }
+      ]
+    }
+  ],
+  "privateArtifactPathsInRemoteTree": []
+}
