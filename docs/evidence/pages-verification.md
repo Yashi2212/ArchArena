@@ -16,3 +16,9 @@ The Java backend is not hosted, tunneled or exposed by this deployment. The priv
 - The separate full-backend and engine security gates remain open. This is a static portfolio preview, not a claim that those gates passed.
 
 Evidence: [local static browser run](pages-browser-results.json), [unit run](pages-unit-tests.json). GitHub deployment and remote CI outcomes will be appended only after observed.
+
+## First remote publication
+
+Source pushed to Yashi2212/ArchArena at db08f20. Repository description, topics and homepage configured under the verified Yashi2212 account. Initial Pages deploy reached the deploy step before the repository Pages setting was enabled, returning 404. Enabled workflow-based Pages and retried the failed job; it succeeded. The actual page, MP4 and VTT return HTTPS 200 at https://yashi2212.github.io/ArchArena/.
+
+The first quality run passed frontend and documentation jobs. Its backend failed during Maven plugin-prefix resolution before tests ran, reporting missing artifacts and no `dependency` prefix. Official Maven Central probes return 200/ZIP signatures for the referenced plugin artifacts. CI now separates Java verification from inventory, forces fresh resolution and uses the verified fully qualified dependency-plugin 3.9.0 goal with an explicitly created output directory. No test or advisory check is removed. Retain the failed run and record the new observed outcome separately.

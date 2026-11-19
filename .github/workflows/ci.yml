@@ -29,7 +29,12 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - run: mvn -B -f backend/pom.xml verify dependency:list -DincludeScope=runtime -DoutputFile=../.local/runtime-dependencies.txt
+      - name: Verify Java backend
+        run: mvn -B -U -f backend/pom.xml verify
+      - name: Inventory runtime dependencies
+        run: |
+          mkdir -p .local
+          mvn -B -U -f backend/pom.xml org.apache.maven.plugins:maven-dependency-plugin:3.9.0:list -DincludeScope=runtime -DoutputFile=${{ github.workspace }}/.local/runtime-dependencies.txt
       - run: python scripts/scan_java_dependencies.py
       - uses: actions/upload-artifact@v4
         if: always()
