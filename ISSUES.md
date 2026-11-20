@@ -1,6 +1,6 @@
 # ArchArena risk and evidence register
 
-Updated November 19, 2026. Owner: project developer. Original product risks remain open; prototype/foundation controls have partial evidence, not a production sign-off. T2 Step 2 is locally verified, with source notes still unpublished. See current evidence below rather than treating historical Phase 0 implementation rows as today's inventory.
+Updated November 20, 2026. Owner: project developer. Original product risks remain open; prototype/foundation controls have partial evidence, not a production sign-off. T2 Step 2 is locally verified, with source notes still unpublished. See current evidence below rather than treating historical Phase 0 implementation rows as today's inventory.
 
 | ID / category | Risk and decision | Implementation status | Required proof to close | Review gate |
 |---|---|---|---|---|
@@ -101,3 +101,12 @@ Final slice verification: 95 unit tests, 64 fixture browser cases, separate actu
 User authorizes publishing the source and static preview on Yashi2212/ArchArena, with AWS deferred. Local static browser tests pass at 1440/390, with zero backend calls, working media and local exports. Ninety-seven unit tests pass. A compile-time static-mode API fence and visible banner prevent confusion with hosted Java execution. The full public backend gates remain open; publication and CI outcomes are tracked in docs/evidence/pages-verification.md. Private owner-action and resume deliverables are outside this repository and are not pushed.
 
 Static publication verified: repository and detailed README are public under Yashi2212; Pages live URL is https://yashi2212.github.io/ArchArena/ . Code commit 53f752b passes remote documentation/backend/frontend/browser jobs and Pages deploy, plus two real public-site browser checks. Backend 40 tests and 77-runtime-artifact zero-match scan now have remote evidence. Full public API gates remain open; static mode exposes none. Private owner-action and resume documents are verified absent from the remote tree. See docs/evidence/pages-verification.md for initial failures/corrections and exact run URLs.
+
+## November 20 owner understanding and reproducible demonstrations
+
+- O01 Owner cannot explain/run the project: a detailed [playbook](docs/PROJECT-PLAYBOOK.md), current [runbook](howtorun.md), five VS Code tasks, four portable inputs and an automated real-API demo runner are implemented. Two controlled comparisons pass through the separate worker; 45 source-line anchors validate. Documentation delivery addresses the immediate gap; owner rehearsal/independent demonstration is still unverified.
+- O02 Conflicting legacy lesson copy: OPEN. `backend/src/main/resources/content/lessons.json` replication prose predates v2 and says lag is omitted, whereas the bounded engine has synthetic lag. The playbook explains the limitation and treats versioned assumptions/code as authoritative. Audit and reconcile legacy copy with current model semantics before marking curriculum reviewed; no editorial sign-off inferred here.
+- O03 Browser walkthrough evidence: initial attempt timed out locating Practice; reviewed-access retry passes one actual local test. Root cause not conclusively established. No timeout/selector/source/baseline change. Historical library-studio evidence restored byte-for-byte; new owner evidence has separate names. See [verification](docs/evidence/owner-handoff-verification.md).
+- O04 Demo interpretation: UI workload is 30 virtual seconds; cache uses a supplied probability, not real Redis. Service experiment explicitly makes the database fast to isolate the service bottleneck. Report successful-only p95 beside errors. New before/after metrics are educational values, not measured production improvements.
+
+Fresh local package: 40 Java tests pass; frontend 97 tests pass. Four actual jobs and duplicate/conflict/export checks pass. Public backend identity/session/isolation/production gates and AWS remain open/deferred. Private Word/PDF guide copies stay outside this Git checkout.

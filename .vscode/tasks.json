@@ -1,0 +1,45 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "ArchArena: 1 Install frontend dependencies",
+      "type": "process",
+      "command": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "args": ["-NoProfile", "-Command", "npm.cmd ci --legacy-peer-deps --no-fund"],
+      "options": {"cwd": "${workspaceFolder}/frontend"},
+      "problemMatcher": []
+    },
+    {
+      "label": "ArchArena: 2 Package backend and run Java tests",
+      "type": "process",
+      "command": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "args": ["-NoProfile", "-File", "${workspaceFolder}/scripts/maven.ps1", "-MavenArgs", "package"],
+      "options": {"cwd": "${workspaceFolder}"},
+      "problemMatcher": []
+    },
+    {
+      "label": "ArchArena: 3 Start local app",
+      "type": "process",
+      "command": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "args": ["-NoProfile", "-File", "${workspaceFolder}/scripts/dev.ps1"],
+      "options": {"cwd": "${workspaceFolder}"},
+      "problemMatcher": []
+    },
+    {
+      "label": "ArchArena: 4 Run two simulation demos (Python 3)",
+      "type": "process",
+      "command": "python",
+      "args": ["scripts/demo_simulations.py"],
+      "options": {"cwd": "${workspaceFolder}"},
+      "problemMatcher": []
+    },
+    {
+      "label": "ArchArena: Stop recorded app processes",
+      "type": "process",
+      "command": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "args": ["-NoProfile", "-File", "${workspaceFolder}/scripts/dev.ps1", "-Stop"],
+      "options": {"cwd": "${workspaceFolder}"},
+      "problemMatcher": []
+    }
+  ]
+}

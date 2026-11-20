@@ -1,115 +1,113 @@
-# How to run ArchArena
+# Run ArchArena locally
 
-Current prototype: Windows local Java 21 API, separate worker and React/Vite, using H2 storage. Expedition Console Step 2 foundations are verified locally. Read `docs/STATUS.md` first. PostgreSQL/Compose and public deployment remain unverified; the November 19 full npm audit reports zero findings, which is a dated scan rather than a permanent guarantee.
+Updated November 20, 2026. The tested local setup is **Java 21 + Spring Boot 4.0.9 API + separate worker + React/Vite + JDBC/H2**. No Docker, AWS account or LLM key is needed for this path. PostgreSQL/JPA/cloud deployment are not implied by these instructions.
 
-## Build and start the Windows prototype
+For the full explanation, two worked experiments, observed results and code references, read [the project and interview playbook](docs/PROJECT-PLAYBOOK.md).
 
-From ArchArena with Java 21, Maven 3.9+ and Node 24 available:
+## 1 Open the correct folder in VS Code
+
+Open the `ArchArena` folder containing `backend`, `frontend`, `scripts` and this file. Use Terminal → New Terminal → PowerShell. Run the following from that folder.
+
+The prepared computer has a Java 21 JDK under ignored `.tools/jdk21`; the scripts select it. A fresh checkout does not include that cache. On a new computer, install Java 21, Maven 3.9+ and Node 24 and point JAVA_HOME at the JDK. Python 3 is optional for the automated demo/validation scripts; it is not the simulation runtime.
 
 ```powershell
-.\scripts\maven.ps1 -MavenArgs @('package')
-Push-Location frontend
-npm.cmd ci --legacy-peer-deps --no-fund
-npm.cmd run build
-Pop-Location
-.\scripts\dev.ps1
+node --version
+npm --version
 ```
 
-Open [the local workbench](http://127.0.0.1:5173). Check `http://127.0.0.1:8080/actuator/health` for UP rather than assuming spawned processes are ready. The launcher records project process IDs and logs in ignored `.local`. It preserves local data and does not create AWS resources.
+## 2 Build before starting
 
-Previously observed: health UP, frontend HTTP 200, and one browser-triggered simulation completed in the worker. That is not proof of the complete lesson/export or keyboard workflow. Tests alone do not rebuild an older JAR; package before starting after backend edits.
+Stop any previously recorded ArchArena session first. On Windows, a running JVM can lock the JAR.
 
-To stop recorded project-owned processes without deleting local data:
+```powershell
+.\scripts\dev.ps1 -Stop
+.\scripts\maven.ps1 -MavenArgs @('package')
+```
+
+`package` runs the Java tests and creates the executable JAR. Running only `test` does not rebuild an older packaged server. The November 20 local package run passed all 40 Java tests.
+
+Install frontend dependencies on first setup, or after a lockfile change:
+
+```powershell
+Push-Location frontend
+npm.cmd ci --legacy-peer-deps --no-fund
+Pop-Location
+```
+
+## 3 Start the three real processes
+
+```powershell
+.\scripts\dev.ps1
+Invoke-RestMethod http://127.0.0.1:8080/actuator/health
+```
+
+Open **http://127.0.0.1:5173**. Health must say UP. Select **Practice**, then **Load balancing** or **Caching** in the concept-lab buttons. Wait for **Engine connected**. Complete a run to prove that the separate worker is operating; API health alone does not prove worker readiness.
+
+The launcher starts the API, waits for its health, starts the worker and then Vite. H2 sharing is bound to loopback. It preserves existing local data. It records PIDs and logs in ignored `.local`.
+
+Do not use VS Code Live Server, a double-clicked HTML file, `npm run preview`, or the GitHub Pages URL for the full local simulation flow. The Vite dev server on 5173 forwards `/api` to 8080. The [public Pages preview](https://yashi2212.github.io/ArchArena/) deliberately does not host Java simulation or server saves.
+
+## 4 Run the two verified demos
+
+```powershell
+python scripts/demo_simulations.py
+```
+
+This submits four real jobs: service replicas 1 → 4 with a fast database, then cache read-hit ratio 0 → 0.9 with a slow database. Seed 42, 40 average virtual requests/s and 30 virtual seconds stay fixed. The script checks comparisons, accounting, saved export, duplicate-key reuse and changed-input conflict behavior.
+
+It respects the server quota of **two new jobs/minute per owner** and waits 61 seconds when necessary. It accepts only a loopback HTTP API. A delayed quota window is not an engine failure. Results are modeled educational values, not production throughput benchmarks.
+
+- Summary: [owner-demo-results.json](docs/evidence/owner-demo-results.json).
+- Four editable inputs: `docs/demos/01-service-before.json`, `01-service-after.json`, `02-cache-before.json`, `02-cache-after.json`.
+- Full local evidence: `.local/owner-demo/<batch>/` (ignored).
+- Click-by-click UI steps and explanations: [playbook sections 5–7](docs/PROJECT-PLAYBOOK.md#5-test-case-one-add-capacity-at-the-actual-bottleneck).
+
+In a concept lab, a blank prediction disables **Run experiment**. Keep profile Steady, seed 42, Failure None, retries 0 and both timeouts 2000 ms for these pairs. The current UI fixes the input duration at 30 seconds. After each baseline, choose **Pin result as baseline**, change one input and rerun.
+
+## 5 Stop and restart safely
 
 ```powershell
 .\scripts\dev.ps1 -Stop
 ```
 
-Stop a recorded session before restarting. Logs: `.local/api.log`, `api-error.log`, `worker.log`, `worker-error.log`, `frontend.log`, `frontend-error.log`. Check ownership before stopping anything else on ports 8080/5173.
+The launcher stops only recorded processes whose command line still belongs to this project. It does not delete the local database or browser drafts. Do not kill unrelated port owners or delete `.local` to fix a problem.
 
-## Current verification commands
+Inspect `.local/api.log`, `api-error.log`, `worker.log`, `worker-error.log`, `frontend.log` and `frontend-error.log`. If the job stays QUEUED, inspect the worker. For HTTP 429, wait. For HTTP 409, use a new idempotency key for a changed request or reload the conflicting saved-design version.
+
+If the local app displays the static-preview banner, check whether `VITE_STATIC_DEMO` was explicitly enabled in that terminal/configuration. Do not expose the default local-owner API publicly. Custom DB/token environment variables require intentional matching configuration; never paste secrets into frontend source.
+
+## VS Code tasks and code reading
+
+Terminal → Run Task provides install, backend package, start, stop and optional automated-demo tasks. Recommended Java tooling is listed in `.vscode/extensions.json`; the scripts also work without editor extensions.
+
+To read a function, use Ctrl+P for the source path, then Ctrl+F for its method name. Start with `ArenaController.run`, `JobRepository.submit`, `SimulationWorker.poll`, `DiscreteEventEngine.run` and `JobRepository.complete`. For direct engine debugging, debug `EngineTest.replayIsExactAndNodeOrderDoesNotAffectIt` with a breakpoint in the event engine. The background worker is a different JVM from the API.
+
+## Verification commands
 
 ```powershell
 .\scripts\maven.ps1 -MavenArgs @('test')
-python scripts/validate_knowledge.py
-python scripts/test_knowledge.py
-python scripts/check_proposed_tokens.py
-python scripts/check_backend_freeze.py
 python scripts/validate_docs.py
-```
-
-Java tests run against H2, not PostgreSQL/Testcontainers. `check_proposed_tokens.py` retains the historical unselected Signal Deck palette; the actual Expedition CSS token checks run in the frontend suite. `python scripts/validate_knowledge.py --publish` deliberately rejects all five unverified notes.
-
-From frontend, run the new checks:
-
-```powershell
+python scripts/validate_owner_guide.py
+Push-Location frontend
 npm.cmd test
 npm.cmd run build
-npm.cmd run test:e2e
-npm.cmd audit
+Pop-Location
 ```
 
-Current results: 79 frontend tests, 32 browser tests and a successful build; full npm audit zero on November 19. Browser checks use Microsoft Edge on Windows and an automatically managed loopback fixture server at 5174. They do not need a live Java backend and do not prove actual simulation performance. Normal development stays at 5173. Golden images are Windows/Edge baselines; review platform differences before changing them. Evidence: `docs/evidence/step-02-verification.md`.
-
-For Docker later, inspect `.env.example`, generate local-only values in ignored `.env`, and run `docker compose up --build` on a Docker-equipped machine. The configuration has not been run here. Never publish the H2/local-owner profile or assume a file configuration proves cloud/security behavior.
-
-## Phase 0 and design verification
-
-From the ArchArena directory with Python 3 available:
+The ordinary browser suite uses fixtures on 5174 and is not proof of real Java execution. An existing opt-in real-browser test uses the API/worker/frontend on 8080/5173 and submits one job:
 
 ```powershell
-python scripts/validate_phase0.py
+Push-Location frontend
+$env:ARCHARENA_LIVE_TEST='1'
+npm.cmd run test:e2e -- tests/live-simulation.spec.ts --project=width-1440 --reporter=list
+Remove-Item Env:ARCHARENA_LIVE_TEST
+Pop-Location
 ```
 
-This checks planning arithmetic and document links only. It does not start an app or simulate traffic.
+Wait for the job quota to clear before running that live check after the two demo pairs. It verifies actual run/replay/export behavior and preserves evidence; it is not a production load test.
 
-## Implementation prerequisites
+## What each mode stores
 
-The target stack is Java 21, Maven, Node.js/npm and Docker Compose for PostgreSQL and isolated processes. This machine initially had Java 17 on PATH and no Docker command. A workspace-local Java 21 JDK now exists under ignored `.tools/jdk21`; scripts select it without changing system Java. On a clean machine, install official tools/set JAVA_HOME; `.tools` and cached dependencies are not distributed in Git.
+Learn is read-only. Practice HLD contains the editable graph and bounded model; Practice LLD contains contracts/invariants/tests worksheets. Company worksheets and Studio’s six artifacts are browser-local. Backend design saves contain graph snapshots, not those worksheets. Studio export is a separate JSON bundle. Export important work before clearing browser storage.
 
-No AWS account or LLM key is needed for local development. Never put credentials in frontend source or commit `.env` files. Do not create cloud resources merely to work around a missing local prerequisite.
-
-## Documentation map
-
-- `problemstatement.md`: user problem, value and limitations.
-- `hld.md`: modules, sequences, trust boundaries and failure behavior.
-- `lld.md`: domain, persistence, job state and implementation contracts.
-- `interviewquestions.md`: phase-related explanations with honest implementation status.
-- `ISSUES.md`: risks, decisions, implementation evidence and unresolved work.
-
-## Troubleshooting principles
-
-If Java reports an unsupported release, select Java 21 explicitly rather than lowering the target silently. If dependency downloads fail, report that failure and use verified cached tools where possible; do not claim a build passed. If Docker is unavailable, engine/unit tests may still run, but real PostgreSQL integration and full-stack startup remain unverified. AWS deployment requires a separate eligibility/cost gate.
-
-## New system-design views
-
-With the normal local frontend/API/worker running, open Learn → System design learning path. Switch HLD/LLD and filter Foundation/Intermediate/Advanced. Only five topics have working simulation lab links; other entries are original exercises with theory explicitly pending review.
-
-Open Practice → select Uber → Start selected scenario (save your current graph first). Complete HLD assumptions and model a bounded request flow; switch to LLD for Java contracts/invariants/tests. Review my design flags missing decisions and reports current model evidence without pretending to validate matching or Java code. AI is disabled. Worksheets are browser-local, whereas backend saves and exports preserve only the existing graph/model.
-
-Validation commands from `frontend`: `npm.cmd test`, `npm.cmd run build`, `npm.cmd run test:e2e`. New focused browser checks: `npm.cmd run test:e2e -- tests/system-design.spec.ts`. See [scope and walkthrough](docs/learning-practice.md).
-
-## Engine v2 / Boot 4 continuation
-
-The verified local runtime uses Java 21 and Spring Boot 4.0.9. Stop the recorded API/worker before rebuilding the JAR on Windows; running JVMs lock it. Back up local data before a driver/runtime upgrade. This phase's private closed-file and SQL backups are under ignored `.local/backups/pre-engine-v2`; do not publish them.
-
-`scripts/dev.ps1` now binds H2 automatic sharing to loopback and waits for API health before launching the separate worker, avoiding the observed simultaneous-open failure. Inspect both API and worker logs; API health alone does not prove worker readiness. The launcher still preserves local data and only stops command-line-verified recorded processes.
-
-In the UI, expand Resilience settings for retry/deadline options. Select a node for advanced failure/breaker/holding/scaling/lag settings. Add CDN or synthetic external API nodes through the component selector; connect them before running. Replay steps through actual returned node samples at 1×/4×/8×, with p95 kept whole-run.
-
-Run `python scripts/smoke_simulation.py` for one real API → queue → worker → telemetry/export check (it submits a synthetic job, using a fixed idempotency key). For an opt-in real-browser check, set `ARCHARENA_LIVE_TEST=1` only for `npm.cmd run test:e2e -- tests/live-simulation.spec.ts --project=width-1440 --reporter=list`; it submits one experiment through the normal preview. Default browser runs remain fixtures and skip this opt-in test.
-
-Security reproduction and public blockers: [security review](docs/security-review.md). Model assumptions/limits: [simulation v2](docs/simulation-v2.md). Public hosting is not enabled by these commands.
-
-
-## Read-only Learn, Practice, Studio and tutorial
-
-Open the local React preview at http://127.0.0.1:5173. Learn opens to Start here with the 72-second captioned tutorial. Use HLD for 24 topic headings, LLD for 16, or Companies for twenty proposed designs. Uber has documented historical context, a separate reference proposal and linked concepts. Learn content is not editable. Its source-linked local review edition still needs editorial clearance before public publication.
-
-Open Practice to edit worksheets/graphs and run the bounded simulator. Five concept-lab buttons retain the original lesson controls and checkpoint flow. Predict, run a baseline, pin it, change one variable and rerun with matching seed/profile/incident. Use the LLD view for contracts and tests; the HLD view contains the graph and simulation. A successful run is not proof of business invariants.
-
-Design Studio is unlocked: draft Requirements, Capacity, HLD, API, Data model and LLD; capture the current Practice graph in HLD; export the JSON bundle. Browser-local artifacts have no cloud sync. Graph backend saves, worksheets and Studio bundles are separate. The tutorial can also be opened directly at /media/archarena-intro.mp4; captions and a transcript are served alongside it.
-
-Rebuild media with Windows PowerShell scripts/narrate-intro.ps1, then python scripts/create-intro-video.py. Requires Pillow and imageio-ffmpeg 0.6.0 installed privately under .tools/video-libs. Product media is versioned; private intermediates are ignored. Do not regenerate merely to run the app.
-
-Current Windows sandbox cannot launch packaged MSIX PowerShell; use C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe with login:false. Browser tests use the existing reviewed local-server/browser workflow. Check [phase audit](docs/PHASE-AUDIT.md) before any deployment: public readiness is still blocked.
+The tutorial is available in Learn → Start here. No need to regenerate its media to run the app. Read [the phase audit](docs/PHASE-AUDIT.md), [model limits](docs/simulation-v2.md) and [security review](docs/security-review.md) before considering public backend/cloud hosting. Those gates remain open.

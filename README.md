@@ -7,6 +7,8 @@ A system-design learning and practice platform for Java backend developers. Stud
 
 The GitHub Pages preview provides the learning library, tutorial, local architecture editor, scenario worksheets and Design Studio exports. GitHub Pages cannot host Spring Boot: server-side simulations, checkpoints and server saves run locally for now. The preview clearly labels this and never supplies fabricated run metrics. AWS deployment is deferred.
 
+**New to the project?** Start with the [project and interview playbook](docs/PROJECT-PLAYBOOK.md): everyday examples, VS Code setup, two verified before/after experiments, code references and interview answers. For just the commands, use [howtorun.md](howtorun.md). With the local app running, `python scripts/demo_simulations.py` executes both pairs through the real API and worker.
+
 ## What you can explore
 
 - **Learn:** 24 HLD and 16 LLD topics, each with Story/Simple/Pro explanations, an original flow, worked example, trade-off, common mistake and references.

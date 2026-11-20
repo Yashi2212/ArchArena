@@ -1,0 +1,115 @@
+{
+  "graph": {
+    "nodes": [
+      {
+        "id": "n0",
+        "type": "CLIENT",
+        "label": "Client",
+        "config": {
+          "replicas": 1,
+          "serviceMs": 0.5,
+          "concurrency": 1,
+          "hitRatio": 0,
+          "readRatio": 0.9,
+          "rate": 25,
+          "burst": 10,
+          "queueLimit": 200
+        }
+      },
+      {
+        "id": "n1",
+        "type": "LOAD_BALANCER",
+        "label": "Load balancer",
+        "config": {
+          "replicas": 1,
+          "serviceMs": 0.5,
+          "concurrency": 1,
+          "hitRatio": 0,
+          "readRatio": 0.9,
+          "rate": 25,
+          "burst": 10,
+          "queueLimit": 200
+        }
+      },
+      {
+        "id": "n2",
+        "type": "SERVICE",
+        "label": "Java service",
+        "config": {
+          "replicas": 1,
+          "serviceMs": 20,
+          "concurrency": 4,
+          "hitRatio": 0,
+          "readRatio": 0.9,
+          "rate": 25,
+          "burst": 10,
+          "queueLimit": 200
+        }
+      },
+      {
+        "id": "n3",
+        "type": "CACHE",
+        "label": "Read cache",
+        "config": {
+          "replicas": 1,
+          "serviceMs": 2,
+          "concurrency": 1,
+          "hitRatio": 0,
+          "readRatio": 0.9,
+          "rate": 25,
+          "burst": 10,
+          "queueLimit": 200
+        }
+      },
+      {
+        "id": "n4",
+        "type": "DATABASE",
+        "label": "Database",
+        "config": {
+          "replicas": 1,
+          "serviceMs": 50,
+          "concurrency": 1,
+          "hitRatio": 0,
+          "readRatio": 0.9,
+          "rate": 25,
+          "burst": 10,
+          "queueLimit": 200
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "e0",
+        "source": "n0",
+        "target": "n1"
+      },
+      {
+        "id": "e1",
+        "source": "n1",
+        "target": "n2"
+      },
+      {
+        "id": "e2",
+        "source": "n2",
+        "target": "n3"
+      },
+      {
+        "id": "e3",
+        "source": "n3",
+        "target": "n4"
+      }
+    ]
+  },
+  "arrivalRate": 40,
+  "durationSeconds": 30,
+  "seed": 42,
+  "profile": "steady",
+  "failure": "none",
+  "options": {
+    "retries": 0,
+    "retryBackoffMs": 100,
+    "retryJitter": 1,
+    "attemptTimeoutMs": 2000,
+    "deadlineMs": 2000
+  }
+}

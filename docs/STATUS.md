@@ -1,6 +1,6 @@
 # ArchArena status
 
-Updated: 2026-11-19, Asia/Calcutta. Read `../prompt.md` section 26.
+Updated: 2026-11-20, Asia/Calcutta. Read `../prompt.md` sections 26–27.
 
 **Published source:** https://github.com/Yashi2212/ArchArena on main, with history, detailed README, repository description and topics. Verified publishing account: Yashi2212. No force-push.
 
@@ -21,5 +21,7 @@ Updated: 2026-11-19, Asia/Calcutta. Read `../prompt.md` section 26.
 **Backend gate:** Full public Java hosting is NOT READY. Identity/owner/session/CSRF, PostgreSQL roles/RLS, MFA, deployment/container/dynamic/load checks and content review remain open. Current verified adapter is JDBC/H2, not JPA or certified PostgreSQL.
 
 **Other gaps:** Large JS chunk, game hero/particles/synchronized visuals, mobile graph readability, FPS/Lighthouse, AI evaluations, AWS eligibility/operations/restore and full launch evidence remain pending. Static build JS 1,025.93 kB / 318.60 kB gzip.
+
+**Owner guide:** PROJECT-PLAYBOOK.md explains need, local VS Code setup, two actual before/after experiments, 45 source anchors and interview preparation. Four real jobs, duplicate/conflict/export checks pass; fresh Java 40 and frontend 97 pass. Initial live browser timeout retained; retry passes 1 actual API/worker/replay/export case. See evidence/owner-handoff-verification.md. Private Word/PDF copies stay outside Git. Owner rehearsal and legacy replication-copy reconciliation remain open.
 
 **Next:** Keep static preview available; continue backend security/isolation and editorial review before full hosting. AWS only after account/cost eligibility and explicit provisioning scope. Detail: PHASE-AUDIT.md, evidence/pages-verification.md, ../ISSUES.md, session-log.md.
